@@ -3,14 +3,31 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Acquirely - Lead Generation Agency</title>
+<title>Acquirely - Lead Generation Systems</title>
+
+<!-- FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
+
+/* BASE */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     background-color: #000;
     color: #fff;
+    scroll-behavior: smooth;
+}
+
+/* FUTURISTIC LOGO */
+.logo {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: transparent;
+    background: linear-gradient(90deg, #d4af37, #fff, #d4af37);
+    -webkit-background-clip: text;
+    text-shadow: 0 0 10px rgba(255,215,0,0.2);
 }
 
 /* NAV */
@@ -23,29 +40,17 @@ nav {
     position: sticky;
     top: 0;
     background: #000;
-}
-
-nav h1 {
-    color: gold;
-    font-size: 22px;
-    letter-spacing: 2px;
+    z-index: 100;
 }
 
 nav a {
-    color: white;
+    color: #fff;
     margin: 0 15px;
     text-decoration: none;
 }
 
 nav a:hover {
     color: gold;
-}
-
-/* SECTIONS */
-section {
-    padding: 70px 20px;
-    max-width: 1100px;
-    margin: auto;
 }
 
 /* HERO */
@@ -81,6 +86,40 @@ section {
     color: black;
 }
 
+/* SECTIONS */
+section {
+    max-width: 1100px;
+    margin: auto;
+    padding: 70px 20px;
+}
+
+/* FRAMED SECTIONS */
+#services, #packages, #testimonials, #contact {
+    border: 1px solid rgba(255, 215, 0, 0.25);
+    border-radius: 16px;
+    padding: 40px 20px;
+    margin-bottom: 40px;
+    background: rgba(17, 17, 17, 0.6);
+    backdrop-filter: blur(6px);
+    transition: 0.3s ease;
+}
+
+#services:hover, #packages:hover, #testimonials:hover, #contact:hover {
+    border: 1px solid gold;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.25);
+    transform: translateY(-3px);
+}
+
+/* HEADINGS */
+h2 {
+    text-align: center;
+    color: gold;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
 /* GRID */
 .grid {
     display: grid;
@@ -92,7 +131,7 @@ section {
 .card {
     background: #111;
     padding: 25px;
-    border-radius: 10px;
+    border-radius: 14px;
     border: 1px solid #222;
     transition: 0.3s;
 }
@@ -103,11 +142,14 @@ section {
     transform: translateY(-5px);
 }
 
-/* HEADINGS */
-h2 {
+.card h3 {
     color: gold;
-    text-align: center;
-    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+.card p {
+    color: #ccc;
+    line-height: 1.6;
 }
 
 /* CONTACT */
@@ -122,6 +164,7 @@ footer {
     border-top: 1px solid #222;
     color: #666;
 }
+
 </style>
 </head>
 
@@ -129,7 +172,8 @@ footer {
 
 <!-- NAV -->
 <nav>
-    <h1>ACQUIRELY</h1>
+    <div class="logo">ACQ<span style="color:gold;">U</span>IRELY</div>
+
     <div>
         <a href="#services">Services</a>
         <a href="#packages">Packages</a>
@@ -140,11 +184,11 @@ footer {
 
 <!-- HERO -->
 <div class="hero">
-    <h2>Predictable Lead Generation for Modern Businesses</h2>
+    <h2>Predictable Lead Generation Systems</h2>
     <p>
-        Acquirely helps businesses generate high-quality leads using targeted outreach,
-        automation systems, and conversion-focused strategies. We remove guesswork
-        and replace it with scalable growth systems that actually work.
+        Acquirely builds automated lead generation systems that bring consistent,
+        high-quality clients to your business. No guessing. No inconsistent sales.
+        Just structured growth through proven outreach systems.
     </p>
     <a class="btn" href="#packages">View Packages</a>
 </div>
@@ -152,15 +196,16 @@ footer {
 <!-- SERVICES -->
 <section id="services">
     <h2>What We Do</h2>
+
     <div class="grid">
         <div class="card">
-            We build and manage lead generation systems that bring consistent customers
-            to your business. Our focus is on automation, outreach, and conversion optimisation
-            so you never rely on luck for sales again.
+            We design and run automated outreach systems that generate consistent leads
+            for your business. Everything is structured, tracked, and optimised for conversions.
         </div>
+
         <div class="card">
-            We identify your ideal customers, reach them through proven channels, and turn
-            cold prospects into warm leads ready to buy. Everything is tracked and optimised.
+            We identify your ideal customers and reach them using proven multi-channel
+            strategies. This turns cold audiences into paying clients at scale.
         </div>
     </div>
 </section>
@@ -168,64 +213,63 @@ footer {
 <!-- PACKAGES -->
 <section id="packages">
     <h2>Packages</h2>
-    <div class="grid">
 
+    <div class="grid">
         <div class="card">
             <h3>Starter</h3>
-            <p>Basic lead generation setup with outreach system.</p>
+            <p>Basic lead generation setup with outreach system and lead tracking.</p>
         </div>
 
         <div class="card">
             <h3>Growth</h3>
-            <p>Advanced automation + daily lead flow optimisation.</p>
+            <p>Advanced automation, higher volume outreach, and optimisation system.</p>
         </div>
 
         <div class="card">
             <h3>Premium</h3>
-            <p>Full system build, management, and scaling strategy.</p>
+            <p>Full system build, scaling strategy, and ongoing management support.</p>
         </div>
-
     </div>
 </section>
 
 <!-- TESTIMONIALS -->
 <section id="testimonials">
     <h2>Client Results</h2>
+
     <div class="grid">
-
         <div class="card">
-            “Acquirely completely changed how we get clients. We went from inconsistent
-            leads to a steady pipeline every single week. Their system actually works.”
-            <br><br>— Daniel Matthews, SaaS Founder
+            “Acquirely completely transformed our lead flow. We now get consistent
+            qualified leads every week without chasing clients manually.”
+            <br><br>— Daniel Wright, SaaS Founder
         </div>
 
         <div class="card">
-            “We were struggling with outreach before, but within weeks we started getting
-            replies and booked calls daily. Highly recommended.”
-            <br><br>— Sarah Johnson, Marketing Agency Owner
+            “Their system is structured and predictable. Within weeks we had booked calls
+            coming in daily from cold outreach.”
+            <br><br>— Sarah Collins, Agency Owner
         </div>
 
         <div class="card">
-            “The automation system alone saved us hours per day and increased our conversions
-            massively. This is next-level lead generation.”
-            <br><br>— Michael Tan, Business Consultant
+            “Best investment we made. Our conversion rate increased massively because
+            leads are now properly targeted.”
+            <br><br>— Michael Tan, Consultant
         </div>
-
     </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
     <h2>Contact</h2>
+
     <p style="text-align:center;">
-        Email us directly:
+        Email us:
         <a href="mailto:contact@acquirely.com">contact@acquirely.com</a>
     </p>
 </section>
 
 <!-- FOOTER -->
 <footer>
-    © 2026 Acquirely. All rights reserved.
+    © 2026 Acquirely. Built for scalable lead generation.
 </footer>
 
 </body>
