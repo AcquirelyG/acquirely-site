@@ -13,66 +13,113 @@ body {
 font-family:Poppins;
 margin:0;
 background:#000;
-color:#e5e7eb;
+color:#f5f5f5;
 }
 
-/* NAV */
+/* NAVBAR */
 header {
 position:fixed;
 top:0;
 width:100%;
 display:flex;
 justify-content:space-between;
-padding:20px 60px;
-background:rgba(0,0,0,0.85);
-backdrop-filter:blur(12px);
+align-items:center;
+padding:20px 80px; /* ← FIXED spacing */
+background:rgba(0,0,0,0.9);
 border-bottom:1px solid rgba(255,215,0,0.2);
 z-index:1000;
 }
 
+/* METALLIC LOGO */
 .logo a {
 font-weight:700;
-font-size:22px;
+font-size:24px;
 text-decoration:none;
-background:linear-gradient(90deg,#cbd5e1,#ffd700);
+background:linear-gradient(
+120deg,
+#fff 0%,
+#ffd700 20%,
+#fff 40%,
+#facc15 60%,
+#fff 80%
+);
+background-size:200% auto;
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
+animation:shine 4s linear infinite;
 }
 
+@keyframes shine {
+to {background-position:200% center;}
+}
+
+/* NAV LINKS */
 nav a {
-margin:0 15px;
+margin:0 20px;
 text-decoration:none;
-color:#cbd5e1;
+color:#d4d4d4;
+font-weight:500;
+transition:0.3s;
 }
 
 nav a:hover {
 color:#ffd700;
 }
 
+/* CONTACT BUTTON IN NAV */
+.nav-btn {
+padding:10px 20px;
+border-radius:8px;
+background:linear-gradient(145deg,#ffd700,#facc15);
+color:#000;
+text-decoration:none;
+font-weight:600;
+box-shadow:
+0 0 10px rgba(255,215,0,0.4),
+inset 0 0 5px rgba(255,255,255,0.5);
+transition:0.3s;
+}
+
+.nav-btn:hover {
+transform:translateY(-2px);
+box-shadow:
+0 0 20px rgba(255,215,0,0.6),
+inset 0 0 8px rgba(255,255,255,0.7);
+}
+
 /* HERO */
 .hero {
-padding:160px 20px 120px;
+padding:180px 20px 120px;
 text-align:center;
-background:radial-gradient(circle at top, #111, #000);
+background:radial-gradient(circle at top,#111,#000);
 }
 
 .hero h1 {
 font-size:3.5rem;
-background:linear-gradient(90deg,#fff,#ffd700);
+background:linear-gradient(
+120deg,#fff,#ffd700,#fff
+);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
+}
+
+.hero p {
+color:#aaa;
+margin-top:20px;
 }
 
 .btn {
 display:inline-block;
 margin-top:30px;
-padding:15px 35px;
-background:linear-gradient(90deg,#ffd700,#facc15);
+padding:15px 40px;
+border-radius:10px;
+background:linear-gradient(145deg,#ffd700,#facc15);
 color:#000;
-border-radius:8px;
 text-decoration:none;
 font-weight:600;
-box-shadow:0 0 20px rgba(255,215,0,0.4);
+box-shadow:
+0 0 20px rgba(255,215,0,0.4),
+inset 0 0 10px rgba(255,255,255,0.6);
 }
 
 /* SECTIONS */
@@ -83,10 +130,10 @@ margin:60px auto;
 border-radius:15px;
 }
 
-/* DEPTH VARIATIONS */
-.section.light {background:#020617;}
-.section.mid {background:#020617cc;}
-.section.dark {background:#010409;}
+.section.one {background:#050505;}
+.section.two {background:#0a0a0a;}
+.section.three {background:#111;}
+.section.four {background:#070707;}
 
 /* GRID */
 .grid {
@@ -96,19 +143,21 @@ gap:25px;
 }
 
 .card {
-background:#020617;
+background:#111;
 padding:25px;
 border-radius:12px;
 border:1px solid rgba(255,215,0,0.1);
+transition:0.3s;
 }
 
 .card:hover {
-box-shadow:0 0 20px rgba(255,215,0,0.2);
+transform:translateY(-5px);
+box-shadow:0 0 25px rgba(255,215,0,0.3);
 }
 
 /* TESTIMONIALS */
 .testimonial {
-background:#020617;
+background:#111;
 padding:25px;
 border-radius:12px;
 border:1px solid rgba(255,215,0,0.1);
@@ -149,68 +198,64 @@ border-top:1px solid rgba(255,215,0,0.1);
 <a href="#services">Services</a>
 <a href="#about">About</a>
 <a href="#testimonials">Results</a>
-<a href="#contact">Contact</a>
+<a href="#contact" class="nav-btn">Contact</a>
 </nav>
 </header>
 
 <!-- HERO -->
 <section id="home" class="hero">
-<h1>Premium Client Acquisition Systems</h1>
-<p>We help businesses generate consistent, high-quality clients without relying on ads.</p>
+<h1>Client Acquisition, Engineered to Scale</h1>
+<p>We build systems that generate consistent, high-quality clients.</p>
 <a href="#contact" class="btn">Get Started</a>
 </section>
 
 <!-- SERVICES -->
-<section id="services" class="section light">
+<section id="services" class="section one">
 <h2>What We Do</h2>
 <div class="grid">
-<div class="card"><h3>Lead Generation</h3><p>We identify and deliver highly targeted prospects ready to convert into paying clients.</p></div>
-<div class="card"><h3>Outreach Systems</h3><p>Automated email and LinkedIn systems that consistently generate inbound responses.</p></div>
-<div class="card"><h3>Funnels</h3><p>Conversion-optimized pages designed to turn traffic into booked calls and sales.</p></div>
+<div class="card"><h3>Lead Generation</h3><p>Highly targeted prospects ready to convert.</p></div>
+<div class="card"><h3>Outreach Systems</h3><p>Automated pipelines that generate responses daily.</p></div>
+<div class="card"><h3>Funnels</h3><p>Pages built to convert traffic into paying clients.</p></div>
 </div>
 </section>
 
 <!-- ABOUT -->
-<section id="about" class="section mid">
+<section id="about" class="section two">
 <h2>About Acquirely</h2>
-<p>Acquirely builds high-performance client acquisition systems designed for businesses that want predictable growth.</p>
-
-<p>Instead of relying on inconsistent referrals or expensive ad campaigns, we develop structured outreach systems that generate qualified leads every single month.</p>
-
-<p>Our approach is simple: clarity, efficiency, and results. Every system we build is optimized to help you close more deals and scale faster.</p>
+<p>We build scalable acquisition systems designed for predictable growth.</p>
+<p>No guesswork. Just results.</p>
 </section>
 
 <!-- TESTIMONIALS -->
-<section id="testimonials" class="section dark">
+<section id="testimonials" class="section three">
 <h2>Client Results</h2>
 
 <div class="grid">
-
 <div class="testimonial">
 <img src="https://randomuser.me/api/portraits/men/32.jpg">
-<p>“Before working with Acquirely, we struggled to find consistent clients. Within the first few weeks, we started receiving qualified leads regularly, and our pipeline completely changed. It’s now predictable and scalable.”</p>
-<strong>Daniel M. – Agency Owner</strong>
+<p>“We finally have a consistent pipeline and predictable growth.”</p>
+<strong>Daniel M.</strong>
 </div>
 
 <div class="testimonial">
 <img src="https://randomuser.me/api/portraits/women/44.jpg">
-<p>“Their outreach system brought in more responses than anything we had tried before. We went from chasing clients to having people actually interested in working with us.”</p>
-<strong>Sarah K. – Consultant</strong>
+<p>“We stopped chasing clients — now they come to us.”</p>
+<strong>Sarah K.</strong>
 </div>
 
 <div class="testimonial">
 <img src="https://randomuser.me/api/portraits/men/76.jpg">
-<p>“Simple, effective, and results-driven. We closed multiple deals within the first month of implementing their system. Highly recommended.”</p>
-<strong>James R. – Business Owner</strong>
+<p>“Closed deals within weeks. The system works.”</p>
+<strong>James R.</strong>
+</div>
 </div>
 
-</div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="section light contact">
+<section id="contact" class="section four contact">
 <h2>Contact</h2>
-<p>We’ll discuss pricing after understanding your needs and goals.</p>
+<p>We’ll discuss pricing after understanding your needs.</p>
 
 <a href="https://wa.me/6288211592253">💬 WhatsApp Me</a>
 <a href="mailto:smithchristiaan15@gmail.com">📧 Email Me</a>
