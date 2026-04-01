@@ -4,16 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Acquirely</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    body {font-family: Arial, sans-serif; margin:0; background:#0f172a; color:#e2e8f0;}
-    header {background:#020617; padding:20px; text-align:center;}
-    nav a {color:#38bdf8; margin:0 15px; text-decoration:none;}
-    section {padding:60px 20px; max-width:1000px; margin:auto;}
+    body {font-family: 'Poppins', sans-serif; margin:0; background:#0f172a; color:#e2e8f0;}
+    header {background:#020617; padding:20px; display:flex; justify-content:space-between; align-items:center;}
+    nav a {color:#38bdf8; margin:0 15px; text-decoration:none; font-weight:500;}
+    section {padding:80px 20px; max-width:1100px; margin:auto;}
     h1,h2 {color:#38bdf8;}
-    .card {background:#1e293b; padding:20px; border-radius:10px; margin:20px 0;}
+    .hero {text-align:center;}
+    .hero h1 {font-size:2.5rem;}
+    .hero p {font-size:1.2rem; opacity:0.8;}
+    .btn {background:#38bdf8; padding:12px 25px; border-radius:8px; color:#000; text-decoration:none; font-weight:600; display:inline-block; margin-top:20px;}
+    .grid {display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:20px;}
+    .card {background:#1e293b; padding:25px; border-radius:15px; transition:0.3s;}
+    .card:hover {transform:translateY(-5px);}
+    .card img {width:100%; border-radius:10px; margin-bottom:15px;}
     footer {text-align:center; padding:20px; background:#020617;}
-    input, textarea {width:100%; padding:10px; margin:10px 0; border-radius:5px; border:none;}
-    button {padding:10px 20px; background:#38bdf8; border:none; border-radius:5px; cursor:pointer;}
+    input, textarea {width:100%; padding:12px; margin:10px 0; border-radius:8px; border:none;}
+    button {padding:12px 25px; background:#38bdf8; border:none; border-radius:8px; cursor:pointer;}
     .contact-info {margin-top:20px; line-height:1.8;}
     a {color:#38bdf8;}
   </style>
@@ -21,7 +29,7 @@
 <body>
 
 <header>
-  <h1>Acquirely</h1>
+  <h2>Acquirely</h2>
   <nav>
     <a href="#home">Home</a>
     <a href="#services">Services</a>
@@ -30,30 +38,36 @@
   </nav>
 </header>
 
-<section id="home">
-  <h2>We Help You Acquire Clients Consistently</h2>
-  <p>Acquirely helps businesses consistently acquire high-quality clients through targeted lead generation, automated outreach systems, and conversion-focused funnels.</p>
+<section id="home" class="hero">
+  <h1>We Help You Acquire Clients Consistently</h1>
+  <p>Turn your business into a client-generating machine with proven outreach and automation systems.</p>
+  <a href="#contact" class="btn">Get More Clients</a>
 </section>
 
 <section id="services">
   <h2>Our Services</h2>
-  <div class="card">
-    <h3>Lead Generation</h3>
-    <p>We identify and deliver highly targeted prospects ready to convert into paying clients.</p>
-  </div>
-  <div class="card">
-    <h3>Outreach Automation</h3>
-    <p>We build and manage cold email and LinkedIn systems that bring you consistent inbound responses.</p>
-  </div>
-  <div class="card">
-    <h3>Funnel & Website Setup</h3>
-    <p>High-converting landing pages designed to turn visitors into booked calls and clients.</p>
+  <div class="grid">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1556745757-8d76bdb6984b" alt="Lead Generation">
+      <h3>Lead Generation</h3>
+      <p>Targeted prospects delivered directly to your pipeline.</p>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71" alt="Automation">
+      <h3>Outreach Automation</h3>
+      <p>Cold email & LinkedIn systems that bring inbound leads.</p>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f" alt="Funnels">
+      <h3>Funnels & Websites</h3>
+      <p>High-converting pages that turn visitors into clients.</p>
+    </div>
   </div>
 </section>
 
 <section id="about">
   <h2>About Us</h2>
-  <p>At Acquirely, we specialize in helping startups and businesses scale faster by building predictable client acquisition systems. Our mission is simple: help you consistently acquire high-quality clients so you can focus on closing deals and growing revenue.</p>
+  <p>Acquirely helps businesses scale by building predictable systems that bring in consistent, high-quality clients every month.</p>
 </section>
 
 <section id="contact">
