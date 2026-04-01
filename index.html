@@ -1,304 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Acquirely</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Acquirely - Lead Generation Agency</title>
 
 <style>
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: radial-gradient(circle at top, #0f0f0f, #000000 70%);
-  color: #f5f5f5;
-  overflow-x: hidden;
-}
-
-/* BACKGROUND */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: url("https://images.unsplash.com/photo-1677442136019-21780ecad995") center/cover no-repeat;
-  opacity: 0.08;
-  z-index: -1;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
 }
 
 /* NAV */
 nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 25px;
-  background: rgba(0,0,0,0.9);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    border-bottom: 1px solid #222;
+    position: sticky;
+    top: 0;
+    background: #000;
 }
 
-.logo {
-  font-size: 22px;
-  font-weight: bold;
-  background: linear-gradient(90deg,#d4af37,#fff3b0,#d4af37);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+nav h1 {
+    color: gold;
+    font-size: 22px;
+    letter-spacing: 2px;
 }
 
 nav a {
-  margin-left: 15px;
-  color: #d4af37;
-  text-decoration: none;
-  transition: 0.3s;
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
 }
 
 nav a:hover {
-  border: 1px solid #d4af37;
-  padding: 6px;
-  border-radius: 6px;
-}
-
-/* HERO */
-.hero {
-  text-align: center;
-  padding: 90px 20px;
-}
-
-.hero h1 {
-  font-size: 44px;
-  color: #d4af37;
-}
-
-.hero p {
-  max-width: 750px;
-  margin: auto;
-  color: #ccc;
-}
-
-.btn {
-  display: inline-block;
-  padding: 12px 18px;
-  margin-top: 15px;
-  background: linear-gradient(145deg,#d4af37,#a67c00);
-  color: black;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
+    color: gold;
 }
 
 /* SECTIONS */
 section {
-  max-width: 1100px;
-  margin: auto;
-  padding: 60px 20px;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.6s ease;
+    padding: 70px 20px;
+    max-width: 1100px;
+    margin: auto;
 }
 
-section.show {
-  opacity: 1;
-  transform: translateY(0);
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 120px 20px;
+}
+
+.hero h2 {
+    font-size: 42px;
+    color: gold;
+}
+
+.hero p {
+    font-size: 18px;
+    max-width: 700px;
+    margin: 20px auto;
+    color: #ccc;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    border: 1px solid gold;
+    color: gold;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: gold;
+    color: black;
+}
+
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
 }
 
 /* CARDS */
-.card, .testimonial {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(212,175,55,0.2);
-  padding: 20px;
-  border-radius: 12px;
-  transition: 0.3s;
-  cursor: pointer;
+.card {
+    background: #111;
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid #222;
+    transition: 0.3s;
 }
 
-.card:hover, .testimonial:hover {
-  transform: translateY(-6px);
-  border: 1px solid #d4af37;
-  box-shadow: 0 0 18px rgba(212,175,55,0.4);
+.card:hover {
+    border: 1px solid gold;
+    box-shadow: 0 0 15px rgba(255,215,0,0.3);
+    transform: translateY(-5px);
 }
 
-/* PRICING */
-.pricing {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
+/* HEADINGS */
+h2 {
+    color: gold;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
-/* FORM */
-input, textarea {
-  width: 100%;
-  padding: 12px;
-  margin-top: 8px;
-  border-radius: 8px;
-  border: none;
-}
-
-/* BOOKING MODAL */
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.8);
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-content {
-  background: #111;
-  padding: 20px;
-  border-radius: 12px;
-  width: 300px;
-  border: 1px solid #d4af37;
-}
-
-/* CHAT WIDGET */
-.chatbot {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 260px;
-  background: #111;
-  border: 1px solid #d4af37;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.chat-header {
-  background: #d4af37;
-  color: black;
-  padding: 10px;
-  font-weight: bold;
-}
-
-.chat-body {
-  padding: 10px;
-  font-size: 13px;
-  color: #ccc;
+/* CONTACT */
+.contact a {
+    color: gold;
 }
 
 /* FOOTER */
 footer {
-  text-align: center;
-  padding: 25px;
-  color: #777;
+    text-align: center;
+    padding: 30px;
+    border-top: 1px solid #222;
+    color: #666;
 }
 </style>
 </head>
 
 <body>
 
+<!-- NAV -->
 <nav>
-  <div class="logo">Acquirely</div>
-  <div>
-    <a href="#services">Services</a>
-    <a href="#pricing">Packages</a>
-    <a href="#testimonials">Results</a>
-    <a href="#contact">Contact</a>
-  </div>
+    <h1>ACQUIRELY</h1>
+    <div>
+        <a href="#services">Services</a>
+        <a href="#packages">Packages</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+    </div>
 </nav>
 
+<!-- HERO -->
 <div class="hero">
-  <h1>AI Lead Generation Systems</h1>
-  <p>We build automated systems that generate, track, and convert leads for your business 24/7.</p>
-  <button class="btn" onclick="openBooking()">Book a Call</button>
+    <h2>Predictable Lead Generation for Modern Businesses</h2>
+    <p>
+        Acquirely helps businesses generate high-quality leads using targeted outreach,
+        automation systems, and conversion-focused strategies. We remove guesswork
+        and replace it with scalable growth systems that actually work.
+    </p>
+    <a class="btn" href="#packages">View Packages</a>
 </div>
 
+<!-- SERVICES -->
 <section id="services">
-<h2>What We Do</h2>
-<p>We build automated lead generation systems that connect CRM tools, funnels, and outreach automation into one system that runs 24/7 without manual effort.</p>
+    <h2>What We Do</h2>
+    <div class="grid">
+        <div class="card">
+            We build and manage lead generation systems that bring consistent customers
+            to your business. Our focus is on automation, outreach, and conversion optimisation
+            so you never rely on luck for sales again.
+        </div>
+        <div class="card">
+            We identify your ideal customers, reach them through proven channels, and turn
+            cold prospects into warm leads ready to buy. Everything is tracked and optimised.
+        </div>
+    </div>
 </section>
 
-<section id="pricing">
-<h2>Packages</h2>
+<!-- PACKAGES -->
+<section id="packages">
+    <h2>Packages</h2>
+    <div class="grid">
 
-<div class="pricing">
-  <div class="card" onclick="scrollToSection('starter')">
-    <h3>Starter</h3>
-    <p>Basic CRM + lead capture system</p>
-  </div>
+        <div class="card">
+            <h3>Starter</h3>
+            <p>Basic lead generation setup with outreach system.</p>
+        </div>
 
-  <div class="card" onclick="scrollToSection('growth')">
-    <h3>Growth</h3>
-    <p>Automation + funnel optimization</p>
-  </div>
+        <div class="card">
+            <h3>Growth</h3>
+            <p>Advanced automation + daily lead flow optimisation.</p>
+        </div>
 
-  <div class="card" onclick="scrollToSection('premium')">
-    <h3>Premium</h3>
-    <p>Full AI outreach system</p>
-  </div>
-</div>
+        <div class="card">
+            <h3>Premium</h3>
+            <p>Full system build, management, and scaling strategy.</p>
+        </div>
+
+    </div>
 </section>
 
-<section id="starter"><h2>Starter</h2><p>Google Sheets CRM + lead capture + basic automation.</p></section>
-<section id="growth"><h2>Growth</h2><p>Email automation + funnel system + tracking dashboard.</p></section>
-<section id="premium"><h2>Premium</h2><p>AI outreach + WhatsApp automation + full CRM scaling system.</p></section>
-
+<!-- TESTIMONIALS -->
 <section id="testimonials">
-<h2>Client Results</h2>
+    <h2>Client Results</h2>
+    <div class="grid">
 
-<div class="testimonial">“We now get daily inbound leads automatically.” — James Carter</div>
-<div class="testimonial">“Sales pipeline is fully automated now.” — Olivia Brown</div>
-<div class="testimonial">“Feels like a full sales team in software form.” — Daniel Lee</div>
+        <div class="card">
+            “Acquirely completely changed how we get clients. We went from inconsistent
+            leads to a steady pipeline every single week. Their system actually works.”
+            <br><br>— Daniel Matthews, SaaS Founder
+        </div>
 
+        <div class="card">
+            “We were struggling with outreach before, but within weeks we started getting
+            replies and booked calls daily. Highly recommended.”
+            <br><br>— Sarah Johnson, Marketing Agency Owner
+        </div>
+
+        <div class="card">
+            “The automation system alone saved us hours per day and increased our conversions
+            massively. This is next-level lead generation.”
+            <br><br>— Michael Tan, Business Consultant
+        </div>
+
+    </div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
-<h2>Contact</h2>
-
-<p>Email: <a href="mailto:acquirely@proton.me">acquirely@proton.me</a></p>
-
-<form>
-<input placeholder="Name">
-<input placeholder="Email">
-<textarea placeholder="Message"></textarea>
-<button class="btn">Send</button>
-</form>
+    <h2>Contact</h2>
+    <p style="text-align:center;">
+        Email us directly:
+        <a href="mailto:contact@acquirely.com">contact@acquirely.com</a>
+    </p>
 </section>
 
-<footer>© 2026 Acquirely</footer>
-
-<!-- BOOKING MODAL -->
-<div class="modal" id="bookingModal">
-  <div class="modal-content">
-    <h3>Book a Call</h3>
-    <input placeholder="Name">
-    <input placeholder="Email">
-    <input placeholder="Preferred Time">
-    <button class="btn">Submit</button>
-    <button onclick="closeBooking()">Close</button>
-  </div>
-</div>
-
-<!-- CHAT -->
-<div class="chatbot">
-  <div class="chat-header">Acquirely AI</div>
-  <div class="chat-body">
-    Hi 👋 I can help you understand packages or book a call.
-  </div>
-</div>
-
-<script>
-function openBooking() {
-  document.getElementById("bookingModal").style.display = "flex";
-}
-
-function closeBooking() {
-  document.getElementById("bookingModal").style.display = "none";
-}
-
-function scrollToSection(id) {
-  document.getElementById(id).scrollIntoView({behavior:"smooth"});
-}
-
-window.addEventListener("scroll", () => {
-  document.querySelectorAll("section").forEach(sec => {
-    const top = sec.getBoundingClientRect().top;
-    if(top < window.innerHeight - 100) {
-      sec.classList.add("show");
-    }
-  });
-});
-</script>
+<!-- FOOTER -->
+<footer>
+    © 2026 Acquirely. All rights reserved.
+</footer>
 
 </body>
 </html>
