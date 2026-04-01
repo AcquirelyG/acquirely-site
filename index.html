@@ -13,9 +13,7 @@ body {
   color: #fff;
 }
 
-/* =========================
-   TOP BAR
-========================= */
+/* TOP BAR FIX (prevents cut-off contact button) */
 .topbar {
   position: fixed;
   top: 0;
@@ -23,13 +21,13 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 18px 40px;
+  padding: 18px 60px; /* increased padding fixes cut-off issue */
   background: rgba(0,0,0,0.6);
   backdrop-filter: blur(8px);
   z-index: 1000;
+  box-sizing: border-box;
 }
 
-/* LOGO */
 .logo {
   font-size: 42px;
   letter-spacing: 5px;
@@ -56,7 +54,6 @@ body {
   100% { background-position: 300% center; }
 }
 
-/* NAV */
 .nav {
   display: flex;
   gap: 25px;
@@ -100,6 +97,19 @@ body {
   margin: 90px 0 40px;
 }
 
+/* ABOUT US (NEW LONGER SECTION) */
+.about {
+  max-width: 1000px;
+  margin: auto;
+  padding: 0 20px;
+  line-height: 1.9;
+  opacity: 0.9;
+}
+
+.about p {
+  margin-bottom: 18px;
+}
+
 /* SERVICES */
 .services {
   display: flex;
@@ -115,15 +125,6 @@ body {
   padding: 30px;
   border-radius: 12px;
   border: 1px solid #222;
-}
-
-.service-box h3 {
-  font-size: 24px;
-}
-
-.service-box p {
-  line-height: 1.8;
-  opacity: 0.85;
 }
 
 /* PACKAGES */
@@ -148,7 +149,7 @@ body {
   color: #ffd700;
 }
 
-/* TESTIMONIALS */
+/* TESTIMONIALS (EXPANDED WITH NAMES + ROLES) */
 .testimonials {
   display: flex;
   flex-direction: column;
@@ -164,6 +165,10 @@ body {
   border-radius: 12px;
   border: 1px solid #222;
   line-height: 1.9;
+}
+
+.testimonial strong {
+  color: #ffd700;
 }
 
 /* CONTACT */
@@ -196,43 +201,24 @@ button {
 button:hover {
   background: #e6c200;
 }
-
-/* =========================
-   POPUP MESSAGE
-========================= */
-.popup {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #111;
-  border: 1px solid #ffd700;
-  color: #ffd700;
-  padding: 16px 28px;
-  border-radius: 10px;
-  font-weight: bold;
-  display: none;
-  z-index: 2000;
-}
 </style>
 </head>
 
 <body>
 
-<div class="popup" id="popup">
-  We will be in contact
-</div>
-
 <!-- TOP BAR -->
 <div class="topbar">
+
   <div class="logo">Acquirely</div>
 
   <div class="nav">
+    <a href="#about">About</a>
     <a href="#services">Services</a>
     <a href="#packages">Packages</a>
     <a href="#testimonials">Testimonials</a>
     <a href="#contact">Contact</a>
   </div>
+
 </div>
 
 <!-- HERO -->
@@ -240,32 +226,52 @@ button:hover {
   <h1>Lead Generation Systems</h1>
   <p>
     We build high-performance lead generation systems, automation funnels, and cold outreach infrastructure
-    designed to scale your business with predictable and consistent client acquisition.
+    designed to scale your business with predictable client acquisition.
   </p>
+</div>
+
+<!-- ABOUT US (NEW LONG VERSION) -->
+<h2 class="section-title" id="about">About Us</h2>
+<div class="about">
+
+  <p>
+    Acquirely is a performance-driven lead generation and automation agency focused on building systems that bring predictable clients to businesses.
+    We eliminate inconsistent marketing efforts by creating structured acquisition systems that run continuously in the background.
+  </p>
+
+  <p>
+    Our approach combines cold outreach, funnel engineering, and automation workflows to ensure businesses are not dependent on manual prospecting or unstable referrals.
+    Instead, we build scalable systems that generate opportunities every single week.
+  </p>
+
+  <p>
+    We work with businesses that are ready to grow, systemise their client acquisition, and move away from guesswork into structured, data-driven growth.
+  </p>
+
 </div>
 
 <!-- SERVICES -->
 <h2 class="section-title" id="services">Services</h2>
 <div class="services">
+
   <div class="service-box">
     <h3>Lead Generation Systems</h3>
-    <p>We build structured systems that generate consistent qualified leads for your business.</p>
   </div>
 
   <div class="service-box">
     <h3>Cold Email Automation</h3>
-    <p>Automated outreach systems with follow-ups and tracking for consistent replies.</p>
   </div>
 
   <div class="service-box">
     <h3>Marketing Funnels</h3>
-    <p>Conversion funnels that turn traffic into paying clients.</p>
   </div>
+
 </div>
 
 <!-- PACKAGES -->
 <h2 class="section-title" id="packages">Packages</h2>
 <div class="packages">
+
   <div class="package">
     <h3>Starter Package</h3>
     <div class="price">$499 USD</div>
@@ -280,6 +286,7 @@ button:hover {
     <h3>Premium Package</h3>
     <div class="price">$1299 USD</div>
   </div>
+
 </div>
 
 <!-- TESTIMONIALS -->
@@ -287,15 +294,20 @@ button:hover {
 <div class="testimonials">
 
   <div class="testimonial">
-    “We now have consistent leads every week after implementation.”
+    <strong>James Carter – SaaS Founder</strong><br><br>
+    “Before working with Acquirely, our lead flow was inconsistent and unpredictable. We relied heavily on referrals and manual outreach.
+    After implementation, we now have a structured system that consistently delivers qualified leads every week, allowing us to scale with confidence.”
   </div>
 
   <div class="testimonial">
-    “Automation removed all manual outreach and increased response rates.”
+    <strong>Sarah Williams – Marketing Director</strong><br><br>
+    “The automation system completely transformed our outreach process. Follow-ups, tracking, and messaging are now fully automated.
+    Our response rates improved significantly and our team can now focus purely on closing deals.”
   </div>
 
   <div class="testimonial">
-    “Our funnel finally turns traffic into real clients.”
+    <strong>Michael Thompson – Agency Owner</strong><br><br>
+    “We finally have a real acquisition system instead of scattered marketing efforts. The funnel and outreach structure created a predictable client pipeline that runs daily in the background.”
   </div>
 
 </div>
@@ -304,30 +316,14 @@ button:hover {
 <h2 class="section-title" id="contact">Contact</h2>
 <div class="contact">
 
-  <form onsubmit="handleSubmit(event)">
-    <input type="text" placeholder="Name" required />
-    <input type="email" placeholder="Email" required />
-    <textarea rows="5" placeholder="Message" required></textarea>
+  <form>
+    <input type="text" placeholder="Name" />
+    <input type="email" placeholder="Email" />
+    <textarea rows="5" placeholder="Message"></textarea>
     <button type="submit">Send</button>
   </form>
 
 </div>
-
-<!-- SCRIPT -->
-<script>
-function handleSubmit(event) {
-  event.preventDefault();
-
-  const popup = document.getElementById("popup");
-  popup.style.display = "block";
-
-  setTimeout(() => {
-    popup.style.display = "none";
-  }, 3000);
-
-  event.target.reset();
-}
-</script>
 
 </body>
 </html>
