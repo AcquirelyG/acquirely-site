@@ -13,7 +13,7 @@ body {
   color: #fff;
 }
 
-/* TOP BAR FIX (prevents cut-off contact button) */
+/* TOP BAR */
 .topbar {
   position: fixed;
   top: 0;
@@ -21,17 +21,18 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 18px 60px; /* increased padding fixes cut-off issue */
-  background: rgba(0,0,0,0.6);
+  padding: 18px 60px;
+  background: rgba(0,0,0,0.65);
   backdrop-filter: blur(8px);
   z-index: 1000;
   box-sizing: border-box;
 }
 
+/* LOGO */
 .logo {
-  font-size: 42px;
-  letter-spacing: 5px;
+  font-size: 44px;
   font-weight: bold;
+  letter-spacing: 6px;
 
   background: linear-gradient(
     90deg,
@@ -54,6 +55,7 @@ body {
   100% { background-position: 300% center; }
 }
 
+/* NAVIGATION */
 .nav {
   display: flex;
   gap: 25px;
@@ -83,31 +85,27 @@ body {
 }
 
 .hero p {
-  opacity: 0.75;
   max-width: 750px;
   margin: auto;
   line-height: 1.8;
   font-size: 18px;
+  opacity: 0.75;
 }
 
-/* TITLES */
+/* SECTION TITLE */
 .section-title {
   text-align: center;
   font-size: 46px;
   margin: 90px 0 40px;
 }
 
-/* ABOUT US (NEW LONGER SECTION) */
+/* ABOUT */
 .about {
   max-width: 1000px;
   margin: auto;
   padding: 0 20px;
   line-height: 1.9;
   opacity: 0.9;
-}
-
-.about p {
-  margin-bottom: 18px;
 }
 
 /* SERVICES */
@@ -127,6 +125,12 @@ body {
   border: 1px solid #222;
 }
 
+.service-box p {
+  margin-top: 10px;
+  line-height: 1.7;
+  opacity: 0.85;
+}
+
 /* PACKAGES */
 .packages {
   display: flex;
@@ -144,12 +148,26 @@ body {
   border: 1px solid #222;
 }
 
+.package p {
+  margin-top: 10px;
+  opacity: 0.85;
+  line-height: 1.7;
+}
+
+.package ul {
+  margin-top: 15px;
+  padding-left: 20px;
+  line-height: 1.8;
+  opacity: 0.9;
+}
+
 .price {
   font-size: 26px;
   color: #ffd700;
+  margin-top: 10px;
 }
 
-/* TESTIMONIALS (EXPANDED WITH NAMES + ROLES) */
+/* TESTIMONIALS */
 .testimonials {
   display: flex;
   flex-direction: column;
@@ -175,7 +193,7 @@ body {
 .contact {
   max-width: 800px;
   margin: auto;
-  padding: 60px 20px 100px;
+  padding: 60px 20px 120px;
 }
 
 input, textarea {
@@ -208,7 +226,6 @@ button:hover {
 
 <!-- TOP BAR -->
 <div class="topbar">
-
   <div class="logo">Acquirely</div>
 
   <div class="nav">
@@ -218,7 +235,6 @@ button:hover {
     <a href="#testimonials">Testimonials</a>
     <a href="#contact">Contact</a>
   </div>
-
 </div>
 
 <!-- HERO -->
@@ -230,22 +246,22 @@ button:hover {
   </p>
 </div>
 
-<!-- ABOUT US (NEW LONG VERSION) -->
+<!-- ABOUT -->
 <h2 class="section-title" id="about">About Us</h2>
 <div class="about">
 
   <p>
-    Acquirely is a performance-driven lead generation and automation agency focused on building systems that bring predictable clients to businesses.
-    We eliminate inconsistent marketing efforts by creating structured acquisition systems that run continuously in the background.
+    Acquirely is a performance-driven lead generation and automation agency focused on building systems that generate predictable client flow.
+    We eliminate inconsistent marketing by building structured acquisition engines that run continuously in the background.
   </p>
 
   <p>
-    Our approach combines cold outreach, funnel engineering, and automation workflows to ensure businesses are not dependent on manual prospecting or unstable referrals.
-    Instead, we build scalable systems that generate opportunities every single week.
+    Our systems combine cold outreach, funnel engineering, CRM automation, and conversion optimisation to ensure businesses are not dependent on referrals or inconsistent traffic.
+    Instead, we create scalable and repeatable acquisition systems.
   </p>
 
   <p>
-    We work with businesses that are ready to grow, systemise their client acquisition, and move away from guesswork into structured, data-driven growth.
+    We work with founders, agencies, and service businesses that want predictable growth and fully automated client acquisition pipelines.
   </p>
 
 </div>
@@ -256,14 +272,23 @@ button:hover {
 
   <div class="service-box">
     <h3>Lead Generation Systems</h3>
+    <p>
+      We design and build complete lead generation systems that attract and convert high-quality prospects consistently using funnels, messaging, targeting, and optimisation.
+    </p>
   </div>
 
   <div class="service-box">
     <h3>Cold Email Automation</h3>
+    <p>
+      Fully automated cold email systems including prospecting, sequencing, inbox rotation, deliverability optimisation, and follow-ups to generate consistent replies.
+    </p>
   </div>
 
   <div class="service-box">
     <h3>Marketing Funnels</h3>
+    <p>
+      High-converting funnels that guide users from awareness to conversion using landing pages, offers, CTA optimisation, and automated follow-up systems.
+    </p>
   </div>
 
 </div>
@@ -275,16 +300,42 @@ button:hover {
   <div class="package">
     <h3>Starter Package</h3>
     <div class="price">$499 USD</div>
+    <p>Ideal for small businesses starting out.</p>
+    <ul>
+      <li>Basic lead generation setup</li>
+      <li>Cold email system</li>
+      <li>1 landing page funnel</li>
+      <li>3–5 email sequence</li>
+      <li>Basic CRM tracking</li>
+    </ul>
   </div>
 
   <div class="package">
     <h3>Growth Package</h3>
     <div class="price">$899 USD</div>
+    <p>For businesses ready to scale.</p>
+    <ul>
+      <li>Advanced lead generation system</li>
+      <li>Full cold email automation</li>
+      <li>Inbox rotation + deliverability setup</li>
+      <li>2–3 page funnel system</li>
+      <li>5–10 email sequences</li>
+      <li>CRM integration</li>
+    </ul>
   </div>
 
   <div class="package">
     <h3>Premium Package</h3>
     <div class="price">$1299 USD</div>
+    <p>Full end-to-end system.</p>
+    <ul>
+      <li>Complete acquisition system</li>
+      <li>Advanced automation workflows</li>
+      <li>High-converting funnel system</li>
+      <li>Custom messaging strategy</li>
+      <li>Deliverability engineering</li>
+      <li>Scalable outreach infrastructure</li>
+    </ul>
   </div>
 
 </div>
@@ -295,19 +346,17 @@ button:hover {
 
   <div class="testimonial">
     <strong>James Carter – SaaS Founder</strong><br><br>
-    “Before working with Acquirely, our lead flow was inconsistent and unpredictable. We relied heavily on referrals and manual outreach.
-    After implementation, we now have a structured system that consistently delivers qualified leads every week, allowing us to scale with confidence.”
+    “We now have predictable lead flow every week. Acquirely completely replaced our inconsistent outreach system.”
   </div>
 
   <div class="testimonial">
     <strong>Sarah Williams – Marketing Director</strong><br><br>
-    “The automation system completely transformed our outreach process. Follow-ups, tracking, and messaging are now fully automated.
-    Our response rates improved significantly and our team can now focus purely on closing deals.”
+    “Automation changed everything. Our team now focuses only on closing deals instead of prospecting.”
   </div>
 
   <div class="testimonial">
     <strong>Michael Thompson – Agency Owner</strong><br><br>
-    “We finally have a real acquisition system instead of scattered marketing efforts. The funnel and outreach structure created a predictable client pipeline that runs daily in the background.”
+    “This is a real acquisition system. Everything runs in the background and generates results daily.”
   </div>
 
 </div>
