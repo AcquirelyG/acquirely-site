@@ -1,233 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Acquirely</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Brand</title>
 
-<style>
-html {scroll-behavior:smooth;}
-
-body {
-font-family:Poppins;
-margin:0;
-background:#000;
-color:#fff;
-}
-
-/* NAV */
-header {
-position:fixed;
-top:0;
-width:100%;
-display:flex;
-justify-content:space-between;
-padding:20px 80px;
-background:rgba(0,0,0,0.9);
-z-index:1000;
-}
-
-.logo a {
-font-size:22px;
-font-weight:700;
-text-decoration:none;
-background:linear-gradient(90deg,#fff,#ffd700,#fff);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-nav a {
-margin:0 20px;
-color:#ccc;
-text-decoration:none;
-}
-
-.nav-btn {
-padding:10px 20px;
-background:linear-gradient(145deg,#ffd700,#facc15);
-color:#000;
-border-radius:8px;
-text-decoration:none;
-}
-
-/* HERO */
-.hero {
-padding:180px 20px;
-text-align:center;
-background:url('https://images.unsplash.com/photo-1556157382-97eda2f9e2bf') center/cover;
-position:relative;
-}
-.hero::before {
-content:'';
-position:absolute;
-top:0;left:0;width:100%;height:100%;
-background:rgba(0,0,0,0.7);
-}
-.hero * {position:relative;}
-
-.hero h1 {font-size:3.5rem;}
-.btn {
-padding:15px 40px;
-background:#ffd700;
-color:#000;
-border-radius:8px;
-text-decoration:none;
-display:inline-block;
-margin-top:20px;
-}
-
-/* SECTIONS */
-.section {
-padding:120px 20px;
-max-width:1100px;
-margin:auto;
-position:relative;
-}
-.section::before {
-content:'';
-position:absolute;
-top:0;left:0;width:100%;height:100%;
-background:rgba(0,0,0,0.75);
-z-index:-1;
-}
-
-/* BACKGROUNDS */
-.services {background:url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d') center/cover;}
-.about {background:url('https://images.unsplash.com/photo-1553877522-43269d4ea984') center/cover;}
-.testimonials {background:url('https://images.unsplash.com/photo-1551288049-bebda4e38f71') center/cover;}
-.contact {background:url('https://images.unsplash.com/photo-1551434678-e076c223a692') center/cover; padding-top:160px;}
-
-/* GRID */
-.grid {
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-}
-
-.card {
-background:#111;
-padding:25px;
-border-radius:10px;
-}
-
-/* TESTIMONIAL */
-.testimonial {
-background:#111;
-padding:25px;
-border-radius:10px;
-}
-
-/* CONTACT */
-.contact a {
-display:block;
-margin:10px 0;
-color:#ffd700;
-}
-
-/* FOOTER */
-footer {
-text-align:center;
-padding:30px;
-background:#000;
-}
-</style>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
+<body class="bg-gray-50">
 
-<header>
-<div class="logo"><a href="#home">ACQUIRELY</a></div>
-<nav>
-<a href="#services">Services</a>
-<a href="#about">About</a>
-<a href="#testimonials">Results</a>
-<a href="#contact" class="nav-btn">Contact</a>
-</nav>
-</header>
+  <!-- NAVBAR -->
+  <nav class="bg-white shadow-md fixed w-full top-0 left-0 z-50">
+    <div class="max-w-6xl mx-auto px-4">
 
-<!-- HERO -->
-<section id="home" class="hero">
-<h1>We Build Systems That Bring You Clients</h1>
-<p>Predictable lead generation without relying on ads</p>
-<a href="#contact" class="btn">Get Started</a>
-</section>
+      <div class="flex justify-between items-center h-16">
 
-<!-- SERVICES -->
-<section id="services" class="section services">
-<h2>Our Services</h2>
+        <!-- Logo -->
+        <div class="text-xl font-bold">
+          MyBrand
+        </div>
 
-<div class="grid">
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex space-x-8">
+          <a href="#" class="hover:text-blue-500">Home</a>
+          <a href="#" class="hover:text-blue-500">Services</a>
+          <a href="#" class="hover:text-blue-500">About</a>
+          <a href="#" class="hover:text-blue-500">Contact</a>
+        </div>
 
-<div class="card">
-<h3>Lead Generation</h3>
-<p>We identify and build highly targeted prospect lists tailored to your ideal client. This ensures that every outreach effort is directed at businesses most likely to convert.</p>
-</div>
+        <!-- Mobile Button -->
+        <button id="menu-btn" class="md:hidden flex flex-col space-y-1">
+          <span class="w-6 h-0.5 bg-black"></span>
+          <span class="w-6 h-0.5 bg-black"></span>
+          <span class="w-6 h-0.5 bg-black"></span>
+        </button>
 
-<div class="card">
-<h3>Outreach Systems</h3>
-<p>We create automated email and LinkedIn outreach systems that generate responses daily. These systems are optimized for engagement, replies, and booked calls.</p>
-</div>
+      </div>
 
-<div class="card">
-<h3>Conversion Funnels</h3>
-<p>We design and build high-converting landing pages that turn visitors into leads. Every element is optimized to drive action and increase conversions.</p>
-</div>
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden flex flex-col space-y-4 pb-4">
+        <a href="#" class="hover:text-blue-500">Home</a>
+        <a href="#" class="hover:text-blue-500">Services</a>
+        <a href="#" class="hover:text-blue-500">About</a>
+        <a href="#" class="hover:text-blue-500">Contact</a>
+      </div>
 
-</div>
+    </div>
+  </nav>
 
-</section>
+  <!-- HERO SECTION -->
+  <section class="pt-24 text-center px-6">
+    <h1 class="text-4xl font-bold mb-4">Grow Your Business</h1>
+    <p class="text-gray-600 mb-6">
+      We help you get more clients without ads.
+    </p>
 
-<!-- ABOUT -->
-<section id="about" class="section about">
-<h2>About Acquirely</h2>
+    <a href="#" class="bg-blue-500 text-white px-6 py-3 rounded-full">
+      Get Started
+    </a>
+  </section>
 
-<p>Acquirely specializes in building scalable client acquisition systems for businesses that want predictable growth.</p>
+  <!-- SIMPLE SCRIPT -->
+  <script>
+    const btn = document.getElementById("menu-btn");
+    const menu = document.getElementById("mobile-menu");
 
-<p>Instead of relying on referrals or inconsistent marketing strategies, we create structured outreach systems that consistently generate new business opportunities.</p>
-
-<p>Our approach focuses on efficiency, automation, and results — ensuring that you can scale without increasing workload.</p>
-
-</section>
-
-<!-- TESTIMONIALS -->
-<section id="testimonials" class="section testimonials">
-<h2>Client Results</h2>
-
-<div class="grid">
-
-<div class="testimonial">
-<p>“Before working with Acquirely, we had no consistent way of generating leads. Within weeks, we started receiving qualified prospects regularly and built a pipeline we could actually rely on.”</p>
-<strong>Agency Owner</strong>
-</div>
-
-<div class="testimonial">
-<p>“The outreach system completely transformed our business. We went from chasing clients to having inbound conversations every single week.”</p>
-<strong>Consultant</strong>
-</div>
-
-<div class="testimonial">
-<p>“We closed multiple deals within the first month. The system is simple, effective, and scalable.”</p>
-<strong>Business Owner</strong>
-</div>
-
-</div>
-
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="section contact">
-<h2>Contact</h2>
-<p>We’ll discuss pricing after understanding your needs and goals.</p>
-
-<a href="https://wa.me/6288211592253">💬 WhatsApp Me</a>
-<a href="mailto:smithchristiaan15@gmail.com">📧 Email Me</a>
-<a href="https://linkedin.com/in/christiaan-smith-32905387">🔗 LinkedIn</a>
-</section>
-
-<footer>
-<p>© 2026 Acquirely</p>
-</footer>
+    btn.addEventListener("click", () => {
+      menu.classList.toggle("hidden");
+    });
+  </script>
 
 </body>
 </html>
