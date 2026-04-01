@@ -14,17 +14,25 @@ body {
 }
 
 /* =========================
-   HERO
+   TOP NAVIGATION (NEW)
 ========================= */
-.hero {
-  text-align: center;
-  padding: 140px 20px;
+.topbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 40px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
 }
 
-/* FLASHY GOLD LOGO */
+/* BIGGER LOGO */
 .logo {
-  font-size: 32px;
-  letter-spacing: 4px;
+  font-size: 42px;
+  letter-spacing: 5px;
   font-weight: bold;
 
   background: linear-gradient(
@@ -42,12 +50,39 @@ body {
 
   animation: goldShine 3s linear infinite;
 
-  text-shadow: 0 0 10px rgba(255, 215, 0, 0.25);
+  text-shadow: 0 0 12px rgba(255, 215, 0, 0.3);
 }
 
 @keyframes goldShine {
   0% { background-position: 0% center; }
   100% { background-position: 300% center; }
+}
+
+/* NAV LINKS TOP RIGHT */
+.nav {
+  display: flex;
+  gap: 25px;
+}
+
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+.nav a:hover {
+  opacity: 1;
+  color: #ffd700;
+}
+
+/* =========================
+   HERO
+========================= */
+.hero {
+  text-align: center;
+  padding: 180px 20px 140px;
 }
 
 .hero h1 {
@@ -103,7 +138,6 @@ body {
   font-size: 16px;
 }
 
-/* hover glow (only one box at a time visually feels active) */
 .service-box:hover {
   transform: scale(1.02);
   border-color: #ffd700;
@@ -127,13 +161,6 @@ body {
   padding: 30px;
   border-radius: 12px;
   border: 1px solid #222;
-  transition: 0.3s;
-}
-
-.package:hover {
-  transform: scale(1.02);
-  border-color: #ffd700;
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.15);
 }
 
 .price {
@@ -161,14 +188,6 @@ body {
   border: 1px solid #222;
   line-height: 1.9;
   font-size: 16px;
-  opacity: 0.9;
-  transition: 0.3s ease;
-}
-
-.testimonial:hover {
-  border-color: #ffd700;
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.12);
-  transform: scale(1.01);
 }
 
 /* =========================
@@ -208,10 +227,22 @@ button:hover {
 
 <body>
 
-<!-- HERO -->
-<div class="hero">
+<!-- TOP BAR -->
+<div class="topbar">
+
   <div class="logo">Acquirely</div>
 
+  <div class="nav">
+    <a href="#services">Services</a>
+    <a href="#packages">Packages</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+</div>
+
+<!-- HERO -->
+<div class="hero">
   <h1>Lead Generation Systems</h1>
 
   <p>
@@ -221,7 +252,7 @@ button:hover {
 </div>
 
 <!-- SERVICES -->
-<h2 class="section-title">Services</h2>
+<h2 class="section-title" id="services">Services</h2>
 <div class="services">
 
   <div class="service-box">
@@ -229,7 +260,7 @@ button:hover {
     <p>
       We design complete lead generation systems that attract, capture, and convert high-quality prospects for your business.
       This includes structured funnels, landing pages, conversion messaging, and strategic positioning so your business
-      consistently generates inbound interest without relying on random referrals or inconsistent traffic sources.
+      consistently generates inbound interest.
     </p>
   </div>
 
@@ -237,75 +268,64 @@ button:hover {
     <h3>Cold Email Automation</h3>
     <p>
       We build fully automated cold email systems that handle prospecting, outreach, follow-ups, and tracking.
-      Every system is optimised for deliverability, inbox placement, and response rates. This allows your outreach
-      to run in the background while consistently generating conversations with potential clients.
+      Optimised for deliverability and response rates so outreach runs in the background consistently generating leads.
     </p>
   </div>
 
   <div class="service-box">
     <h3>Marketing Funnels</h3>
     <p>
-      Our funnel systems are designed to guide potential clients through a structured journey from awareness to conversion.
-      We build landing pages, optimise calls-to-action, and implement automated follow-ups that increase conversion rates
-      and turn traffic into predictable revenue opportunities.
+      Structured funnels that guide prospects from awareness to conversion using landing pages, messaging strategy,
+      and automated follow-ups to increase conversion rates.
     </p>
   </div>
 
 </div>
 
 <!-- PACKAGES -->
-<h2 class="section-title">Packages</h2>
+<h2 class="section-title" id="packages">Packages</h2>
 <div class="packages">
 
   <div class="package">
     <h3>Starter Package</h3>
     <div class="price">$499 USD</div>
-    <p>
-      A foundational system designed for new businesses that need structure. Includes a basic lead capture system,
-      simple funnel setup, and initial outreach configuration to start generating consistent leads.
-    </p>
+    <p>Basic lead system setup for new businesses.</p>
   </div>
 
   <div class="package">
     <h3>Growth Package</h3>
     <div class="price">$899 USD</div>
-    <p>
-      A more advanced system with automation, improved funnel design, and structured cold outreach campaigns.
-      Built for businesses ready to scale and increase monthly lead volume consistently.
-    </p>
+    <p>Automation + scaling funnel system.</p>
   </div>
 
   <div class="package">
     <h3>Premium Package</h3>
     <div class="price">$1299 USD</div>
-    <p>
-      A full-scale acquisition system including advanced automation, optimisation, tracking, and scaling infrastructure.
-      Designed for serious businesses aiming for high-volume client acquisition and predictable growth.
-    </p>
+    <p>Full acquisition system with scaling infrastructure.</p>
   </div>
 
 </div>
 
 <!-- TESTIMONIALS -->
-<h2 class="section-title">Testimonials</h2>
+<h2 class="section-title" id="testimonials">Testimonials</h2>
 <div class="testimonials">
 
   <div class="testimonial">
-    “Before working with this system, our business had no predictable way of getting clients. We relied heavily on referrals and inconsistent outreach that never produced stable results. After implementation, we now have a fully structured lead generation pipeline that brings in qualified prospects every single week, allowing us to finally scale with confidence and consistency.”
+    “Before this system, we had no predictable client flow and relied heavily on inconsistent referrals. After implementation, we now have a structured pipeline that delivers consistent qualified leads every week.”
   </div>
 
   <div class="testimonial">
-    “The cold email automation system completely changed how we operate. What used to take hours of manual outreach is now fully automated, including follow-ups and tracking. Our response rates increased significantly, and we now spend our time speaking to qualified leads instead of chasing them manually.”
+    “Our outreach is now fully automated. Follow-ups, tracking, and messaging are handled automatically, which increased our response rates significantly and reduced manual workload.”
   </div>
 
   <div class="testimonial">
-    “The funnel system created a clear path for our customers that we never had before. Instead of scattered traffic and random inquiries, we now have a structured journey that consistently converts visitors into paying clients. It feels like we finally have a proper client acquisition engine working in the background.”
+    “The funnel system created a clear conversion path that turned traffic into paying clients consistently. Everything now works like a proper acquisition machine.”
   </div>
 
 </div>
 
 <!-- CONTACT -->
-<h2 class="section-title">Contact</h2>
+<h2 class="section-title" id="contact">Contact</h2>
 <div class="contact">
 
   <form>
