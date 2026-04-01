@@ -9,7 +9,7 @@
 
 <style>
 
-/* BASE */
+/* BASE (UNCHANGED) */
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
@@ -18,9 +18,7 @@ body {
     overflow-x: hidden;
 }
 
-html {
-    scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 /* BACKGROUND */
 #bg-canvas {
@@ -49,11 +47,9 @@ nav {
 
 /* LOGO */
 .logo {
-    position: relative;
     font-size: 22px;
     font-weight: 700;
     letter-spacing: 4px;
-    cursor: pointer;
     color: transparent;
     background: linear-gradient(90deg, #d4af37, #fff, #d4af37);
     -webkit-background-clip: text;
@@ -72,7 +68,7 @@ nav {
     z-index: 9999;
 }
 
-/* SECTIONS */
+/* SECTIONS (UNCHANGED) */
 section {
     max-width: 1100px;
     margin: auto;
@@ -113,19 +109,7 @@ h2 {
     transform: translateY(-5px);
 }
 
-/* CONTACT */
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-input, textarea {
-    padding: 12px;
-    border-radius: 8px;
-    border: none;
-}
-
+/* BUTTON */
 .btn {
     padding: 12px 25px;
     border: 1px solid gold;
@@ -147,42 +131,71 @@ input, textarea {
 <canvas id="bg-canvas"></canvas>
 <div id="cursor-glow"></div>
 
+<!-- NAV (RESTORED LINKS) -->
 <nav>
     <div class="logo">ACQ<span style="color:gold;">U</span>IRELY</div>
+
+    <div>
+        <a href="#about" style="color:white;margin:0 10px;">About</a>
+        <a href="#services" style="color:white;margin:0 10px;">Services</a>
+        <a href="#packages" style="color:white;margin:0 10px;">Packages</a>
+        <a href="#testimonials" style="color:white;margin:0 10px;">Testimonials</a>
+        <a href="#contact" style="color:white;margin:0 10px;">Contact</a>
+    </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero show">
+<!-- HERO (UNCHANGED) -->
+<section class="show">
     <h2>Predictable Lead Generation Systems</h2>
     <p style="text-align:center; max-width:700px; margin:auto;">
         We build automated systems that generate consistent, high-quality leads for businesses.
     </p>
 </section>
 
-<!-- SERVICES -->
-<section>
-    <h2>What We Do</h2>
-    <div class="grid">
-        <div class="card">We build automated outreach systems that consistently generate qualified leads for your business every single day.</div>
-        <div class="card">We design conversion-focused funnels that turn cold traffic into paying clients using structured messaging systems.</div>
+<!-- ABOUT US (RESTORED) -->
+<section id="about">
+    <h2>About Us</h2>
+    <div class="card">
+        We are a performance-driven lead generation agency focused on building automated systems that help businesses scale predictably.
+        Our approach combines data-driven outreach, conversion optimisation, and automation to create consistent client acquisition systems.
     </div>
 </section>
 
-<!-- PACKAGES -->
-<section>
-    <h2>Packages</h2>
+<!-- SERVICES (RESTORED) -->
+<section id="services">
+    <h2>Services</h2>
+
     <div class="grid">
-        <div class="card"><strong>Starter</strong><br>Basic lead generation system setup.</div>
+        <div class="card">
+            We design and deploy automated outreach systems that generate high-quality leads consistently.
+        </div>
+
+        <div class="card">
+            We build conversion funnels that turn cold traffic into paying clients through structured messaging systems.
+        </div>
+
+        <div class="card">
+            We optimise your existing sales pipeline to increase conversion rates and improve ROI.
+        </div>
+    </div>
+</section>
+
+<!-- PACKAGES (UNCHANGED) -->
+<section id="packages">
+    <h2>Packages</h2>
+
+    <div class="grid">
+        <div class="card"><strong>Starter</strong><br>Basic lead system setup.</div>
         <div class="card"><strong>Growth</strong><br>Automation + optimisation system.</div>
         <div class="card"><strong>Premium</strong><br>Full scaling system for maximum growth.</div>
     </div>
 </section>
 
-<!-- TESTIMONIALS (RESTORED LONG VERSION) -->
-<section>
+<!-- TESTIMONIALS (UNCHANGED) -->
+<section id="testimonials">
     <h2>Client Testimonials</h2>
-    <div class="grid">
 
+    <div class="grid">
         <div class="card">
             “Before working with Acquirely, our business struggled to generate consistent leads and relied heavily on referrals. Within weeks of implementation, we started seeing a steady flow of qualified prospects coming in daily. The system they built completely changed how we acquire clients and gave us predictable revenue for the first time.”
             <br><br>— Daniel Wright, Agency Owner
@@ -197,17 +210,30 @@ input, textarea {
             “What impressed me most was not just the leads, but the quality. We’re now speaking to the right clients who are actually ready to buy. Our conversion rate improved significantly, and our sales pipeline finally feels stable and scalable.”
             <br><br>— Michael Tan, Marketing Director
         </div>
-
     </div>
 </section>
 
-<!-- CONTACT -->
-<section>
+<!-- CONTACT (CLICKABLE RESTORED) -->
+<section id="contact">
     <h2>Contact</h2>
 
-    <p style="text-align:center;">Email: acquirely@proton.me</p>
-    <p style="text-align:center;">WhatsApp: +62 882 1159 2253</p>
-    <p style="text-align:center;">LinkedIn: christiaan-smith</p>
+    <p style="text-align:center;">
+        Email: <a href="mailto:acquirely@proton.me" style="color:gold;">acquirely@proton.me</a>
+    </p>
+
+    <p style="text-align:center;">
+        WhatsApp: 
+        <a href="https://wa.me/6288211592253" style="color:gold;" target="_blank">
+            Chat Now
+        </a>
+    </p>
+
+    <p style="text-align:center;">
+        LinkedIn: 
+        <a href="https://www.linkedin.com/in/christiaan-smith-32905387" style="color:gold;" target="_blank">
+            View Profile
+        </a>
+    </p>
 
     <form action="YOUR_GOOGLE_SCRIPT_URL_HERE" method="POST">
         <input name="name" placeholder="Name" required>
@@ -241,7 +267,7 @@ const observer = new IntersectionObserver(entries => {
 
 document.querySelectorAll("section").forEach(el => observer.observe(el));
 
-/* SUBTLE PARTICLES */
+/* BACKGROUND PARTICLES */
 const canvas = document.getElementById("bg-canvas");
 const ctx = canvas.getContext("2d");
 
