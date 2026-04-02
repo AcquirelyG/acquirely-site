@@ -114,10 +114,24 @@ nav a:hover {
   border: 1px solid rgba(0,234,255,0.3);
   border-radius: 12px;
   box-shadow: 0 0 20px rgba(0,234,255,0.25);
-  display: none;
   flex-direction: column;
   min-width: 180px;
   overflow: hidden;
+
+  /* IMPORTANT CHANGE */
+  display: flex;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: 0.25s ease;
+}
+
+.contact-menu.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .contact-menu a {
@@ -458,15 +472,21 @@ document.querySelectorAll(".card").forEach(card=>{
 /* CONTACT DROPDOWN */
 function toggleContact(){
   const menu = document.getElementById("contactMenu");
-  menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+  menu.classList.toggle("active");
 }
 
 document.addEventListener("click", function(e){
   const dropdown = document.querySelector(".contact-dropdown");
-  if(!dropdown.contains(e.target)){
-    document.getElementById("contactMenu").style.display = "none";
+  const menu = document.getElementById("contactMenu");
+
+  if (!dropdown.contains(e.target)) {
+    menu.classList.remove("active");
   }
 });
+  document.querySelectorAll(".contact-menu a").forEach(link => {
+  link.addEventListener("click", () => {
+    document.getElementById("contactMenu").classList.remove("active");
+  });
 
 /* PARTICLES */
 const canvas=document.getElementById("particles");
