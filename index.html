@@ -7,6 +7,9 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+<!-- ADD-ONLY FONT UPGRADE -->
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
 :root {
   --gold: #d4af37;
@@ -21,11 +24,15 @@
 }
 
 body {
-  font-family: Inter, sans-serif;
+  font-family: 'Nunito', Inter, sans-serif;
   background: radial-gradient(circle at top, #0f0f0f, #000);
   color: var(--text);
-  line-height: 1.6;
+  line-height: 1.7;
   overflow-x: hidden;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 /* ORBS */
@@ -140,6 +147,83 @@ color:white;
 }
 
 iframe{border-radius:12px;}
+
+/* =========================
+   SAAS ADD-ONS (NO REMOVAL)
+========================= */
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* section breathing room upgrade */
+section {
+  padding-top: 110px;
+  padding-bottom: 110px;
+}
+
+/* visual separation barrier */
+section::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  margin-top: 70px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+}
+
+/* card premium lift */
+.card {
+  transition: all 0.35s ease;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+}
+
+/* heading refinement */
+h1,h2,h3 {
+  font-family: 'Nunito', Inter, sans-serif;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+}
+
+/* paragraph spacing upgrade */
+p {
+  line-height: 1.8;
+}
+
+/* button glow */
+button, .btn {
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+/* floating CTA glow */
+.cta-fixed, .whatsapp-fixed {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+/* input focus premium */
+input:focus, textarea:focus {
+  transform: scale(1.01);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(212,175,55,0.3);
+}
+
+/* fade in animation */
+section {
+  animation: fadeIn 0.9s ease both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 </style>
 </head>
 
@@ -167,7 +251,6 @@ iframe{border-radius:12px;}
 
 <a href="#contact" class="cta-fixed">Book a Call</a>
 
-<!-- FIXED WHATSAPP LINK -->
 <a href="https://wa.me/27700000000" class="whatsapp-fixed" target="_blank">
 WhatsApp
 </a>
@@ -208,21 +291,21 @@ WhatsApp
 <h2>Pricing</h2>
 
 <div class="card">
-Starter Plan - $699/month<br>
+Starter Plan - $699/month<br><br>
 ✔ Basic outreach system<br>
 ✔ Lead sourcing<br>
 ✔ Email setup
 </div>
 
 <div class="card">
-Growth Plan - $1199/month<br>
+Growth Plan - $1199/month<br><br>
 ✔ Full outbound system<br>
 ✔ LinkedIn + email<br>
 ✔ CRM setup
 </div>
 
 <div class="card">
-Elite Plan - $1799/month<br>
+Elite Plan - $1799/month<br><br>
 ✔ Done-for-you system<br>
 ✔ Appointment setting<br>
 ✔ Optimization + scaling
@@ -284,7 +367,6 @@ LinkedIn: <a href="https://linkedin.com/company/acquirely" target="_blank">View 
 <div class="card">
 <h3>Send a Message</h3>
 
-<!-- FIXED FUNCTIONAL FORM (NO DESIGN CHANGES) -->
 <form action="https://formspree.io/f/your-form-id" method="POST">
 <input type="text" name="name" placeholder="Your Name">
 <input type="email" name="email" placeholder="Your Email">
@@ -314,7 +396,7 @@ animate("leads",0,520);
 animate("calls",0,92);
 animate("responses",0,38);
 animate("growth",0,410);
-};
+}
 </script>
 
 </body>
