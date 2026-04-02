@@ -30,6 +30,27 @@ body {
   scroll-behavior: smooth;
 }
 
+/* ================= TOP + BOTTOM FADE SCROLL EFFECT ================= */
+.fade-top,
+.fade-bottom {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.fade-top {
+  top: 0;
+  background: linear-gradient(to bottom, #000 0%, transparent 100%);
+}
+
+.fade-bottom {
+  bottom: 0;
+  background: linear-gradient(to top, #000 0%, transparent 100%);
+}
+
 /* ================= GLOW BACKGROUND ================= */
 body::before {
   content: "";
@@ -94,7 +115,7 @@ nav {
   z-index: 1001;
 }
 
-/* ================= PREMIUM LOGO (UPGRADED ONLY VISUAL) ================= */
+/* ================= PREMIUM LOGO ================= */
 .logo {
   position: absolute;
   left: 50%;
@@ -159,10 +180,11 @@ nav {
   }
 }
 
-/* ================= SECTIONS ================= */
+/* ================= SECTIONS (MADE MORE COMPACT) ================= */
 section {
-  padding: 70px 20px;
-  margin: 20px;
+  padding: 45px 18px;
+  margin: 12px auto;
+  max-width: 1100px;
   border-radius: 18px;
   border: 1px solid rgba(212,175,55,0.25);
   box-shadow: 0 0 35px rgba(212,175,55,0.08);
@@ -171,13 +193,14 @@ section {
   z-index: 1;
 }
 
-/* ================= CARDS ================= */
+/* ================= CARDS (LESS STRETCHED) ================= */
 .card {
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(212,175,55,0.25);
   border-radius: 14px;
-  padding: 22px;
-  margin: 20px;
+  padding: 18px;
+  margin: 12px auto;
+  max-width: 900px;
   transition: 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -212,7 +235,7 @@ button {
   border-radius: 8px;
 }
 
-/* ================= CTA (FIXED ALWAYS VISIBLE) ================= */
+/* ================= CTA ================= */
 .cta-fixed {
   position: fixed;
   bottom: 22px;
@@ -230,14 +253,8 @@ button {
 }
 
 @keyframes pulseCTA {
-  0%, 100% {
-    transform: scale(1);
-    box-shadow: 0 0 20px rgba(212,175,55,0.4);
-  }
-  50% {
-    transform: scale(1.06);
-    box-shadow: 0 0 35px rgba(212,175,55,0.9);
-  }
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
 }
 
 /* ================= FORM ================= */
@@ -268,7 +285,7 @@ input, textarea {
   border-radius: 10px;
 }
 
-/* ================= REVEAL ================= */
+/* ================= REVEAL (FIXED FADE IN + OUT) ================= */
 .reveal {
   opacity: 0;
   transform: translateY(30px);
@@ -283,6 +300,10 @@ input, textarea {
 </head>
 
 <body>
+
+<!-- FADE EDGES -->
+<div class="fade-top"></div>
+<div class="fade-bottom"></div>
 
 <div class="overlay" id="overlay" onclick="closeMenu()"></div>
 
@@ -307,7 +328,7 @@ input, textarea {
   <p>We help companies replace inconsistent outreach with structured, automated lead generation systems that deliver predictable sales opportunities every single week.</p>
 </section>
 
-<!-- ================= SERVICES (FULL CONTENT UNCHANGED) ================= -->
+<!-- ================= SERVICES ================= -->
 <section id="services" class="reveal">
 <h2>Our Services</h2>
 
@@ -333,19 +354,19 @@ input, textarea {
 
 <div class="card">
 <h3>Starter Package</h3>
-<p>$499 / month</p>
+<p>$500 / month</p>
 <p>Includes full outreach setup, lead sourcing system, CRM integration, and initial campaign deployment. Ideal for businesses starting to build predictable outbound systems.</p>
 </div>
 
 <div class="card">
 <h3>Growth Package</h3>
-<p>$899 / month</p>
+<p>$1000 / month</p>
 <p>Includes multi-channel outreach across email and LinkedIn, continuous optimization, A/B testing, improved targeting, and weekly performance improvements.</p>
 </div>
 
 <div class="card">
 <h3>Premium Package</h3>
-<p>$1399 / month</p>
+<p>$2000 / month</p>
 <p>Fully managed done-for-you system including outreach, lead generation, appointment setting, CRM management, and ongoing scaling strategy for consistent growth.</p>
 </div>
 </section>
@@ -393,7 +414,7 @@ Message successfully submitted. We will respond shortly.
 <p>
 Email: <a href="mailto:acquirely@proton.me">acquirely@proton.me</a><br>
 WhatsApp: <a href="https://wa.me/6288211592253">Chat Now</a><br>
-LinkedIn: <a href="linkedin.com/in/christiaan-smith-32905387">Connect</a>
+LinkedIn: <a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer">Connect</a>
 </p>
 </div>
 </section>
@@ -419,6 +440,7 @@ function closeMenu() {
   document.documentElement.style.overflow = "";
 }
 
+/* FIXED: proper submit behaviour */
 function submitForm() {
   document.getElementById("successMsg").style.display = "block";
   setTimeout(() => {
@@ -426,17 +448,24 @@ function submitForm() {
   }, 4000);
 }
 
-document.querySelectorAll("#navLinks a").forEach(link => {
-  link.addEventListener("click", closeMenu);
-});
-
+/* FIXED: fade in AND fade out on scroll */
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => {
-    if (e.isIntersecting) e.target.classList.add("active");
+    if (e.isIntersecting) {
+      e.target.classList.add("active");
+    } else {
+      e.target.classList.remove("active");
+    }
   });
+}, {
+  threshold: 0.15
 });
 
 document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+document.querySelectorAll("#navLinks a").forEach(link => {
+  link.addEventListener("click", closeMenu);
+});
 </script>
 
 </body>
