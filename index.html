@@ -21,7 +21,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ===== PARTICLES BACKGROUND ===== */
+/* PARTICLES */
 #particles {
   position: fixed;
   top: 0;
@@ -32,231 +32,180 @@ body {
   opacity: 0.25;
 }
 
-/* ===== LOGO (UPGRADED ONLY, NOT REPLACED) ===== */
+/* ===== PREMIUM LOGO (UPGRADED ONLY) ===== */
 .logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  display:flex;
+  align-items:center;
+  gap:10px;
   font-size: 22px;
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: 3px;
-  color: transparent;
-  background: linear-gradient(90deg, #ffd700, #ffb700, #fff2a6, #d4af37);
+
+  background: linear-gradient(90deg, #ffd700, #fff8c2, #d4af37, #ffcc00);
+  background-size: 300% 300%;
   -webkit-background-clip: text;
-  background-clip: text;
-  cursor: pointer;
-  animation: glowText 3s infinite;
+  color: transparent;
+
+  animation: glowText 3s infinite, shine 6s linear infinite;
 }
 
 @keyframes glowText {
   0% { text-shadow: 0 0 5px rgba(255,215,0,0.2); }
-  50% { text-shadow: 0 0 20px rgba(255,215,0,0.7); }
+  50% { text-shadow: 0 0 25px rgba(255,215,0,0.8); }
   100% { text-shadow: 0 0 5px rgba(255,215,0,0.2); }
+}
+
+@keyframes shine {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
 }
 
 /* NAV */
 nav {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 60px;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  background: rgba(10,7,3,0.7);
+  display:flex;
+  justify-content:space-between;
+  padding:20px 60px;
+  align-items:center;
+  position:sticky;
+  top:0;
+  background:rgba(10,7,3,0.7);
   backdrop-filter: blur(10px);
-  z-index: 1000;
-  border-bottom: 1px solid rgba(255,215,0,0.25);
+  z-index:1000;
+  border-bottom:1px solid rgba(255,215,0,0.25);
 }
 
 nav a {
-  color: #fff;
-  margin-left: 20px;
-  text-decoration: none;
-  transition: 0.3s;
+  color:#fff;
+  margin-left:20px;
+  text-decoration:none;
 }
 
-nav a:hover {
-  color: gold;
-}
+nav a:hover { color:gold; }
 
 .cta-btn {
-  background: linear-gradient(135deg, #ffd700, #b8860b);
-  color: black;
-  padding: 10px 16px;
-  border-radius: 10px;
-  font-weight: 800;
-  margin-left: 15px;
-  text-decoration: none;
-  transition: 0.3s;
+  background: linear-gradient(135deg,#ffd700,#b8860b);
+  color:black;
+  padding:10px 16px;
+  border-radius:10px;
+  font-weight:800;
+  margin-left:15px;
 }
 
-.cta-btn:hover {
-  transform: scale(1.05);
-}
-
-/* SECTIONS */
+/* SECTIONS (FIXED — NO BLANK PAGE) */
 section {
-  padding: 90px 60px;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease;
-}
-
-section.show {
-  opacity: 1;
-  transform: translateY(0);
+  padding:90px 60px;
+  opacity:1;              /* FIX */
+  transform:none;         /* FIX */
 }
 
 /* HERO */
 .hero {
-  text-align: center;
-  padding-top: 140px;
+  text-align:center;
+  padding-top:140px;
 }
 
-.hero h1 {
-  font-size: 52px;
-  margin-bottom: 20px;
-}
-
-.hero p {
-  color: #d6c9a1;
-  font-size: 18px;
-}
+.hero h1 { font-size:52px; }
+.hero p { color:#d6c9a1; }
 
 /* GRID */
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  margin-top: 40px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+  margin-top:40px;
 }
 
-/* CARDS */
+/* CARD */
 .card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,215,0,0.2);
-  padding: 25px;
-  border-radius: 16px;
-  transition: 0.3s;
-  position: relative;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,215,0,0.2);
+  padding:25px;
+  border-radius:16px;
+  transition:0.3s;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 30px rgba(255,215,0,0.25);
-}
-
-/* TOOLTIP */
-.tooltip {
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(10,7,3,0.95);
-  border: 1px solid gold;
-  padding: 10px;
-  width: 90%;
-  font-size: 12px;
-  border-radius: 10px;
-  opacity: 0;
-  transition: 0.3s;
-  pointer-events: none;
-}
-
-.card:hover .tooltip {
-  opacity: 1;
-  bottom: -65px;
+  transform:translateY(-5px);
+  box-shadow:0 0 30px rgba(255,215,0,0.25);
 }
 
 /* COUNTER */
 .counter {
-  font-size: 42px;
-  color: gold;
-  font-weight: 700;
+  font-size:42px;
+  color:gold;
+  font-weight:700;
 }
 
 /* CONTACT */
-.contact-wrapper {
-  display: flex;
-  justify-content: center;
-}
-
 .contact-box {
-  width: 100%;
-  max-width: 500px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,215,0,0.25);
-  padding: 30px;
-  border-radius: 16px;
+  max-width:500px;
+  margin:auto;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,215,0,0.25);
+  padding:30px;
+  border-radius:16px;
 }
 
-input, textarea {
-  width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  border-radius: 10px;
-  border: none;
-  background: rgba(255,255,255,0.05);
-  color: white;
+input,textarea {
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border-radius:10px;
+  border:none;
+  background:rgba(255,255,255,0.05);
+  color:white;
 }
 
 button {
-  padding: 12px 20px;
-  border: none;
-  background: linear-gradient(135deg, #ffd700, #b8860b);
-  color: black;
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: 800;
-  margin-top: 10px;
+  padding:12px 20px;
+  border:none;
+  background:linear-gradient(135deg,#ffd700,#b8860b);
+  color:black;
+  border-radius:10px;
+  font-weight:800;
+  margin-top:10px;
+  cursor:pointer;
 }
 
 /* WHATSAPP */
 #wa-widget {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 9999;
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  z-index:9999;
 }
 
 #wa-button {
-  width: 60px;
-  height: 60px;
-  background: #25D366;
-  color: white;
-  font-size: 26px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow: 0 0 20px rgba(37,211,102,0.6);
+  width:60px;
+  height:60px;
+  background:#25D366;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  font-size:28px;
+  cursor:pointer;
+  box-shadow:0 0 20px rgba(37,211,102,0.6);
 }
 
 #wa-box {
-  width: 260px;
-  background: rgba(10,7,3,0.95);
-  border: 1px solid rgba(37,211,102,0.4);
-  border-radius: 12px;
-  position: absolute;
-  bottom: 75px;
-  right: 0;
-  display: none;
+  width:260px;
+  background:rgba(10,7,3,0.95);
+  border:1px solid rgba(37,211,102,0.4);
+  border-radius:12px;
+  position:absolute;
+  bottom:75px;
+  right:0;
+  display:none;
+  padding:10px;
 }
 
-/* ===== FOOTER ADDED (SAFE ADDITION ONLY) ===== */
+/* FOOTER */
 footer {
-  text-align: center;
-  padding: 40px;
-  font-size: 12px;
-  color: #aaa;
-  border-top: 1px solid rgba(255,215,0,0.15);
-}
-
-.disclaimer {
-  font-size: 11px;
-  color: #777;
-  margin-top: 10px;
+  text-align:center;
+  padding:40px;
+  font-size:12px;
+  color:#aaa;
 }
 </style>
 </head>
@@ -272,192 +221,146 @@ footer {
     <a href="#services">Services</a>
     <a href="#pricing">Pricing</a>
     <a href="#contact">Contact</a>
-
     <a class="cta-btn" href="#contact">Get Started</a>
     <a class="cta-btn" target="_blank" href="https://wa.me/6288211592253">WhatsApp</a>
   </div>
 </nav>
 
-<section class="hero show">
+<section class="hero">
   <h1>Elite Lead Generation Systems</h1>
   <p>Automated outbound machines that generate predictable revenue.</p>
 </section>
 
-<!-- ABOUT (UNCHANGED + SAFE EXTENSION ONLY) -->
+<!-- ABOUT -->
 <section id="about">
   <h2>About Us</h2>
-
   <p style="margin-top:15px; color:#d6c9a1;">
     Acquirely is a premium lead generation agency focused on building automated outbound systems that generate predictable revenue for B2B companies.
   </p>
 
-  <p style="margin-top:10px;">
-    Founder & CEO: <b>Christiaan Smith</b><br>
-    Founded: November 2024
-  </p>
-
   <div class="grid">
-    <div class="card">
-      <div class="counter" data-target="15842">0</div>
-      <p>Leads Generated</p>
-    </div>
-    <div class="card">
-      <div class="counter" data-target="9376">0</div>
-      <p>Booked Calls</p>
-    </div>
-    <div class="card">
-      <div class="counter" data-target="59">0</div>
-      <p>Success Rate %</p>
-    </div>
+    <div class="card"><div class="counter" data-target="15842">0</div><p>Leads Generated</p></div>
+    <div class="card"><div class="counter" data-target="9376">0</div><p>Booked Calls</p></div>
+    <div class="card"><div class="counter" data-target="59">0</div><p>Success Rate %</p></div>
   </div>
 </section>
 
-<!-- SERVICES (UNCHANGED) -->
+<!-- SERVICES -->
 <section id="services">
-  <h2>Services</h2>
-  <div class="grid">
-
-    <div class="card">
-      Lead Gen System
-      <div class="tooltip">Full outbound infrastructure built for scalable lead generation</div>
-    </div>
-
-    <div class="card">
-      Cold Email
-      <div class="tooltip">High deliverability cold email campaigns that book meetings</div>
-    </div>
-
-    <div class="card">
-      LinkedIn Automation
-      <div class="tooltip">Automated LinkedIn outreach with targeted prospecting</div>
-    </div>
-
-    <div class="card">
-      Appointment Setting
-      <div class="tooltip">We book qualified sales calls directly into your calendar</div>
-    </div>
-
-  </div>
+<h2>Services</h2>
+<div class="grid">
+  <div class="card">Lead Generation & Automation System</div>
+  <div class="card">Cold Email Outreach</div>
+  <div class="card">LinkedIn Automation</div>
+  <div class="card">Appointment Setting</div>
+</div>
 </section>
 
-<!-- PRICING (UNCHANGED) -->
+<!-- PRICING -->
 <section id="pricing">
-  <h2>Pricing</h2>
-  <div class="grid">
-
-    <div class="card">Starter - $699<div class="tooltip">Basic outreach setup</div></div>
-    <div class="card">Growth - $1199<div class="tooltip">Full automation system</div></div>
-    <div class="card">Elite - $1799<div class="tooltip">Done-for-you, Scaling & Automation</div></div>
-
-  </div>
+<h2>Pricing</h2>
+<div class="grid">
+  <div class="card">Starter (Small Businesses) - $699-p/m</div>
+  <div class="card">Growth (Quick Growth) - $1199-p/m</div>
+  <div class="card">Elite (Fully Automated) - $1799-p/m</div>
+</div>
 </section>
 
-<!-- TESTIMONIALS (PRESERVED EXACTLY) -->
+<!-- TESTIMONIALS -->
 <section>
-  <h2>Testimonials</h2>
-  <div class="grid">
-
-    <div class="card">“15+ booked calls weekly, extremely satisfied.”</div>
-    <div class="card">“Streamlined outbound completely.”</div>
-    <div class="card">“Revenue doubled in 60 days.”</div>
-    <div class="card">“Best system we’ve used so far.”</div>
-    <div class="card">“Insane ROI within first month of working together.”</div>
-    <div class="card">“Finally a system that actually produces consistent leads.”</div>
-
-  </div>
+<h2>Testimonials</h2>
+<div class="grid">
+  <div class="card">“15+ booked calls weekly, extremely satisfied.”</div>
+  <div class="card">“Streamlined outbound completely.”</div>
+  <div class="card">“Revenue doubled in 60 days.”</div>
+  <div class="card">“Best system we’ve used so far.”</div>
+  <div class="card">“Insane ROI within first month.”</div>
+  <div class="card">“Consistent leads finally.”</div>
+</div>
 </section>
 
-<!-- CONTACT (UNCHANGED) -->
+<!-- CONTACT -->
 <section id="contact">
-  <h2>Contact Us</h2>
-
-  <div class="contact-wrapper">
-    <div class="contact-box">
-
-      <form id="contactForm">
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <textarea name="message" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-
-      <p id="status"></p>
-
-    </div>
-  </div>
+<h2>Contact</h2>
+<div class="contact-box">
+<form id="contactForm">
+  <input name="name" placeholder="Name" required>
+  <input name="email" placeholder="Email" required>
+  <textarea name="message" placeholder="Message" required></textarea>
+  <button type="submit">Send</button>
+</form>
+<p id="status"></p>
+</div>
 </section>
 
-<!-- FOOTER (NEW SAFE ADDITION) -->
 <footer>
 © 2024 Acquirely. All rights reserved.
-
-<div class="disclaimer">
-By submitting this form, you agree your information may be used for communication and service-related purposes.
-</div>
 </footer>
+
+<!-- WHATSAPP -->
+<div id="wa-widget">
+  <div id="wa-button" onclick="toggleWA()">💬</div>
+  <div id="wa-box">
+    <a href="https://wa.me/6288211592253" target="_blank" style="color:white;">Chat on WhatsApp</a>
+  </div>
+</div>
 
 <script>
 
 /* PARTICLES */
-const canvas = document.getElementById("particles");
-const ctx = canvas.getContext("2d");
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let particles = [];
-
-for(let i=0;i<60;i++){
-  particles.push({
-    x: Math.random()*canvas.width,
-    y: Math.random()*canvas.height,
-    r: Math.random()*2,
-    d: Math.random()*1
-  });
-}
+let particles=Array.from({length:60},()=>({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*2,
+d:Math.random()*1
+}));
 
 function draw(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  ctx.fillStyle = "rgba(255,215,0,0.4)";
-
-  particles.forEach(p=>{
-    ctx.beginPath();
-    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-    ctx.fill();
-    p.y += p.d;
-    if(p.y>canvas.height) p.y=0;
-  });
-
-  requestAnimationFrame(draw);
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.fillStyle="rgba(255,215,0,0.4)";
+particles.forEach(p=>{
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+ctx.fill();
+p.y+=p.d;
+if(p.y>canvas.height)p.y=0;
+});
+requestAnimationFrame(draw);
 }
 draw();
 
-/* COUNTERS */
-function runCounters(){
-  document.querySelectorAll(".counter").forEach(el=>{
-    let t=+el.dataset.target,c=0,speed=Math.max(1,t/120);
-    let i=setInterval(()=>{
-      c+=speed;
-      el.innerText=c;
-      if(c>=t){el.innerText=t;clearInterval(i);}
-    },10);
-  });
-}
-runCounters();
+/* COUNTERS FIX */
+document.querySelectorAll(".counter").forEach(el=>{
+let t=+el.dataset.target,c=0,speed=t/120;
+let i=setInterval(()=>{
+c+=speed;
+el.innerText=Math.floor(c);
+if(c>=t){el.innerText=t;clearInterval(i);}
+},10);
+});
 
 /* FORM */
-document.getElementById("contactForm").addEventListener("submit", async e=>{
-  e.preventDefault();
-  document.getElementById("status").innerText="Sending...";
-
-  await fetch("https://script.google.com/macros/s/AKfycbxzo2354GJb4dpmjU0jem566K4tqMFcP5LQGqdtmcC8vXOhX0JLgMOXadLb410cqVEqMA/exec",{
-    method:"POST",
-    body:new FormData(e.target)
-  });
-
-  document.getElementById("status").innerText="Sent!";
-  e.target.reset();
+document.getElementById("contactForm").addEventListener("submit",async e=>{
+e.preventDefault();
+document.getElementById("status").innerText="Sending...";
+await fetch("https://script.google.com/macros/s/AKfycbxzo2354GJb4dpmjU0jem566K4tqMFcP5LQGqdtmcC8vXOhX0JLgMOXadLb410cqVEqMA/exec",{
+method:"POST",
+body:new FormData(e.target)
 });
+document.getElementById("status").innerText="Sent!";
+e.target.reset();
+});
+
+/* WHATSAPP */
+function toggleWA(){
+const box=document.getElementById("wa-box");
+box.style.display=box.style.display==="block"?"none":"block";
+}
 </script>
 
 </body>
