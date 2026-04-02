@@ -16,40 +16,31 @@
 }
 
 body {
-  background: radial-gradient(circle at top, #0a0a0a, #000000);
+  background: radial-gradient(circle at top, #120d05, #000000);
   color: #f5f5f5;
   overflow-x: hidden;
 }
 
-/* ================= PREMIUM LOGO ================= */
+/* ================= PREMIUM GOLD LOGO ================= */
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   font-size: 22px;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 3px;
-  color: gold;
+  color: transparent;
+  background: linear-gradient(90deg, #ffd700, #ffb700, #fff2a6, #d4af37);
+  -webkit-background-clip: text;
+  background-clip: text;
   cursor: pointer;
+  animation: glowText 3s infinite;
 }
 
-.logo-badge {
-  width: 34px;
-  height: 34px;
-  border-radius: 8px;
-  background: linear-gradient(135deg, gold, #b8860b);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 900;
-  color: black;
-  animation: pulseGlow 2.5s infinite;
-}
-
-@keyframes pulseGlow {
-  0% { box-shadow: 0 0 5px gold; transform: rotate(0deg); }
-  50% { box-shadow: 0 0 20px gold; transform: rotate(5deg); }
-  100% { box-shadow: 0 0 5px gold; transform: rotate(0deg); }
+@keyframes glowText {
+  0% { text-shadow: 0 0 5px rgba(255,215,0,0.2); }
+  50% { text-shadow: 0 0 20px rgba(255,215,0,0.6); }
+  100% { text-shadow: 0 0 5px rgba(255,215,0,0.2); }
 }
 
 /* NAV */
@@ -60,10 +51,10 @@ nav {
   align-items: center;
   position: sticky;
   top: 0;
-  background: rgba(0,0,0,0.6);
+  background: rgba(10,7,3,0.7);
   backdrop-filter: blur(10px);
   z-index: 1000;
-  border-bottom: 1px solid rgba(255,215,0,0.2);
+  border-bottom: 1px solid rgba(255,215,0,0.25);
 }
 
 nav a {
@@ -78,13 +69,18 @@ nav a:hover {
 }
 
 .cta-btn {
-  background: gold;
+  background: linear-gradient(135deg, #ffd700, #b8860b);
   color: black;
   padding: 10px 16px;
   border-radius: 10px;
-  font-weight: 700;
+  font-weight: 800;
   margin-left: 15px;
   text-decoration: none;
+  transition: 0.3s;
+}
+
+.cta-btn:hover {
+  transform: scale(1.05);
 }
 
 /* SECTIONS */
@@ -112,7 +108,7 @@ section.show {
 }
 
 .hero p {
-  color: #ccc;
+  color: #d6c9a1;
   font-size: 18px;
 }
 
@@ -127,7 +123,7 @@ section.show {
 /* CARDS */
 .card {
   background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,215,0,0.15);
+  border: 1px solid rgba(255,215,0,0.2);
   padding: 25px;
   border-radius: 16px;
   transition: 0.3s;
@@ -136,16 +132,16 @@ section.show {
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 25px rgba(255,215,0,0.2);
+  box-shadow: 0 0 30px rgba(255,215,0,0.25);
 }
 
-/* PRICING TOOLTIP */
+/* TOOLTIP */
 .tooltip {
   position: absolute;
   bottom: -10px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(0,0,0,0.95);
+  background: rgba(10,7,3,0.95);
   border: 1px solid gold;
   padding: 10px;
   width: 90%;
@@ -158,17 +154,17 @@ section.show {
 
 .card:hover .tooltip {
   opacity: 1;
-  bottom: -60px;
+  bottom: -65px;
 }
 
-/* COUNTER */
+/* COUNTER (FASTER) */
 .counter {
-  font-size: 40px;
+  font-size: 42px;
   color: gold;
-  font-weight: 600;
+  font-weight: 700;
 }
 
-/* ===== CONTACT SINGLE BOX ===== */
+/* CONTACT */
 .contact-wrapper {
   display: flex;
   justify-content: center;
@@ -178,12 +174,11 @@ section.show {
   width: 100%;
   max-width: 500px;
   background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,215,0,0.2);
+  border: 1px solid rgba(255,215,0,0.25);
   padding: 30px;
   border-radius: 16px;
 }
 
-/* FORM */
 input, textarea {
   width: 100%;
   padding: 12px;
@@ -197,15 +192,15 @@ input, textarea {
 button {
   padding: 12px 20px;
   border: none;
-  background: gold;
+  background: linear-gradient(135deg, #ffd700, #b8860b);
   color: black;
   border-radius: 10px;
   cursor: pointer;
-  font-weight: 700;
+  font-weight: 800;
   margin-top: 10px;
 }
 
-/* TESTIMONIALS FIX */
+/* TESTIMONIALS */
 .testimonials {
   max-width: 1000px;
   margin: auto;
@@ -235,7 +230,7 @@ button {
 
 #wa-box {
   width: 260px;
-  background: rgba(0,0,0,0.9);
+  background: rgba(10,7,3,0.95);
   border: 1px solid rgba(37,211,102,0.4);
   border-radius: 12px;
   position: absolute;
@@ -275,8 +270,7 @@ button {
 
 <nav>
   <div class="logo">
-    <div class="logo-badge">A</div>
-    ACQUIRELY
+    Acquirely
   </div>
 
   <div>
@@ -299,17 +293,26 @@ button {
 <!-- ABOUT -->
 <section id="about">
   <h2>About Us</h2>
+  <p style="margin-top:15px; color:#d6c9a1;">
+    Acquirely is a premium lead generation agency focused on building automated outbound systems that generate predictable revenue for B2B companies.
+  </p>
+
+  <p style="margin-top:10px;">
+    Founder & CEO: <b>Christiaan Smith</b><br>
+    Founded: November 2024
+  </p>
+
   <div class="grid">
     <div class="card">
-      <div class="counter" data-target="15842">15892</div>
+      <div class="counter" data-target="15842">0</div>
       <p>Leads Generated</p>
     </div>
     <div class="card">
-      <div class="counter" data-target="9822">9376</div>
+      <div class="counter" data-target="9351">0</div>
       <p>Booked Calls</p>
     </div>
     <div class="card">
-      <div class="counter" data-target="62">59</div>
+      <div class="counter" data-target="59">0</div>
       <p>Success Rate %</p>
     </div>
   </div>
@@ -318,17 +321,34 @@ button {
 <!-- SERVICES -->
 <section id="services">
   <h2>Services</h2>
+
   <div class="grid">
-    <div class="card">Lead Gen System</div>
-    <div class="card">Cold Email</div>
-    <div class="card">LinkedIn Automation</div>
-    <div class="card">Appointment Setting</div>
+    <div class="card">
+      Lead Gen System
+      <div class="tooltip">Full outbound infrastructure built for scalable lead generation</div>
+    </div>
+
+    <div class="card">
+      Cold Email
+      <div class="tooltip">High deliverability cold email campaigns that book meetings</div>
+    </div>
+
+    <div class="card">
+      LinkedIn Automation
+      <div class="tooltip">Automated LinkedIn outreach with targeted prospecting</div>
+    </div>
+
+    <div class="card">
+      Appointment Setting
+      <div class="tooltip">We book qualified sales calls directly into your calendar</div>
+    </div>
   </div>
 </section>
 
 <!-- PRICING -->
 <section id="pricing">
   <h2>Pricing</h2>
+
   <div class="grid">
 
     <div class="card">
@@ -338,12 +358,12 @@ button {
 
     <div class="card">
       Growth - $1199
-      <div class="tooltip">Full funnel system + automation + appointment booking</div>
+      <div class="tooltip">Full funnel system + automation + booking system</div>
     </div>
 
     <div class="card">
       Elite - $1799
-      <div class="tooltip">Done-for-you system + scaling + optimization + calls</div>
+      <div class="tooltip">Done-for-you system + scaling + optimisation + management</div>
     </div>
 
   </div>
@@ -352,11 +372,14 @@ button {
 <!-- TESTIMONIALS -->
 <section>
   <h2>Testimonials</h2>
+
   <div class="grid testimonials">
-    <div class="card">“15+ booked calls weekly, extremely satisfied. - Kevin O'Riley”</div>
-    <div class="card">“Streamlined outbound completely. - Robin V.D Merwe”</div>
-    <div class="card">“Revenue doubled in 60 days. - Jennifer Bailey”</div>
-    <div class="card">“Best system we’ve used so far. - Kyle Atkinson”</div>
+    <div class="card">“15+ booked calls weekly, extremely satisfied.”</div>
+    <div class="card">“Streamlined outbound completely.”</div>
+    <div class="card">“Revenue doubled in 60 days.”</div>
+    <div class="card">“Best system we’ve used so far.”</div>
+    <div class="card">“Insane ROI within first month of working together.”</div>
+    <div class="card">“Finally a system that actually produces consistent leads.”</div>
   </div>
 </section>
 
@@ -402,7 +425,7 @@ button {
 
 <script>
 
-/* SCROLL ANIMATION */
+/* SCROLL */
 const sections = document.querySelectorAll("section");
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => e.isIntersecting && e.target.classList.add("show"));
@@ -410,7 +433,7 @@ const observer = new IntersectionObserver(entries => {
 
 sections.forEach(s => observer.observe(s));
 
-/* COUNTERS */
+/* FAST COUNTER */
 let started = false;
 function runCounters(){
   if(started) return;
@@ -419,11 +442,17 @@ function runCounters(){
   document.querySelectorAll(".counter").forEach(el => {
     let t = +el.dataset.target;
     let c = 0;
+
+    let speed = Math.max(1, Math.floor(t / 120));
+
     let i = setInterval(() => {
-      c++;
+      c += speed;
       el.innerText = c;
-      if(c >= t) clearInterval(i);
-    }, 20);
+      if(c >= t) {
+        el.innerText = t;
+        clearInterval(i);
+      }
+    }, 10);
   });
 }
 
@@ -437,7 +466,7 @@ function toggleWA(){
   box.style.display = box.style.display === "block" ? "none" : "block";
 }
 
-/* FORM FIX */
+/* FORM */
 document.getElementById("contactForm").addEventListener("submit", async e => {
   e.preventDefault();
 
@@ -445,7 +474,7 @@ document.getElementById("contactForm").addEventListener("submit", async e => {
   status.innerText = "Sending...";
 
   try {
-    let res = await fetch("https://script.google.com/macros/s/AKfycbzbqrQ_ntu7r3ekn0dYNFzRZOeCFh_l0ps6B8fb1eQY5XANgE60_JLr7dKZhRulGqrv/exec", {
+    await fetch("https://script.google.com/macros/s/AKfycbxzo2354GJb4dpmjU0jem566K4tqMFcP5LQGqdtmcC8vXOhX0JLgMOXadLb410cqVEqMA/exec", {
       method: "POST",
       body: new FormData(e.target)
     });
@@ -457,6 +486,7 @@ document.getElementById("contactForm").addEventListener("submit", async e => {
     status.innerText = "Error sending message. Check script deployment.";
   }
 });
+
 </script>
 
 </body>
