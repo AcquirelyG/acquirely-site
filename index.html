@@ -22,55 +22,51 @@ font-family:Inter, sans-serif;
 html{scroll-behavior:smooth;}
 
 body{
-background:#05060a;
+background:#000;
 color:#fff;
 overflow-x:hidden;
 cursor:none;
 }
 
 /* =========================
-FLOATING BACKGROUND LIGHTS (RESTORED + ENHANCED)
+ANIMATED BACKGROUND (BLACK ONLY)
 ========================= */
 .bg{
 position:fixed;
 inset:0;
 z-index:-3;
-background:
-radial-gradient(circle at 20% 20%, rgba(0,245,255,0.18), transparent 35%),
-radial-gradient(circle at 80% 30%, rgba(0,255,200,0.12), transparent 40%),
-radial-gradient(circle at 50% 80%, rgba(0,180,255,0.10), transparent 45%);
-filter:blur(90px);
-animation:floatBg 14s ease-in-out infinite alternate;
+overflow:hidden;
+background:#000;
 }
 
-@keyframes floatBg{
-0%{transform:scale(1) translateY(0px);}
-100%{transform:scale(1.08) translateY(18px);}
+.bg span{
+position:absolute;
+width:4px;
+height:4px;
+border-radius:50%;
+background:rgba(255,255,255,0.8);
+box-shadow:0 0 8px rgba(255,255,255,0.6);
+animation:float 18s linear infinite;
+opacity:0.4;
 }
 
+@keyframes float{
+0%{transform:translateY(100vh) scale(0);}
+100%{transform:translateY(-10vh) scale(1);}
+}
+
+/* dots layer */
 .dots{
 position:fixed;
 inset:0;
 z-index:-2;
-background-image:radial-gradient(rgba(0,245,255,0.25) 1px, transparent 1px);
+background-image:radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
 background-size:45px 45px;
-opacity:0.12;
-}
-
-/* extra floating light layer */
-body::before{
-content:"";
-position:fixed;
-inset:0;
-background:
-radial-gradient(circle at 10% 60%, rgba(0,245,255,0.08), transparent 40%),
-radial-gradient(circle at 90% 70%, rgba(0,245,255,0.06), transparent 45%);
-z-index:-4;
-filter:blur(60px);
+opacity:0.3;
 }
 
 /* =========================
-CURSOR + CLICK GLOW
+CURSOR (CLICK PULSE ADDED)
 ========================= */
 .cursor,.cursor-follower{
 position:fixed;
@@ -82,32 +78,26 @@ transform:translate(-50%,-50%);
 .cursor{
 width:8px;
 height:8px;
-background:#00f5ff;
+background:#fff;
 border-radius:50%;
-box-shadow:0 0 15px #00f5ff;
+box-shadow:0 0 10px #fff;
 }
 
 .cursor-follower{
-width:30px;
-height:30px;
-border:1px solid rgba(0,245,255,0.7);
+width:32px;
+height:32px;
+border:1px solid rgba(255,255,255,0.4);
 border-radius:50%;
+transition:0.1s;
 }
 
-/* click pulse */
-.cursor.click,.cursor-follower.click{
-transform:translate(-50%,-50%) scale(1.8);
-opacity:0.6;
-transition:0.15s;
-}
-
-@media (hover:none){
-body{cursor:auto;}
-.cursor,.cursor-follower{display:none;}
+.cursor.click{
+transform:translate(-50%,-50%) scale(2);
+opacity:0.5;
 }
 
 /* =========================
-NAV
+NAV (NEON BURGER)
 ========================= */
 nav{
 position:fixed;
@@ -118,57 +108,55 @@ justify-content:space-between;
 align-items:center;
 padding:18px 40px;
 backdrop-filter:blur(18px);
-background:rgba(5,8,12,0.7);
-border-bottom:1px solid rgba(0,245,255,0.08);
+background:rgba(0,0,0,0.7);
+border-bottom:1px solid rgba(255,255,255,0.08);
 z-index:1000;
 }
 
-/* =========================
-PREMIUM LOGO (ARTISTIC A)
-========================= */
+/* LOGO ANIMATION */
 .logo{
 display:flex;
-gap:12px;
 align-items:center;
+gap:12px;
 font-weight:900;
-letter-spacing:1px;
-color:#00f5ff;
+color:#fff;
+position:relative;
+overflow:hidden;
+}
+
+.logo::after{
+content:"";
+position:absolute;
+top:0;
+left:-100%;
+width:100%;
+height:100%;
+background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);
+animation:shine 5s infinite;
+}
+
+@keyframes shine{
+0%{left:-100%;}
+50%{left:100%;}
+100%{left:100%;}
 }
 
 .logo-icon{
-width:40px;
-height:40px;
-position:relative;
-display:flex;
-align-items:center;
-justify-content:center;
-background:linear-gradient(135deg,#00f5ff,#0066ff);
-border-radius:12px;
-box-shadow:0 0 25px rgba(0,245,255,0.25);
-animation:logoFloat 3s ease-in-out infinite;
+width:42px;
+height:42px;
+transform:rotate(45deg);
+background:#fff;
+box-shadow:0 0 12px rgba(255,255,255,0.4);
 }
 
-/* abstract A shape */
-.logo-icon::before{
-content:"";
-position:absolute;
-width:18px;
-height:18px;
-border-left:3px solid #fff;
-border-bottom:3px solid #fff;
-transform:rotate(-45deg);
-opacity:0.9;
+/* BURGER NEON */
+.burger div{
+width:25px;
+height:2px;
+background:#fff;
+box-shadow:0 0 8px #fff;
 }
 
-@keyframes logoFloat{
-0%{transform:translateY(0px) rotate(0deg);}
-50%{transform:translateY(-3px) rotate(2deg);}
-100%{transform:translateY(0px) rotate(0deg);}
-}
-
-/* =========================
-MENU (UNCHANGED)
-========================= */
 nav ul{
 display:flex;
 gap:25px;
@@ -178,32 +166,13 @@ list-style:none;
 nav ul li a{
 color:#fff;
 text-decoration:none;
-opacity:0.85;
+opacity:0.8;
 transition:0.3s;
 }
 
 nav ul li a:hover{
-color:#00f5ff;
-text-shadow:0 0 10px #00f5ff;
-}
-
-.burger{
-display:none;
-flex-direction:column;
-gap:5px;
-cursor:pointer;
-}
-
-.burger div{
-width:25px;
-height:2px;
-background:#fff;
-transition:0.3s;
-}
-
-.burger.active div{
-background:#00f5ff;
-box-shadow:0 0 10px #00f5ff;
+opacity:1;
+text-shadow:0 0 8px #fff;
 }
 
 /* =========================
@@ -211,107 +180,123 @@ HERO
 ========================= */
 .hero{
 text-align:center;
-padding:170px 20px 90px;
+padding:170px 20px 40px;
 }
 
 .hero h1{
-font-size:54px;
-background:linear-gradient(90deg,#00f5ff,#ffffff,#00f5ff);
--webkit-background-clip:text;
-color:transparent;
+font-size:56px;
+color:#fff;
 }
 
 .hero p{
 max-width:750px;
 margin:20px auto;
-opacity:0.85;
-line-height:1.6;
+opacity:0.8;
 }
 
 .btn{
 padding:12px 22px;
-border:1px solid #00f5ff;
+border:1px solid #fff;
 background:transparent;
 color:#fff;
 border-radius:10px;
 cursor:pointer;
+margin-top:35px;
 transition:0.3s;
-margin-top:28px;
 }
 
 .btn:hover{
-background:#00f5ff;
+background:#fff;
 color:#000;
-box-shadow:0 0 20px #00f5ff;
+box-shadow:0 0 15px #fff;
 }
 
 /* =========================
-GLOBAL CARDS (NEON INTERACTIVE BORDERS)
+PERFORMANCE COUNTER (NEW)
 ========================= */
-.card,.price-card,.testimonial{
-background:rgba(10,12,18,0.65);
-border:1px solid rgba(0,245,255,0.12);
-backdrop-filter:blur(10px);
-transition:0.3s;
+.stats{
+display:flex;
+justify-content:center;
+gap:40px;
+margin-top:30px;
+flex-wrap:wrap;
 }
 
-.card:hover,.price-card:hover,.testimonial:hover{
-transform:translateY(-8px);
-border-color:rgba(0,245,255,0.6);
-box-shadow:0 0 20px rgba(0,245,255,0.25);
-}
-
-/* SERVICES */
-.card{
-padding:25px;
-border-radius:15px;
-}
-
-.card h3{
-color:#00f5ff;
-margin-bottom:10px;
-}
-
-/* PRICING */
-.price-card{
-position:relative;
-padding:30px;
-border-radius:15px;
+.stat{
 text-align:center;
 }
 
+.stat h2{
+font-size:28px;
+}
+
+.stat p{
+opacity:0.7;
+}
+
+/* =========================
+GRID
+========================= */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+padding:20px;
+max-width:1100px;
+margin:auto;
+}
+
+/* =========================
+CARDS (NEON BORDER HOVER)
+========================= */
+.card,.price-card,.testimonial{
+background:rgba(10,10,10,0.7);
+border:1px solid rgba(255,255,255,0.08);
+border-radius:15px;
+padding:20px;
+cursor:pointer;
+transition:0.4s;
+overflow:hidden;
+position:relative;
+}
+
+.card:hover,.price-card:hover,.testimonial:hover{
+transform:scale(1.03);
+border:1px solid rgba(255,255,255,0.25);
+box-shadow:0 0 20px rgba(255,255,255,0.1);
+}
+
+/* EXPAND */
+.card p.extra,.price-card p.extra{
+opacity:0;
+max-height:0;
+transition:0.4s;
+}
+
+.card.active p.extra,.price-card.active p.extra{
+opacity:1;
+max-height:200px;
+margin-top:10px;
+}
+
+/* PRICING COLORS */
+.price-card:nth-child(1) .price{color:#ffffff;}
+.price-card:nth-child(2) .price{color:#ffffff;}
+.price-card:nth-child(3) .price{color:#ffffff;}
+
 .price{
-font-size:42px;
+font-size:38px;
 margin:10px 0;
-font-weight:800;
-color:#fff;
 }
-
-/* MOST POPULAR (WHITE ONLY) */
-.popular{
-position:absolute;
-top:-10px;
-right:10px;
-background:#fff;
-color:#000;
-padding:5px 10px;
-border-radius:20px;
-font-weight:800;
-border:1px solid #fff;
-}
-
-.price-card:nth-child(1) .price{color:#00f5ff;}
-.price-card:nth-child(2) .price{color:#fff;}
-.price-card:nth-child(3) .price{color:#ffd700;}
 
 /* TESTIMONIALS */
 .testimonial{
-padding:20px;
-border-radius:15px;
-border:1px solid rgba(0,245,255,0.25);
+border:1px solid rgba(255,255,255,0.12);
 }
 
-/* CONTACT FORM BOX */
+/* =========================
+CONTACT
+========================= */
 form{
 max-width:500px;
 margin:auto;
@@ -320,47 +305,54 @@ flex-direction:column;
 gap:12px;
 padding:25px;
 border-radius:15px;
-border:1px solid rgba(0,245,255,0.35);
-box-shadow:0 0 20px rgba(0,245,255,0.12);
+border:1px solid rgba(255,255,255,0.12);
 }
 
 input,textarea{
 padding:12px;
-border-radius:10px;
-border:1px solid #111;
-background:#05060a;
-color:#7fdfff;
+background:#000;
+border:1px solid #222;
+color:#fff;
+border-radius:8px;
 }
 
 input:focus,textarea:focus{
-outline:none;
-border-color:#00f5ff;
-box-shadow:0 0 10px rgba(0,245,255,0.25);
+border-color:#fff;
+box-shadow:0 0 10px rgba(255,255,255,0.15);
 }
 
-/* FOOTER */
+/* =========================
+FOOTER
+========================= */
 footer{
 display:flex;
 justify-content:center;
 gap:20px;
 padding:40px;
-border-top:1px solid #111;
+flex-wrap:wrap;
 }
 
 footer a{
-color:#00f5ff;
-text-decoration:none;
-font-weight:600;
-}
-
-footer a:hover{
 color:#fff;
-text-shadow:0 0 10px #00f5ff;
+opacity:0.7;
 }
 
-/* =========================
-MOBILE
-========================= */
+.disclaimer{
+text-align:center;
+font-size:12px;
+opacity:0.4;
+padding-bottom:10px;
+}
+
+.watermark{
+position:fixed;
+bottom:10px;
+right:15px;
+font-size:10px;
+opacity:0.2;
+}
+
+/* MOBILE */
 @media(max-width:768px){
 
 nav ul{
@@ -369,18 +361,12 @@ position:absolute;
 top:70px;
 right:20px;
 flex-direction:column;
-background:#05060a;
+background:#000;
 padding:20px;
 border:1px solid #111;
 }
 
 nav ul.active{display:flex;}
-
-.burger{display:flex;}
-
-.hero h1{font-size:32px;}
-
-section{padding:60px 20px;}
 }
 
 </style>
@@ -396,11 +382,11 @@ section{padding:60px 20px;}
 
 <nav>
 <div class="logo">
-<div class="logo-icon"></div>ACQUIRELY
+<div class="logo-icon"></div>
+ACQUIRELY
 </div>
 
 <ul id="menu">
-<li><a href="#home">Home</a></li>
 <li><a href="#services">Services</a></li>
 <li><a href="#pricing">Pricing</a></li>
 <li><a href="#testimonials">Testimonials</a></li>
@@ -412,63 +398,92 @@ section{padding:60px 20px;}
 </div>
 </nav>
 
-<section class="hero" id="home">
-<h1>Premium Lead Generation & Automation Systems</h1>
-<p>We build high-ticket outbound machines using AI, automation, and proven systems that generate predictable revenue for service businesses.</p>
+<section class="hero">
+<h1>Premium Lead Generation Systems</h1>
+<p>AI-driven outbound automation that scales revenue predictably.</p>
+<button class="btn">Get In Touch</button>
 
-<button class="btn" onclick="document.getElementById('contact').scrollIntoView()">
-Get In Touch
-</button>
-</section>
-
-<section id="services">
-<h2 style="text-align:center;margin-bottom:30px;">Services</h2>
-<div class="grid">
-<div class="card"><h3>Cold Email Systems</h3><p>Full outreach infrastructure, domains, warmup, copywriting, automation.</p></div>
-<div class="card"><h3>AI Appointment Setting</h3><p>Automated lead qualification and booking systems.</p></div>
-<div class="card"><h3>LinkedIn Outreach</h3><p>Automated LinkedIn growth and messaging systems.</p></div>
-<div class="card"><h3>Sales Funnels</h3><p>Conversion-focused funnels with CRM integration.</p></div>
+<!-- PERFORMANCE COUNTER -->
+<div class="stats">
+<div class="stat"><h2>120+</h2><p>Clients</p></div>
+<div class="stat"><h2>5,000+</h2><p>Leads Generated</p></div>
+<div class="stat"><h2>92%</h2><p>Success Rate</p></div>
 </div>
 </section>
 
-<section id="pricing">
-<h2 style="text-align:center;margin-bottom:30px;">Pricing</h2>
-<div class="grid">
+<section id="services" class="grid">
+
+<div class="card">
+<h3>Cold Email Systems</h3>
+<p>Full outreach setup</p>
+<p class="extra">Domains, warmup, automation, inbox rotation, deliverability optimisation.</p>
+</div>
+
+<div class="card">
+<h3>AI Appointment Setting</h3>
+<p>Booking automation</p>
+<p class="extra">AI qualification + 24/7 automated call booking systems.</p>
+</div>
+
+<div class="card">
+<h3>LinkedIn Outreach</h3>
+<p>Lead generation engine</p>
+<p class="extra">Automated messaging, profile growth, targeted lead scraping.</p>
+</div>
+
+<div class="card">
+<h3>Funnels</h3>
+<p>Conversion systems</p>
+<p class="extra">High converting SaaS funnels, CRM integration, tracking dashboards.</p>
+</div>
+
+</section>
+
+<section id="pricing" class="grid">
 
 <div class="price-card">
 <h3>Starter</h3>
 <div class="price">$399</div>
-<p>Basic lead gen system + setup.</p>
+<p class="extra">Email system setup, templates, tracking dashboard, basic automation.</p>
 </div>
 
 <div class="price-card">
-<div class="popular">MOST POPULAR</div>
 <h3>Pro</h3>
 <div class="price">$699</div>
-<p>Full automation + AI booking system.</p>
+<p class="extra">Full AI automation system, outreach engine, booking integration.</p>
 </div>
 
 <div class="price-card">
 <h3>Elite</h3>
 <div class="price">$1599</div>
-<p>Full scaling system + multi-channel automation.</p>
+<p class="extra">Full scaling system, multi-channel automation, optimisation layer.</p>
 </div>
 
-</div>
 </section>
 
-<section id="testimonials">
-<h2 style="text-align:center;margin-bottom:30px;">Testimonials</h2>
-<div class="grid">
-<div class="testimonial">“Went from 0 to 20+ calls weekly.”</div>
-<div class="testimonial">“Fully automated pipeline now.”</div>
-<div class="testimonial">“Best ROI system ever.”</div>
+<section id="testimonials" class="grid">
+
+<div class="testimonial">
+<h3>Client A</h3>
+<p>“30+ calls weekly from zero.”</p>
+<p class="extra">Scaled from £0–£10k/month in 60 days using Acquirely systems.</p>
 </div>
+
+<div class="testimonial">
+<h3>Client B</h3>
+<p>“Fully automated pipeline system.”</p>
+<p class="extra">Removed manual outreach completely.</p>
+</div>
+
+<div class="testimonial">
+<h3>Client C</h3>
+<p>“Highest ROI system we've used.”</p>
+<p class="extra">4.2x return on ad + outreach spend.</p>
+</div>
+
 </section>
 
 <section id="contact">
-<h2 style="text-align:center;margin-bottom:20px;">Contact</h2>
-
 <form id="form">
 <input name="name" placeholder="Name" required>
 <input name="email" placeholder="Email" required>
@@ -484,29 +499,34 @@ Get In Touch
 <a href="https://linkedin.com">LinkedIn</a>
 </footer>
 
+<div class="disclaimer">
+This website is for informational purposes only. Results are not guaranteed.
+</div>
+
+<div class="watermark">ACQUIRELY ©</div>
+
 <script>
+
+/* BURGER */
 const burger=document.getElementById('burger');
 const menu=document.getElementById('menu');
 
-burger.addEventListener('click',()=>{
-menu.classList.toggle('active');
-burger.classList.toggle('active');
+burger.onclick=()=>menu.classList.toggle('active');
+
+/* CLOSE MENU */
+document.querySelectorAll("#menu a").forEach(a=>{
+a.onclick=()=>menu.classList.remove("active");
 });
 
-document.querySelectorAll("#menu a").forEach(link=>{
-link.addEventListener("click",()=>{
-menu.classList.remove("active");
-burger.classList.remove("active");
+/* SINGLE CARD OPEN */
+document.querySelectorAll(".card, .price-card").forEach(card=>{
+card.addEventListener("click",()=>{
+document.querySelectorAll(".card, .price-card").forEach(c=>c.classList.remove("active"));
+card.classList.toggle("active");
 });
 });
 
-document.addEventListener("click",(e)=>{
-if(!menu.contains(e.target) && !burger.contains(e.target)){
-menu.classList.remove("active");
-burger.classList.remove("active");
-}
-});
-
+/* CURSOR + CLICK EFFECT */
 const c=document.querySelector('.cursor');
 const f=document.querySelector('.cursor-follower');
 
@@ -517,24 +537,30 @@ f.style.left=e.clientX+'px';
 f.style.top=e.clientY+'px';
 });
 
-/* CLICK GLOW (DESKTOP + MOBILE TAP) */
 document.addEventListener('click',()=>{
-c.classList.add('click');
-f.classList.add('click');
-setTimeout(()=>{
-c.classList.remove('click');
-f.classList.remove('click');
-},150);
+c.classList.add("click");
+setTimeout(()=>c.classList.remove("click"),150);
 });
 
+/* BACKGROUND LIGHTS */
+const bg=document.querySelector(".bg");
+for(let i=0;i<30;i++){
+let s=document.createElement("span");
+s.style.left=Math.random()*100+"%";
+s.style.animationDuration=(8+Math.random()*12)+"s";
+bg.appendChild(s);
+}
+
+/* FORM */
 document.getElementById('form').addEventListener('submit',e=>{
 e.preventDefault();
 fetch("YOUR_GOOGLE_SHEETS_SCRIPT_URL",{
 method:"POST",
 body:new FormData(e.target)
-})
 });
+});
+
 </script>
 
 </body>
-</html>
+  </html>
