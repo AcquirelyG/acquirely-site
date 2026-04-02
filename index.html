@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Acquirely - Lead Generation & Automation</title>
+<title>Acquirely - Premium Lead Generation Systems</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
@@ -29,23 +29,23 @@ cursor:none;
 }
 
 /* =========================
-FLOATING BACKGROUND
+BACKGROUND EFFECTS
 ========================= */
 .bg{
 position:fixed;
 inset:0;
 z-index:-3;
-overflow:hidden;
 background:#000;
+overflow:hidden;
 }
 
 .bg span{
 position:absolute;
-width:5px;
-height:5px;
+width:4px;
+height:4px;
 border-radius:50%;
 background:#00f5ff;
-box-shadow:0 0 15px #00f5ff,0 0 35px #00f5ff;
+box-shadow:0 0 12px #00f5ff,0 0 30px #00f5ff;
 animation:float 14s linear infinite;
 opacity:0.6;
 }
@@ -59,13 +59,13 @@ opacity:0.6;
 position:fixed;
 inset:0;
 z-index:-2;
-background-image:radial-gradient(rgba(0,245,255,0.12) 1px, transparent 1px);
+background-image:radial-gradient(rgba(0,245,255,0.10) 1px, transparent 1px);
 background-size:45px 45px;
-opacity:0.2;
+opacity:0.25;
 }
 
 /* =========================
-CURSOR + CLICK FLASH
+CURSOR
 ========================= */
 .cursor,.cursor-follower{
 position:fixed;
@@ -79,15 +79,14 @@ width:8px;
 height:8px;
 background:#00f5ff;
 border-radius:50%;
-box-shadow:0 0 15px #00f5ff;
+box-shadow:0 0 12px #00f5ff;
 }
 
 .cursor-follower{
 width:34px;
 height:34px;
-border:1px solid rgba(0,245,255,0.6);
+border:1px solid rgba(0,245,255,0.5);
 border-radius:50%;
-transition:0.05s;
 }
 
 /* click flash */
@@ -109,7 +108,7 @@ z-index:9998;
 }
 
 /* =========================
-NAV + BURGER NEON
+NAVBAR
 ========================= */
 nav{
 position:fixed;
@@ -118,44 +117,45 @@ width:100%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:18px 40px;
-backdrop-filter:blur(18px);
-background:rgba(0,0,0,0.7);
-border-bottom:1px solid rgba(0,245,255,0.2);
+padding:16px 28px;
+backdrop-filter:blur(20px);
+background:rgba(0,0,0,0.75);
+border-bottom:1px solid rgba(0,245,255,0.25);
 z-index:1000;
 }
 
+/* LOGO A */
 .logo{
 display:flex;
 align-items:center;
 gap:12px;
 font-weight:900;
 color:#00f5ff;
-animation:pulse 3s infinite;
 }
 
-@keyframes pulse{
-0%,100%{text-shadow:0 0 10px #00f5ff;}
-50%{text-shadow:0 0 25px #00f5ff;}
+.logo-a{
+width:40px;
+height:40px;
+display:flex;
+align-items:center;
+justify-content:center;
+border:2px solid #00f5ff;
+color:#00f5ff;
+font-weight:900;
+transform:skew(-10deg);
+box-shadow:0 0 12px #00f5ff;
+animation:logoPulse 2.5s infinite alternate;
 }
 
-.logo-icon{
-width:42px;
-height:42px;
-transform:rotate(45deg);
-background:linear-gradient(135deg,#00f5ff,#0066ff);
-box-shadow:0 0 25px #00f5ff;
-animation:spinGlow 6s infinite linear;
+@keyframes logoPulse{
+0%{box-shadow:0 0 8px #00f5ff;}
+100%{box-shadow:0 0 22px #00f5ff;}
 }
 
-@keyframes spinGlow{
-from{transform:rotate(0deg);}
-to{transform:rotate(360deg);}
-}
-
+/* MENU */
 nav ul{
 display:flex;
-gap:25px;
+gap:22px;
 list-style:none;
 }
 
@@ -168,7 +168,7 @@ transition:0.3s;
 
 nav ul li a:hover{
 color:#00f5ff;
-text-shadow:0 0 12px #00f5ff;
+text-shadow:0 0 10px #00f5ff;
 }
 
 /* BURGER */
@@ -177,14 +177,13 @@ display:none;
 flex-direction:column;
 gap:5px;
 cursor:pointer;
-filter:drop-shadow(0 0 6px #00f5ff);
 }
 
 .burger div{
 width:25px;
 height:2px;
 background:#00f5ff;
-box-shadow:0 0 8px #00f5ff;
+box-shadow:0 0 10px #00f5ff;
 }
 
 /* =========================
@@ -203,19 +202,18 @@ color:transparent;
 }
 
 .hero p{
-max-width:750px;
-margin:20px auto;
+max-width:800px;
+margin:18px auto;
 opacity:0.8;
 }
 
 .btn{
-padding:12px 22px;
+padding:12px 24px;
 border:1px solid #00f5ff;
 background:transparent;
 color:#fff;
 border-radius:10px;
 cursor:pointer;
-margin-top:35px;
 transition:0.3s;
 }
 
@@ -226,22 +224,23 @@ box-shadow:0 0 25px #00f5ff;
 }
 
 /* =========================
-PERFORMANCE COUNTER
+STATS
 ========================= */
 .stats{
 display:flex;
 justify-content:center;
-gap:40px;
+gap:25px;
+flex-wrap:wrap;
 padding:40px 20px;
-text-align:center;
 }
 
 .stat{
-border:1px solid rgba(0,245,255,0.2);
-padding:20px;
+border:1px solid rgba(0,245,255,0.25);
+padding:18px;
 border-radius:12px;
 min-width:150px;
-box-shadow:0 0 15px rgba(0,245,255,0.1);
+text-align:center;
+box-shadow:0 0 20px rgba(0,245,255,0.1);
 }
 
 .stat h2{
@@ -250,44 +249,44 @@ font-size:32px;
 }
 
 /* =========================
-GRID + NEON BOXES
+GRID SYSTEM
 ========================= */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
 padding:20px;
-max-width:1100px;
+max-width:1200px;
 margin:auto;
 }
 
-.card,.price-card,.testimonial{
-background:rgba(10,10,10,0.8);
-border:1px solid rgba(0,245,255,0.35);
+.card,.price-card,.testimonial,.about-box{
+background:rgba(10,10,10,0.85);
+border:1px solid rgba(0,245,255,0.3);
 border-radius:15px;
 padding:20px;
-cursor:pointer;
 transition:0.4s;
-position:relative;
-box-shadow:0 0 20px rgba(0,245,255,0.08);
+cursor:pointer;
+box-shadow:0 0 18px rgba(0,245,255,0.08);
 }
 
-.card:hover,.price-card:hover,.testimonial:hover{
-transform:scale(1.04);
+.card:hover,.price-card:hover,.testimonial:hover,.about-box:hover{
+transform:scale(1.03);
 box-shadow:0 0 30px rgba(0,245,255,0.3);
 }
 
-/* expand */
-.card p.extra,.price-card p.extra{
+/* EXPAND */
+.card p.extra,.price-card p.extra,.testimonial p.extra,.about-box p.extra{
 opacity:0;
 max-height:0;
 overflow:hidden;
 transition:0.4s;
 }
 
-.card.active p.extra,.price-card.active p.extra{
+.card.active p.extra,.price-card.active p.extra,
+.testimonial.active p.extra,.about-box.active p.extra{
 opacity:1;
-max-height:200px;
+max-height:300px;
 margin-top:10px;
 }
 
@@ -307,12 +306,12 @@ margin:10px 0;
 CONTACT
 ========================= */
 form{
-max-width:500px;
+max-width:520px;
 margin:auto;
 display:flex;
 flex-direction:column;
 gap:12px;
-padding:25px;
+padding:22px;
 border-radius:15px;
 border:1px solid rgba(0,245,255,0.4);
 box-shadow:0 0 25px rgba(0,245,255,0.1);
@@ -338,7 +337,7 @@ FOOTER
 footer{
 display:flex;
 justify-content:center;
-gap:20px;
+gap:18px;
 padding:40px;
 flex-wrap:wrap;
 }
@@ -363,25 +362,31 @@ font-size:10px;
 opacity:0.2;
 }
 
-/* MOBILE */
+/* =========================
+MOBILE
+========================= */
 @media(max-width:768px){
 
 nav ul{
 display:none;
 position:absolute;
-top:70px;
-right:20px;
+top:65px;
+right:15px;
 flex-direction:column;
 background:#000;
-padding:20px;
+padding:16px;
 border:1px solid #00f5ff;
 box-shadow:0 0 15px #00f5ff;
+width:200px;
 }
 
 nav ul.active{display:flex;}
+
 .burger{display:flex;}
 
 .hero h1{font-size:34px;}
+
+.stats{flex-direction:column;align-items:center;}
 }
 
 </style>
@@ -397,11 +402,12 @@ nav ul.active{display:flex;}
 
 <nav>
 <div class="logo">
-<div class="logo-icon"></div>
+<div class="logo-a">A</div>
 ACQUIRELY
 </div>
 
 <ul id="menu">
+<li><a href="#about">About</a></li>
 <li><a href="#services">Services</a></li>
 <li><a href="#pricing">Pricing</a></li>
 <li><a href="#testimonials">Testimonials</a></li>
@@ -415,86 +421,119 @@ ACQUIRELY
 
 <section class="hero">
 <h1>Premium Lead Generation Systems</h1>
-<p>AI-driven outbound automation that scales revenue predictably.</p>
+<p>We build AI-powered outbound systems that generate predictable revenue, automate outreach, and scale your business.</p>
 <button class="btn">Get In Touch</button>
 </section>
 
-<!-- PERFORMANCE COUNTER -->
+<!-- STATS -->
 <section class="stats">
-<div class="stat"><h2 id="clients">0</h2><p>Clients</p></div>
-<div class="stat"><h2 id="leads">0</h2><p>Leads Generated</p></div>
-<div class="stat"><h2 id="success">0</h2><p>Success Rate %</p></div>
+<div class="stat"><h2 data-target="128">0</h2><p>Clients</p></div>
+<div class="stat"><h2 data-target="5420">0</h2><p>Leads Generated</p></div>
+<div class="stat"><h2 data-target="97">0</h2><p>Success Rate %</p></div>
 </section>
 
+<!-- ABOUT -->
+<section id="about" class="grid">
+<div class="about-box">
+<h3>About Acquirely</h3>
+<p>We are a premium automation agency focused on scaling businesses through AI-driven outbound systems.</p>
+<p class="extra">
+Our systems replace manual outreach with fully automated pipelines using cold email, LinkedIn automation, AI qualification, CRM integration, and funnel optimization.
+We work with founders, agencies, and B2B companies who want predictable lead flow without hiring large sales teams.
+</p>
+</div>
+</section>
+
+<!-- SERVICES -->
 <section id="services" class="grid">
 
 <div class="card">
 <h3>Cold Email Systems</h3>
-<p>Full outreach setup</p>
-<p class="extra">Domains, warmup, copywriting, automation, inbox rotation.</p>
+<p>Full outbound infrastructure</p>
+<p class="extra">
+Domain setup, warmup systems, copywriting frameworks, inbox rotation, deliverability optimization, and reply handling systems.
+</p>
 </div>
 
 <div class="card">
 <h3>AI Appointment Setting</h3>
-<p>Booking automation</p>
-<p class="extra">AI qualifies leads and books calls 24/7.</p>
+<p>Fully automated booking engine</p>
+<p class="extra">
+AI qualifies leads, handles objections, and books meetings automatically into your calendar 24/7 without human input.
+</p>
 </div>
 
 <div class="card">
-<h3>LinkedIn Outreach</h3>
-<p>Lead generation engine</p>
-<p class="extra">Automated messaging + profile growth system.</p>
+<h3>LinkedIn Automation</h3>
+<p>Scalable outreach system</p>
+<p class="extra">
+Profile optimization, automated connection flows, message sequencing, and lead scraping systems for consistent pipeline growth.
+</p>
 </div>
 
 <div class="card">
-<h3>Funnels</h3>
-<p>Conversion systems</p>
-<p class="extra">High converting SaaS funnels + CRM integration.</p>
+<h3>Conversion Funnels</h3>
+<p>High converting systems</p>
+<p class="extra">
+Landing pages, offer structuring, CRM integration, and conversion optimization systems designed to maximize ROI.
+</p>
 </div>
 
 </section>
 
+<!-- PRICING -->
 <section id="pricing" class="grid">
 
 <div class="price-card">
 <h3>Starter</h3>
 <div class="price">$399</div>
-<p class="extra">Cold email + setup + templates + tracking dashboard.</p>
+<p class="extra">
+Full cold email setup, templates, basic automation, and tracking dashboard.
+</p>
 </div>
 
 <div class="price-card">
 <h3>Pro</h3>
 <div class="price">$699</div>
-<p class="extra">Full automation + AI booking + outreach engine.</p>
+<p class="extra">
+Advanced automation system, AI messaging flows, lead qualification, and CRM integration.
+</p>
 </div>
 
 <div class="price-card">
 <h3>Elite</h3>
 <div class="price">$1599</div>
-<p class="extra">Multi-channel scaling + optimization systems.</p>
+<p class="extra">
+Full multi-channel scaling system, optimization engine, and growth management.
+</p>
 </div>
 
 </section>
 
+<!-- TESTIMONIALS -->
 <section id="testimonials" class="grid">
 
 <div class="testimonial">
-<h3>Client A</h3>
-<p>“30+ calls weekly from zero.”</p>
+<h3>Founder A</h3>
+<p>“We went from 0 to 40+ calls per week in 30 days.”</p>
+<p class="extra">Complete outbound system replaced our entire sales process.</p>
 </div>
 
 <div class="testimonial">
-<h3>Client B</h3>
-<p>“Fully automated pipeline system.”</p>
+<h3>Agency Owner</h3>
+<p>“Fully automated pipeline changed everything.”</p>
+<p class="extra">We scaled without hiring any SDRs.</p>
 </div>
 
 <div class="testimonial">
-<h3>Client C</h3>
-<p>“Highest ROI system we've used.”</p>
+<h3>SaaS Founder</h3>
+<p>“Highest ROI system we’ve ever implemented.”</p>
+<p class="extra">Consistent demo bookings every single day.</p>
 </div>
 
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
 <form id="form">
 <input name="name" placeholder="Name" required>
@@ -512,69 +551,61 @@ ACQUIRELY
 </footer>
 
 <div class="disclaimer">
-This website is for informational purposes only. Results may vary.
+This website is for informational purposes only. Results may vary depending on execution and market conditions.
 </div>
 
 <div class="watermark">ACQUIRELY ©</div>
 
 <script>
 
-/* BURGER */
-const burger=document.getElementById('burger');
-const menu=document.getElementById('menu');
+/* BURGER MENU */
+const burger=document.getElementById("burger");
+const menu=document.getElementById("menu");
 
-burger.onclick=()=>menu.classList.toggle('active');
+burger.onclick=()=>menu.classList.toggle("active");
 
-/* CLOSE MENU */
 document.querySelectorAll("#menu a").forEach(a=>{
 a.onclick=()=>menu.classList.remove("active");
 });
 
-/* SINGLE EXPAND */
-document.querySelectorAll(".card,.price-card").forEach(card=>{
-card.addEventListener("click",()=>{
-document.querySelectorAll(".card,.price-card").forEach(c=>c.classList.remove("active"));
-card.classList.toggle("active");
+/* EXPAND SYSTEM */
+document.querySelectorAll(".card,.price-card,.testimonial,.about-box").forEach(el=>{
+el.addEventListener("click",()=>{
+document.querySelectorAll(".card,.price-card,.testimonial,.about-box")
+.forEach(e=>e.classList.remove("active"));
+el.classList.toggle("active");
 });
 });
 
 /* CURSOR */
-const c=document.querySelector('.cursor');
-const f=document.querySelector('.cursor-follower');
+const c=document.querySelector(".cursor");
+const f=document.querySelector(".cursor-follower");
 
-document.addEventListener('mousemove',e=>{
-c.style.left=e.clientX+'px';
-c.style.top=e.clientY+'px';
-f.style.left=e.clientX+'px';
-f.style.top=e.clientY+'px';
+document.addEventListener("mousemove",e=>{
+c.style.left=e.clientX+"px";
+c.style.top=e.clientY+"px";
+f.style.left=e.clientX+"px";
+f.style.top=e.clientY+"px";
 });
 
 /* CLICK FLASH */
-document.addEventListener('click',e=>{
+document.addEventListener("click",e=>{
 const flash=document.createElement("div");
 flash.className="click-flash";
-flash.style.left=e.clientX+'px';
-flash.style.top=e.clientY+'px';
+flash.style.left=e.clientX+"px";
+flash.style.top=e.clientY+"px";
 document.body.appendChild(flash);
 setTimeout(()=>flash.remove(),600);
 });
 
-/* BACKGROUND FLOATS */
-const bg=document.querySelector(".bg");
-for(let i=0;i<30;i++){
-let s=document.createElement("span");
-s.style.left=Math.random()*100+"%";
-s.style.animationDuration=(6+Math.random()*10)+"s";
-bg.appendChild(s);
-});
-
 /* COUNTERS */
-function animate(id,target){
-let el=document.getElementById(id);
+function animate(el){
+const target=parseInt(el.dataset.target);
 let count=0;
-let speed=Math.ceil(target/80);
+let step=Math.ceil(target/80);
+
 let interval=setInterval(()=>{
-count+=speed;
+count+=step;
 if(count>=target){
 count=target;
 clearInterval(interval);
@@ -583,14 +614,21 @@ el.textContent=count;
 },20);
 }
 
-animate("clients",128);
-animate("leads",5420);
-animate("success",97);
+document.querySelectorAll(".stat h2").forEach(animate);
+
+/* BACKGROUND FLOATS */
+const bg=document.querySelector(".bg");
+for(let i=0;i<35;i++){
+let s=document.createElement("span");
+s.style.left=Math.random()*100+"%";
+s.style.animationDuration=(6+Math.random()*10)+"s";
+bg.appendChild(s);
+}
 
 /* FORM */
-document.getElementById('form').addEventListener('submit',e=>{
+document.getElementById("form").addEventListener("submit",e=>{
 e.preventDefault();
-alert("Message sent successfully (demo)");
+alert("Message sent successfully!");
 });
 
 </script>
