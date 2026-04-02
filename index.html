@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Acquirely - Lead Generation Agency</title>
 
-<!-- FONT (smooth + rounded) -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
@@ -28,8 +27,6 @@ body {
   font-weight: 600;
   letter-spacing: 2px;
   color: gold;
-  position: relative;
-  display: inline-block;
   animation: glowMove 6s infinite linear;
 }
 
@@ -64,6 +61,17 @@ nav a:hover {
   color: gold;
 }
 
+/* ===== BUTTON ===== */
+.cta-btn {
+  background: gold;
+  color: black;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  margin-left: 15px;
+  text-decoration: none;
+}
+
 /* ===== SECTIONS ===== */
 section {
   padding: 100px 60px;
@@ -93,7 +101,11 @@ section.show {
   font-size: 18px;
 }
 
-/* ===== CARDS ===== */
+.hero-buttons {
+  margin-top: 25px;
+}
+
+/* ===== GRID ===== */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -101,6 +113,7 @@ section.show {
   margin-top: 40px;
 }
 
+/* ===== CARDS ===== */
 .card {
   background: rgba(255,255,255,0.03);
   border: 1px solid rgba(255,215,0,0.15);
@@ -114,25 +127,14 @@ section.show {
   box-shadow: 0 0 25px rgba(255,215,0,0.2);
 }
 
-/* ===== COUNTERS ===== */
+/* COUNTER */
 .counter {
   font-size: 40px;
   color: gold;
   font-weight: 600;
 }
 
-/* ===== BUTTON ===== */
-button {
-  padding: 12px 20px;
-  border: none;
-  background: gold;
-  color: black;
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: 500;
-}
-
-/* ===== FORM ===== */
+/* FORM */
 input, textarea {
   width: 100%;
   padding: 12px;
@@ -143,19 +145,89 @@ input, textarea {
   color: white;
 }
 
+button {
+  padding: 12px 20px;
+  border: none;
+  background: gold;
+  color: black;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* ===== WHATSAPP WIDGET ===== */
+#wa-widget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+#wa-button {
+  width: 60px;
+  height: 60px;
+  background: #25D366;
+  color: white;
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(37,211,102,0.6);
+}
+
+#wa-box {
+  width: 260px;
+  background: rgba(0,0,0,0.9);
+  border: 1px solid rgba(37,211,102,0.4);
+  border-radius: 12px;
+  position: absolute;
+  bottom: 75px;
+  right: 0;
+  display: none;
+}
+
+.wa-header {
+  background: #25D366;
+  color: black;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+}
+
+.wa-body {
+  padding: 12px;
+  font-size: 13px;
+  color: white;
+}
+
+.wa-body a {
+  display: inline-block;
+  margin-top: 10px;
+  background: #25D366;
+  color: black;
+  padding: 10px;
+  border-radius: 8px;
+  text-decoration: none;
+}
 </style>
 </head>
 
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="logo">ACQUIRELY</div>
+
   <div>
     <a href="#about">About</a>
     <a href="#services">Services</a>
     <a href="#pricing">Pricing</a>
     <a href="#contact">Contact</a>
+
+    <a class="cta-btn" href="#contact">Get Started</a>
+    <a class="cta-btn" target="_blank" href="https://wa.me/6288211592253">WhatsApp</a>
   </div>
 </nav>
 
@@ -163,6 +235,10 @@ input, textarea {
 <section class="hero show">
   <h1>Elite Lead Generation Systems</h1>
   <p>We build automated outbound machines that generate predictable revenue.</p>
+
+  <div class="hero-buttons">
+    <a class="cta-btn" href="#contact">Get Started</a>
+  </div>
 </section>
 
 <!-- ABOUT -->
@@ -170,6 +246,10 @@ input, textarea {
   <h2>About Us</h2>
   <p>
     Acquirely was founded in early 2025 with the goal of helping B2B companies scale predictable revenue using automated outbound systems.
+  </p>
+
+  <p style="margin-top:10px;">
+    Founder & CEO: <b>Christiaan Smith</b>
   </p>
 
   <div class="grid">
@@ -205,28 +285,10 @@ input, textarea {
 <!-- PRICING -->
 <section id="pricing">
   <h2>Pricing</h2>
-
   <div class="grid">
-    <div class="card">
-      Starter Plan - $699/month<br>
-      ✔ Basic outreach system<br>
-      ✔ Lead sourcing<br>
-      ✔ Email setup
-    </div>
-
-    <div class="card">
-      Growth Plan - $1199/month<br>
-      ✔ Full outbound system<br>
-      ✔ LinkedIn + email automation<br>
-      ✔ CRM setup
-    </div>
-
-    <div class="card">
-      Elite Plan - $1799/month<br>
-      ✔ Done-for-you system automation<br>
-      ✔ Appointment setting<br>
-      ✔ Optimization + scaling
-    </div>
+    <div class="card">Starter - $699/month</div>
+    <div class="card">Growth - $1199/month</div>
+    <div class="card">Elite - $1799/month</div>
   </div>
 </section>
 
@@ -237,7 +299,7 @@ input, textarea {
     <div class="card">“15+ booked calls weekly instantly. Ashley Greamme”</div>
     <div class="card">“Completely replaced our outbound team. Daniel O'Riley”</div>
     <div class="card">“Revenue doubled in 60 days. Robert V.D Merwe”</div>
-    <div class="card">“Best lead system we’ve used. - Monica Robertson”</div>
+    <div class="card">“Best lead system we’ve used. Monica Robertson”</div>
   </div>
 </section>
 
@@ -253,85 +315,74 @@ input, textarea {
   </form>
 </section>
 
-<!-- SCRIPT -->
+<!-- WHATSAPP WIDGET -->
+<div id="wa-widget">
+  <div id="wa-button" onclick="toggleWA()">💬</div>
+
+  <div id="wa-box">
+    <div class="wa-header">
+      <span>Acquirely Support</span>
+      <span onclick="toggleWA()" style="cursor:pointer;">✖</span>
+    </div>
+
+    <div class="wa-body">
+      <p>Hi 👋 Need help?</p>
+      <a target="_blank"
+         href="https://wa.me/6288211592253?text=Hi%20Acquirely%20I%20want%20to%20get%20started">
+        Start WhatsApp Chat
+      </a>
+    </div>
+  </div>
+</div>
+
 <script>
 
-// ===== SCROLL ANIMATION =====
+/* SCROLL */
 const sections = document.querySelectorAll("section");
-
 const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add("show");
-    }
-  });
+  entries.forEach(e => e.isIntersecting && e.target.classList.add("show"));
 },{ threshold: 0.2 });
 
-sections.forEach(sec => observer.observe(sec));
+sections.forEach(s => observer.observe(s));
 
-// ===== COUNTERS (FIXED - RUNS ONCE) =====
-let countersStarted = false;
+/* COUNTERS FIXED */
+let started = false;
+function runCounters(){
+  if(started) return;
+  started = true;
 
-function animateCounter(el){
-  const target = +el.getAttribute("data-target");
-  let count = 0;
-
-  const interval = setInterval(() => {
-    count++;
-    el.innerText = count;
-    if(count >= target){
-      clearInterval(interval);
-    }
-  }, 20);
-}
-
-function startCounters(){
-  if(countersStarted) return;
-
-  document.querySelectorAll(".counter").forEach(animateCounter);
-  countersStarted = true;
-}
-
-const counterObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      startCounters();
-    }
+  document.querySelectorAll(".counter").forEach(el => {
+    let t = +el.dataset.target;
+    let c = 0;
+    let i = setInterval(() => {
+      c++;
+      el.innerText = c;
+      if(c >= t) clearInterval(i);
+    }, 20);
   });
-},{ threshold: 0.5 });
+}
 
-document.addEventListener("DOMContentLoaded", () => {
-  const about = document.querySelector("#about");
-  if(about) counterObserver.observe(about);
-});
-},{ threshold: 0.5 });
+new IntersectionObserver(e => {
+  e.forEach(x => x.isIntersecting && runCounters());
+},{threshold:0.5}).observe(document.querySelector("#about"));
 
-document.querySelectorAll("#about")[0] &&
-counterObserver.observe(document.querySelector("#about"));
+/* WHATSAPP */
+function toggleWA(){
+  let box = document.getElementById("wa-box");
+  box.style.display = box.style.display === "block" ? "none" : "block";
+}
 
-// ===== GOOGLE SHEETS FORM FIX =====
-const form = document.getElementById("contactForm");
-
-form.addEventListener("submit", async (e) => {
+/* FORM */
+document.getElementById("contactForm").addEventListener("submit", async e => {
   e.preventDefault();
 
-  try {
-    const response = await fetch("https://script.google.com/macros/s/AKfycbzbqrQ_ntu7r3ekn0dYNFzRZOeCFh_l0ps6B8fb1eQY5XANgE60_JLr7dKZhRulGqrv/exec", {
-      method: "POST",
-      body: new FormData(form)
-    });
+  await fetch("https://script.google.com/macros/s/AKfycbzbqrQ_ntu7r3ekn0dYNFzRZOeCFh_l0ps6B8fb1eQY5XANgE60_JLr7dKZhRulGqrv/exec", {
+    method:"POST",
+    body:new FormData(e.target)
+  });
 
-    if (response.ok) {
-      alert("Message sent successfully!");
-      form.reset();
-    } else {
-      alert("Failed to send. Check Google Script deployment.");
-    }
-
-  } catch (error) {
-    console.error(error);
-    alert("Network error. Script not reachable.");
-  }
+  alert("Sent!");
+  e.target.reset();
 });
 
 </script>
