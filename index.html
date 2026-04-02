@@ -1,352 +1,339 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Acquirely - Elite Lead Generation & Automation Agency</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Acquirely - Lead Generation Agency</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<!-- ONLY ADD: PREMIUM FONT (NO REMOVAL) -->
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+<!-- FONT (smooth + rounded) -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --gold: #d4af37;
-  --bg: #050505;
-  --text: #ffffff;
-}
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
 body {
-  font-family: Inter, sans-serif;
-  background: radial-gradient(circle at top, #0f0f0f, #000);
-  color: var(--text);
-  line-height: 1.6;
+  background: radial-gradient(circle at top, #0a0a0a, #000000);
+  color: #f5f5f5;
   overflow-x: hidden;
 }
 
-/* ORBS */
-.orb{
-position:fixed;width:400px;height:400px;border-radius:50%;
-filter:blur(120px);opacity:0.25;z-index:0;
-animation:floatOrb 18s infinite ease-in-out;
-}
-.orb1{background:gold;top:-100px;left:-100px;}
-.orb2{background:#fff;bottom:-120px;right:-120px;}
-.orb3{background:#d4af37;top:40%;left:60%;}
-
-@keyframes floatOrb{
-0%{transform:translate(0,0);}
-50%{transform:translate(80px,60px);}
-100%{transform:translate(0,0);}
+/* ===== LOGO ===== */
+.logo {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: gold;
+  position: relative;
+  display: inline-block;
+  animation: glowMove 6s infinite linear;
 }
 
-/* NAV */
-nav{
-position:sticky;top:0;
-display:flex;justify-content:space-between;align-items:center;
-padding:18px 30px;
-background:rgba(0,0,0,0.6);
-backdrop-filter:blur(20px);
-z-index:1000;
-border-bottom:1px solid rgba(255,255,255,0.1);
+@keyframes glowMove {
+  0% { text-shadow: 0 0 5px gold; }
+  50% { text-shadow: 0 0 20px gold, 0 0 30px rgba(255,215,0,0.3); }
+  100% { text-shadow: 0 0 5px gold; }
 }
 
-.logo{
-position:absolute;left:50%;transform:translateX(-50%);
-font-size:34px;font-weight:900;
-background:linear-gradient(120deg,#b8860b,#ffd700,#fff3b0,#d4af37);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+/* ===== NAV ===== */
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 60px;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255,215,0,0.2);
 }
 
-.nav-links a{
-color:white;
-margin:0 10px;
-text-decoration:none;
-font-size:14px;
+nav a {
+  color: #fff;
+  margin-left: 20px;
+  text-decoration: none;
+  transition: 0.3s;
 }
 
-/* FIXED MOBILE MENU */
-.nav-links.active{
-display:block;
-position:absolute;
-top:70px;
-left:0;
-width:100%;
-background:black;
-padding:20px;
+nav a:hover {
+  color: gold;
 }
 
-.hamburger{font-size:26px;cursor:pointer;}
-
-/* SECTIONS */
-section{
-padding:60px 20px;
-max-width:1100px;
-margin:auto;
-z-index:1;
-position:relative;
+/* ===== SECTIONS ===== */
+section {
+  padding: 100px 60px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
 }
 
-.card{
-background:rgba(255,255,255,0.04);
-padding:20px;
-margin:15px 0;
-border-radius:14px;
-border:1px solid rgba(212,175,55,0.2);
+section.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* BUTTONS */
-button, .btn{
-background:gold;
-color:black;
-padding:12px 20px;
-border:none;
-border-radius:10px;
-cursor:pointer;
-font-weight:600;
+/* ===== HERO ===== */
+.hero {
+  text-align: center;
+  padding-top: 140px;
 }
 
-/* FLOAT BUTTONS */
-.cta-fixed{
-position:fixed;bottom:20px;right:20px;
-background:gold;color:black;
-padding:14px 18px;border-radius:50px;
-font-weight:700;
-text-decoration:none;
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
 }
 
-.whatsapp-fixed{
-position:fixed;bottom:90px;right:20px;
-background:#25D366;color:white;
-padding:14px 18px;border-radius:50px;
-font-weight:700;
-text-decoration:none;
+.hero p {
+  color: #ccc;
+  font-size: 18px;
 }
 
-/* FORM */
-input, textarea{
-width:100%;
-padding:12px;
-margin:8px 0;
-border-radius:8px;
-border:none;
-background:#111;
-color:white;
+/* ===== CARDS ===== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
 }
 
-iframe{border-radius:12px;}
+.card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,215,0,0.15);
+  padding: 25px;
+  border-radius: 16px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(255,215,0,0.2);
+}
+
+/* ===== COUNTERS ===== */
+.counter {
+  font-size: 40px;
+  color: gold;
+  font-weight: 600;
+}
+
+/* ===== BUTTON ===== */
+button {
+  padding: 12px 20px;
+  border: none;
+  background: gold;
+  color: black;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* ===== FORM ===== */
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255,255,255,0.05);
+  color: white;
+}
 
 </style>
 </head>
 
 <body>
 
-<div class="orb orb1"></div>
-<div class="orb orb2"></div>
-<div class="orb orb3"></div>
-
+<!-- NAV -->
 <nav>
-<div class="hamburger" onclick="toggleMenu()">☰</div>
-
-<div class="logo">ACQUIRELY</div>
-
-<div class="nav-links" id="navLinks">
-<a href="#services">Services</a>
-<a href="#pricing">Pricing</a>
-<a href="#testimonials">Testimonials</a>
-<a href="#about">About</a>
-<a href="#contact">Contact</a>
-<a href="#brochure">Brochure</a>
-<a href="linkedin.com/in/christiaan-smith-32905387" target="_blank">LinkedIn</a>
-</div>
+  <div class="logo">ACQUIRELY</div>
+  <div>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#contact">Contact</a>
+  </div>
 </nav>
 
-<a href="#contact" class="cta-fixed">Book a Call</a>
-
-<a href="https://wa.me/27700000000" class="whatsapp-fixed" target="_blank">
-WhatsApp
-</a>
-
-<!-- EVERYTHING BELOW IS 100% ORIGINAL (UNCHANGED) -->
-
-<section>
-<h1>Elite Lead Generation Systems That Scale Businesses Predictably</h1>
-<p>We build automated outbound machines that generate consistent booked calls, pipeline, and revenue.</p>
+<!-- HERO -->
+<section class="hero show">
+  <h1>Elite Lead Generation Systems</h1>
+  <p>We build automated outbound machines that generate predictable revenue.</p>
 </section>
 
-<section id="services">
-<h2>Services</h2>
-
-<div class="card">
-<h3>Full Lead Generation & Automation System Build</h3>
-<p>We build your entire outbound engine: CRM, scraping, enrichment, automation, messaging, and delivery systems.</p>
-</div>
-
-<div class="card">
-<h3>Cold Email + LinkedIn Outreach</h3>
-<p>High-performing messaging frameworks, sequencing, deliverability optimization, and A/B testing.</p>
-</div>
-
-<div class="card">
-<h3>Appointment Setting Service</h3>
-<p>We directly deliver qualified meetings into your calendar with real decision makers.</p>
-</div>
-
-<div class="card">
-<h3>Lead Sourcing & Data Enrichment</h3>
-<p>We build verified lead lists tailored to your ICP using advanced data systems.</p>
-</div>
-</section>
-
-<section id="pricing">
-<h2>Pricing</h2>
-
-<div class="card">
-Starter Plan - $699/month<br>
-✔ Basic outreach system<br>
-✔ Lead sourcing<br>
-✔ Email setup
-</div>
-
-<div class="card">
-Growth Plan - $1199/month<br>
-✔ Full outbound system<br>
-✔ LinkedIn + email automation<br>
-✔ CRM setup
-</div>
-
-<div class="card">
-Elite Plan - $1799/month<br>
-✔ Done-for-you system "Automation"<br>
-✔ Appointment setting<br>
-✔ Optimization + scaling
-</div>
-</section>
-
-<section id="testimonials">
-<h2>Testimonials</h2>
-
-<div class="card">“We went from zero pipeline to 15+ booked calls weekly.” — Michael Wallace</div>
-<div class="card">“Acquirely completely replaced our outbound team.” — Sarah M Rivers</div>
-<div class="card">“Best lead gen system we’ve ever used in 10 years.” — David O'Riley</div>
-<div class="card">“We now get consistent meetings every single day.” — Jennifer O'Brian</div>
-<div class="card">“Our revenue doubled in under 60 days.” — Olivia Potgieter</div>
-<div class="card">“Feels like having a full sales department for a fraction of the cost.” — Daniel Fredericks</div>
-<div class="card">“They built us a machine, not just a service.” — Robert V.D Merwe</div>
-<div class="card">“We scaled from startup to $50K/month pipeline.” — Greamme Carter</div>
-</section>
-
+<!-- ABOUT -->
 <section id="about">
-<h2>About Acquirely</h2>
+  <h2>About Us</h2>
+  <p>
+    Acquirely was founded in early 2025 with the goal of helping B2B companies scale predictable revenue using automated outbound systems.
+  </p>
 
-<div class="card">
-Acquirely is a performance-driven lead generation agency specializing in building automated outbound systems that consistently generate revenue opportunities for B2B companies.
-</div>
+  <div class="grid">
+    <div class="card">
+      <div class="counter" data-target="120">0</div>
+      <p>Leads Generated</p>
+    </div>
+
+    <div class="card">
+      <div class="counter" data-target="45">0</div>
+      <p>Booked Calls</p>
+    </div>
+
+    <div class="card">
+      <div class="counter" data-target="95">0</div>
+      <p>Success Rate %</p>
+    </div>
+  </div>
 </section>
 
+<!-- SERVICES -->
+<section id="services">
+  <h2>Services</h2>
+  <div class="grid">
+    <div class="card">Lead Generation System Build</div>
+    <div class="card">Cold Email Outreach</div>
+    <div class="card">LinkedIn Automation</div>
+    <div class="card">Appointment Setting</div>
+    <div class="card">Data Enrichment</div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <h2>Pricing</h2>
+
+  <div class="grid">
+    <div class="card">
+      Starter Plan - $699/month<br>
+      ✔ Basic outreach system<br>
+      ✔ Lead sourcing<br>
+      ✔ Email setup
+    </div>
+
+    <div class="card">
+      Growth Plan - $1199/month<br>
+      ✔ Full outbound system<br>
+      ✔ LinkedIn + email automation<br>
+      ✔ CRM setup
+    </div>
+
+    <div class="card">
+      Elite Plan - $1799/month<br>
+      ✔ Done-for-you system automation<br>
+      ✔ Appointment setting<br>
+      ✔ Optimization + scaling
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
 <section>
-<h2>Live Performance Dashboard</h2>
-
-<div class="card">
-Leads Generated: <span id="leads">0</span><br>
-Booked Calls: <span id="calls">0</span><br>
-Response Rate: <span id="responses">0</span>%<br>
-Revenue Growth: <span id="growth">0</span>%
-</div>
+  <h2>Testimonials</h2>
+  <div class="grid">
+    <div class="card">“15+ booked calls weekly instantly. Ashley Greamme”</div>
+    <div class="card">“Completely replaced our outbound team. Daniel O'Riley”</div>
+    <div class="card">“Revenue doubled in 60 days. Robert V.D Merwe”</div>
+    <div class="card">“Best lead system we’ve used. - Monica Robertson”</div>
+  </div>
 </section>
 
-<section id="brochure">
-<h2>Elite Brochure</h2>
-
-<iframe src="Acquirely_Premium_With_Watermark.pdf" width="100%" height="500"></iframe>
-</section>
-
+<!-- CONTACT -->
 <section id="contact">
-<h2>Contact Us</h2>
+  <h2>Contact Us</h2>
 
-<div class="card">
-Email: <a href="mailto:acquirely@proton.me">acquirely@proton.me</a><br>
-WhatsApp: <a href="https://wa.me/6288211592253" target="_blank">Chat Now</a><br>
-LinkedIn: <a href="linkedin.com/in/christiaan-smith-32905387" target="_blank">View Profile</a>
-</div>
-
-<div class="card">
-<h3>Send a Message</h3>
-
-<form id="contact-form">
-<input type="text" name="name" placeholder="Your Name">
-<input type="email" name="email" placeholder="Your Email">
-<textarea name="message" rows="5" placeholder="Your Message"></textarea>
-<button type="submit">Send Message</button>
-</form>
-</div>
+  <form id="contactForm">
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="email" name="email" placeholder="Your Email" required />
+    <textarea name="message" placeholder="Your Message" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
 </section>
 
+<!-- SCRIPT -->
 <script>
-function toggleMenu(){
-document.getElementById("navLinks").classList.toggle("active");
+
+// ===== SCROLL ANIMATION =====
+const sections = document.querySelectorAll("section");
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+    }
+  });
+},{ threshold: 0.2 });
+
+sections.forEach(sec => observer.observe(sec));
+
+// ===== COUNTERS (FIXED - RUNS ONCE) =====
+let countersStarted = false;
+
+function animateCounter(el){
+  const target = +el.getAttribute("data-target");
+  let count = 0;
+
+  const interval = setInterval(() => {
+    count++;
+    el.innerText = count;
+    if(count >= target){
+      clearInterval(interval);
+    }
+  }, 20);
 }
 
-function animate(id,start,end){
-let el=document.getElementById(id);
-let cur=start;
-let t=setInterval(()=>{
-cur++;
-el.textContent=cur;
-if(cur>=end) clearInterval(t);
-},20);
+function startCounters(){
+  if(countersStarted) return;
+
+  document.querySelectorAll(".counter").forEach(animateCounter);
+  countersStarted = true;
 }
 
-window.onload=function(){
-animate("leads",0,520);
-animate("calls",0,92);
-animate("responses",0,38);
-animate("growth",0,410);
-};
+const counterObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      startCounters();
+    }
+  });
+},{ threshold: 0.5 });
 
-/* ONLY FIXED PART — CONTACT FORM */
-document.getElementById("contact-form").addEventListener("submit", function(e) {
+document.addEventListener("DOMContentLoaded", () => {
+  const about = document.querySelector("#about");
+  if(about) counterObserver.observe(about);
+});
+},{ threshold: 0.5 });
+
+document.querySelectorAll("#about")[0] &&
+counterObserver.observe(document.querySelector("#about"));
+
+// ===== GOOGLE SHEETS FORM FIX =====
+const form = document.getElementById("contactForm");
+
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const formData = new URLSearchParams();
-  formData.append("name", this.name.value);
-  formData.append("email", this.email.value);
-  formData.append("message", this.message.value);
+  try {
+    const response = await fetch("https://script.google.com/macros/s/AKfycbzbqrQ_ntu7r3ekn0dYNFzRZOeCFh_l0ps6B8fb1eQY5XANgE60_JLr7dKZhRulGqrv/exec", {
+      method: "POST",
+      body: new FormData(form)
+    });
 
-  fetch("https://script.google.com/macros/s/AKfycbzbqrQ_ntu7r3ekn0dYNFzRZOeCFh_l0ps6B8fb1eQY5XANgE60_JLr7dKZhRulGqrv/exec", {
-    method: "POST",
-    body: formData
-  })
-  .then(() => {
-    alert("Message sent successfully!");
-    this.reset();
-  })
-  .catch(() => {
-    alert("Something went wrong.");
-  });
+    if (response.ok) {
+      alert("Message sent successfully!");
+      form.reset();
+    } else {
+      alert("Failed to send. Check Google Script deployment.");
+    }
+
+  } catch (error) {
+    console.error(error);
+    alert("Network error. Script not reachable.");
+  }
 });
 
-function randomNumber(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-function updateDashboard() {
-  document.getElementById("leads").innerText = randomNumber(50, 300);
-  document.getElementById("calls").innerText = randomNumber(5, 50);
-  document.getElementById("responses").innerText = randomNumber(10, 85);
-  document.getElementById("growth").innerText = randomNumber(1, 12);
-}
-
-updateDashboard();
-setInterval(updateDashboard, 2000);
 </script>
 
 </body>
