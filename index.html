@@ -218,9 +218,30 @@ section {
   font-size:13px;
 }
 
+/* default hidden state */
+.card .extra {
+  max-height:0;
+  overflow:hidden;
+  opacity:0;
+  transition:0.4s ease;
+  margin-top:10px;
+  color:#9adce3;
+  font-size:13px;
+}
+
+/* MOBILE + CLICK OPEN */
 .card.active .extra {
   max-height:300px;
   opacity:1;
+}
+
+/* DESKTOP HOVER ONLY */
+@media(min-width:769px){
+  .card:hover .extra {
+    max-height:300px;
+    opacity:1;
+  }
+}
 }
 
 @media(min-width:769px){
@@ -477,9 +498,47 @@ footer {
 </div>
 
 <script>
-document.querySelectorAll(".card").forEach(card=>{
-  card.addEventListener("click", ()=>{
-    card.classList.toggle("active");
+// ===============================
+// SERVICES CARD SYSTEM (FINAL)
+// ===============================
+
+const cards = document.querySelectorAll(".card");
+
+// MOBILE CLICK BEHAVIOR
+cards.forEach(card => {
+  card.addEventListener("click", () => {
+
+    if (window.innerWidth <= 768) {
+
+      // close all other cards
+      cards.forEach(c => {
+        if (c !== card) c.classList.remove("active");
+      });
+
+      // toggle clicked card
+      card.classList.toggle("active");
+    }
+  });
+});
+
+// DESKTOP CLEANUP (important UX fix)
+document.getElementById("services").addEventListener("mouseleave", () => {
+  if (window.innerWidth > 768) {
+    cards.forEach(c => c.classList.remove("active"));
+  }
+});
+
+    // MOBILE ONLY BEHAVIOUR (click)
+    if (window.innerWidth <= 768) {
+
+      // close all other cards first
+      cards.forEach(c => {
+        if (c !== card) c.classList.remove("active");
+      });
+
+      // toggle clicked card
+      card.classList.toggle("active");
+    }
   });
 });
 
