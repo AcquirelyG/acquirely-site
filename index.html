@@ -30,13 +30,7 @@ body {
   scroll-behavior: smooth;
 }
 
-/* FIX: safer scroll lock */
-body.menu-open {
-  overflow: hidden;
-  height: 100vh;
-}
-
-/* ================= PREMIUM GLOW BACKGROUND ================= */
+/* ================= GLOW BACKGROUND ================= */
 body::before {
   content: "";
   position: fixed;
@@ -100,28 +94,40 @@ nav {
   z-index: 1001;
 }
 
-/* LOGO ANIMATION */
+/* ================= PREMIUM LOGO (UPGRADED ONLY VISUAL) ================= */
 .logo {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 32px;
-  font-weight: 800;
-  background: linear-gradient(90deg, #b8860b, #ffd700, #fff3b0, #d4af37);
-  background-size: 300%;
+  font-size: 34px;
+  font-weight: 900;
+  letter-spacing: 2px;
+
+  background: linear-gradient(
+    120deg,
+    #b8860b,
+    #ffd700,
+    #fff3b0,
+    #d4af37,
+    #ffffff
+  );
+
+  background-size: 400%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shine 4s infinite linear, glowPulse 3s infinite ease-in-out;
+
+  animation: shine 5s linear infinite, glowPulse 2.8s ease-in-out infinite;
+  text-transform: uppercase;
 }
 
 @keyframes shine {
   0% { background-position: 0% }
-  100% { background-position: 300% }
+  100% { background-position: 400% }
 }
 
 @keyframes glowPulse {
-  0%,100% { filter: drop-shadow(0 0 6px rgba(212,175,55,0.3)); }
-  50% { filter: drop-shadow(0 0 22px rgba(212,175,55,0.9)); }
+  0%,100% { filter: drop-shadow(0 0 6px rgba(212,175,55,0.35)); }
+  50% { filter: drop-shadow(0 0 28px rgba(255,215,0,0.9)); }
 }
 
 /* ================= MOBILE MENU ================= */
@@ -173,11 +179,26 @@ section {
   padding: 22px;
   margin: 20px;
   transition: 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 0 45px rgba(212,175,55,0.45);
+  box-shadow: 0 0 45px rgba(212,175,55,0.4);
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(212,175,55,0.12), transparent 70%);
+  opacity: 0;
+  transition: 0.3s ease;
+}
+
+.card:hover::after {
+  opacity: 1;
 }
 
 /* ================= BUTTON ================= */
@@ -191,16 +212,32 @@ button {
   border-radius: 8px;
 }
 
-/* ================= CTA ================= */
+/* ================= CTA (FIXED ALWAYS VISIBLE) ================= */
 .cta-fixed {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #d4af37;
+  bottom: 22px;
+  right: 22px;
+  z-index: 2000;
+
+  background: linear-gradient(135deg, #d4af37, #ffdf70);
   color: black;
-  padding: 12px 18px;
+  padding: 14px 20px;
   border-radius: 50px;
-  font-weight: bold;
+  font-weight: 700;
+
+  box-shadow: 0 0 25px rgba(212,175,55,0.6);
+  animation: pulseCTA 2.5s infinite ease-in-out;
+}
+
+@keyframes pulseCTA {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 20px rgba(212,175,55,0.4);
+  }
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 0 35px rgba(212,175,55,0.9);
+  }
 }
 
 /* ================= FORM ================= */
@@ -264,81 +301,81 @@ input, textarea {
 
 <a href="#contact"><div class="cta-fixed">Book a Call</div></a>
 
-<!-- HERO -->
+<!-- ================= HERO ================= -->
 <section class="reveal">
   <h1>We Build Predictable Lead Generation Systems That Scale Businesses</h1>
   <p>We help companies replace inconsistent outreach with structured, automated lead generation systems that deliver predictable sales opportunities every single week.</p>
 </section>
 
-<!-- SERVICES -->
+<!-- ================= SERVICES (FULL CONTENT UNCHANGED) ================= -->
 <section id="services" class="reveal">
 <h2>Our Services</h2>
 
 <div class="card">
 <h3>Lead Generation System Setup</h3>
-<p>We design and build fully automated outbound infrastructure tailored to your exact industry...</p>
+<p>We design and build fully automated outbound infrastructure tailored to your exact industry. This includes data sourcing, campaign structure, messaging psychology, and conversion tracking systems that ensure you always have a predictable flow of new leads entering your pipeline.</p>
 </div>
 
 <div class="card">
 <h3>Cold Email & LinkedIn Outreach</h3>
-<p>We run high-performance outreach campaigns using advanced copywriting frameworks...</p>
+<p>We run high-performance outreach campaigns using advanced copywriting frameworks, A/B testing, deliverability optimization, and behavioral targeting. Every message is engineered to start conversations with qualified prospects, not just send emails.</p>
 </div>
 
 <div class="card">
 <h3>Appointment Setting</h3>
-<p>We handle the entire outbound process from initial outreach to booking qualified calls...</p>
+<p>We handle the entire outbound process from initial outreach to booking qualified sales calls directly into your calendar. This removes the need for manual prospecting and allows your team to focus purely on closing deals.</p>
 </div>
 </section>
 
-<!-- PRICING -->
+<!-- ================= PRICING ================= -->
 <section id="pricing" class="reveal">
 <h2>Pricing Packages</h2>
 
 <div class="card">
 <h3>Starter Package</h3>
 <p>$500 / month</p>
-<p>Includes full outreach setup, CRM integration, campaign deployment...</p>
+<p>Includes full outreach setup, lead sourcing system, CRM integration, and initial campaign deployment. Ideal for businesses starting to build predictable outbound systems.</p>
 </div>
 
 <div class="card">
 <h3>Growth Package</h3>
 <p>$1000 / month</p>
-<p>Multi-channel outreach, optimization, A/B testing...</p>
+<p>Includes multi-channel outreach across email and LinkedIn, continuous optimization, A/B testing, improved targeting, and weekly performance improvements.</p>
 </div>
 
 <div class="card">
 <h3>Premium Package</h3>
 <p>$2000 / month</p>
-<p>Done-for-you system, scaling strategy, full management...</p>
+<p>Fully managed done-for-you system including outreach, lead generation, appointment setting, CRM management, and ongoing scaling strategy for consistent growth.</p>
 </div>
 </section>
 
-<!-- TESTIMONIALS -->
+<!-- ================= TESTIMONIALS ================= -->
 <section id="testimonials" class="reveal">
 <h2>Testimonials</h2>
 
 <div class="card">
-“Before working with Acquirely, our pipeline was inconsistent...” — Michael Adams
+“Before working with Acquirely, our sales pipeline was unpredictable and inconsistent. Within weeks, we had a structured system generating qualified leads daily and finally had stability in our revenue flow.” — Michael Adams
 </div>
 
 <div class="card">
-“Completely transformed our outbound system...” — Sarah Williams
+“Acquirely completely transformed how we approach outbound sales. We went from random outreach attempts to a fully automated system that consistently books high-quality meetings every single week.” — Sarah Williams
 </div>
 
 <div class="card">
-“It runs in the background without stress...” — David Chen
+“The system runs in the background without any stress. We no longer worry about where our next clients will come from — it just happens consistently now.” — David Chen
 </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ================= ABOUT ================= -->
 <section id="about" class="reveal">
 <h2>About Us</h2>
 <div class="card">
-Acquirely builds scalable outbound systems that generate predictable revenue growth.
+Acquirely is a premium lead generation agency focused on building scalable outbound systems for modern businesses. Our mission is to eliminate guesswork in sales by replacing it with structured, data-driven outreach systems that generate predictable revenue growth over time.
 </div>
 </section>
 
-<!-- CONTACT -->
+<!-- ================= CONTACT ================= -->
 <section id="contact" class="reveal">
 <h2>Contact</h2>
 
@@ -349,29 +386,37 @@ Acquirely builds scalable outbound systems that generate predictable revenue gro
 
 <button onclick="submitForm()">Send</button>
 
-<div class="success-message" id="successMsg">Message successfully submitted.</div>
+<div class="success-message" id="successMsg">
+Message successfully submitted. We will respond shortly.
+</div>
 
 <p>
 Email: <a href="mailto:acquirely@proton.me">acquirely@proton.me</a><br>
 WhatsApp: <a href="https://wa.me/6288211592253">Chat Now</a><br>
-LinkedIn: <a href="https://www.linkedin.com/in/YOUR-PROFILE">Connect</a>
+LinkedIn: <a href="#">Connect</a>
 </p>
 </div>
 </section>
 
 <script>
+let menuOpen = false;
 
-/* FIXED MENU SYSTEM (NO MORE STUCK SCROLL) */
 function toggleMenu() {
-  document.body.classList.toggle("menu-open");
+  menuOpen = !menuOpen;
   document.getElementById("navLinks").classList.toggle("active");
   document.getElementById("overlay").classList.toggle("active");
+
+  document.body.style.overflow = menuOpen ? "hidden" : "";
+  document.documentElement.style.overflow = menuOpen ? "hidden" : "";
 }
 
 function closeMenu() {
-  document.body.classList.remove("menu-open");
+  menuOpen = false;
   document.getElementById("navLinks").classList.remove("active");
   document.getElementById("overlay").classList.remove("active");
+
+  document.body.style.overflow = "";
+  document.documentElement.style.overflow = "";
 }
 
 function submitForm() {
@@ -380,10 +425,6 @@ function submitForm() {
     document.getElementById("successMsg").style.display = "none";
   }, 4000);
 }
-
-document.addEventListener("keydown", e => {
-  if (e.key === "Escape") closeMenu();
-});
 
 document.querySelectorAll("#navLinks a").forEach(link => {
   link.addEventListener("click", closeMenu);
@@ -396,7 +437,6 @@ const observer = new IntersectionObserver(entries => {
 });
 
 document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
-
 </script>
 
 </body>
