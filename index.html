@@ -467,7 +467,7 @@ function count(id, target){
 let el=document.getElementById(id);
 let current=0;
 
-let steps=25; // fewer steps = faster animation
+let steps=60; // fewer steps = faster animation
 let increment=Math.ceil(target/steps);
 
 let t=setInterval(()=>{
@@ -479,7 +479,7 @@ clearInterval(t);
 }else{
 el.innerText=current;
 }
-},10); // fast interval
+},18); // fast interval
 }
 
 count("c1",128);
