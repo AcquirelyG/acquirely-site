@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Acquirely - Lead Generation Agency</title>
+<title>Acquirely - Lead Generation & Automation Agency</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 * {
@@ -21,22 +21,38 @@ body {
   overflow-x: hidden;
 }
 
-/* ===== LOGO ===== */
+/* ================= PREMIUM LOGO ================= */
 .logo {
-  font-size: 28px;
-  font-weight: 600;
-  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 3px;
   color: gold;
-  animation: glowMove 6s infinite linear;
+  cursor: pointer;
 }
 
-@keyframes glowMove {
-  0% { text-shadow: 0 0 5px gold; }
-  50% { text-shadow: 0 0 20px gold, 0 0 30px rgba(255,215,0,0.3); }
-  100% { text-shadow: 0 0 5px gold; }
+.logo-badge {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, gold, #b8860b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  color: black;
+  animation: pulseGlow 2.5s infinite;
 }
 
-/* ===== NAV ===== */
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 5px gold; transform: rotate(0deg); }
+  50% { box-shadow: 0 0 20px gold; transform: rotate(5deg); }
+  100% { box-shadow: 0 0 5px gold; transform: rotate(0deg); }
+}
+
+/* NAV */
 nav {
   display: flex;
   justify-content: space-between;
@@ -61,20 +77,19 @@ nav a:hover {
   color: gold;
 }
 
-/* ===== BUTTON ===== */
 .cta-btn {
   background: gold;
   color: black;
   padding: 10px 16px;
   border-radius: 10px;
-  font-weight: 600;
+  font-weight: 700;
   margin-left: 15px;
   text-decoration: none;
 }
 
-/* ===== SECTIONS ===== */
+/* SECTIONS */
 section {
-  padding: 100px 60px;
+  padding: 90px 60px;
   opacity: 0;
   transform: translateY(40px);
   transition: all 0.8s ease;
@@ -85,14 +100,14 @@ section.show {
   transform: translateY(0);
 }
 
-/* ===== HERO ===== */
+/* HERO */
 .hero {
   text-align: center;
   padding-top: 140px;
 }
 
 .hero h1 {
-  font-size: 48px;
+  font-size: 52px;
   margin-bottom: 20px;
 }
 
@@ -101,11 +116,7 @@ section.show {
   font-size: 18px;
 }
 
-.hero-buttons {
-  margin-top: 25px;
-}
-
-/* ===== GRID ===== */
+/* GRID */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -113,13 +124,14 @@ section.show {
   margin-top: 40px;
 }
 
-/* ===== CARDS ===== */
+/* CARDS */
 .card {
   background: rgba(255,255,255,0.03);
   border: 1px solid rgba(255,215,0,0.15);
   padding: 25px;
   border-radius: 16px;
   transition: 0.3s;
+  position: relative;
 }
 
 .card:hover {
@@ -127,11 +139,48 @@ section.show {
   box-shadow: 0 0 25px rgba(255,215,0,0.2);
 }
 
+/* PRICING TOOLTIP */
+.tooltip {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.95);
+  border: 1px solid gold;
+  padding: 10px;
+  width: 90%;
+  font-size: 12px;
+  border-radius: 10px;
+  opacity: 0;
+  transition: 0.3s;
+  pointer-events: none;
+}
+
+.card:hover .tooltip {
+  opacity: 1;
+  bottom: -60px;
+}
+
 /* COUNTER */
 .counter {
   font-size: 40px;
   color: gold;
   font-weight: 600;
+}
+
+/* ===== CONTACT SINGLE BOX ===== */
+.contact-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.contact-box {
+  width: 100%;
+  max-width: 500px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,215,0,0.2);
+  padding: 30px;
+  border-radius: 16px;
 }
 
 /* FORM */
@@ -152,10 +201,17 @@ button {
   color: black;
   border-radius: 10px;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 700;
+  margin-top: 10px;
 }
 
-/* ===== WHATSAPP WIDGET ===== */
+/* TESTIMONIALS FIX */
+.testimonials {
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* WHATSAPP */
 #wa-widget {
   position: fixed;
   bottom: 20px;
@@ -218,7 +274,10 @@ button {
 <body>
 
 <nav>
-  <div class="logo">ACQUIRELY</div>
+  <div class="logo">
+    <div class="logo-badge">A</div>
+    ACQUIRELY
+  </div>
 
   <div>
     <a href="#about">About</a>
@@ -235,36 +294,22 @@ button {
 <section class="hero show">
   <h1>Elite Lead Generation Systems</h1>
   <p>We build automated outbound machines that generate predictable revenue.</p>
-
-  <div class="hero-buttons">
-    <a class="cta-btn" href="#contact">Get Started</a>
-  </div>
 </section>
 
 <!-- ABOUT -->
 <section id="about">
   <h2>About Us</h2>
-  <p>
-    Acquirely was founded in early 2025 with the goal of helping B2B companies scale predictable revenue using automated outbound systems.
-  </p>
-
-  <p style="margin-top:10px;">
-    Founder & CEO: <b>Christiaan Smith</b>
-  </p>
-
   <div class="grid">
     <div class="card">
-      <div class="counter" data-target="120">0</div>
+      <div class="counter" data-target="15842">15892</div>
       <p>Leads Generated</p>
     </div>
-
     <div class="card">
-      <div class="counter" data-target="45">0</div>
+      <div class="counter" data-target="9822">9376</div>
       <p>Booked Calls</p>
     </div>
-
     <div class="card">
-      <div class="counter" data-target="95">0</div>
+      <div class="counter" data-target="62">59</div>
       <p>Success Rate %</p>
     </div>
   </div>
@@ -274,11 +319,10 @@ button {
 <section id="services">
   <h2>Services</h2>
   <div class="grid">
-    <div class="card">Lead Generation System Build</div>
-    <div class="card">Cold Email Outreach</div>
+    <div class="card">Lead Gen System</div>
+    <div class="card">Cold Email</div>
     <div class="card">LinkedIn Automation</div>
     <div class="card">Appointment Setting</div>
-    <div class="card">Data Enrichment</div>
   </div>
 </section>
 
@@ -286,20 +330,33 @@ button {
 <section id="pricing">
   <h2>Pricing</h2>
   <div class="grid">
-    <div class="card">Starter - $699/month</div>
-    <div class="card">Growth - $1199/month</div>
-    <div class="card">Elite - $1799/month</div>
+
+    <div class="card">
+      Starter - $699
+      <div class="tooltip">Basic outreach setup + lead list + email system</div>
+    </div>
+
+    <div class="card">
+      Growth - $1199
+      <div class="tooltip">Full funnel system + automation + appointment booking</div>
+    </div>
+
+    <div class="card">
+      Elite - $1799
+      <div class="tooltip">Done-for-you system + scaling + optimization + calls</div>
+    </div>
+
   </div>
 </section>
 
 <!-- TESTIMONIALS -->
 <section>
   <h2>Testimonials</h2>
-  <div class="grid">
-    <div class="card">“15+ booked calls weekly instantly. Ashley Greamme”</div>
-    <div class="card">“Completely replaced our outbound team. Daniel O'Riley”</div>
-    <div class="card">“Revenue doubled in 60 days. Robert V.D Merwe”</div>
-    <div class="card">“Best lead system we’ve used. Monica Robertson”</div>
+  <div class="grid testimonials">
+    <div class="card">“15+ booked calls weekly, extremely satisfied. - Kevin O'Riley”</div>
+    <div class="card">“Streamlined outbound completely. - Robin V.D Merwe”</div>
+    <div class="card">“Revenue doubled in 60 days. - Jennifer Bailey”</div>
+    <div class="card">“Best system we’ve used so far. - Kyle Atkinson”</div>
   </div>
 </section>
 
@@ -307,15 +364,23 @@ button {
 <section id="contact">
   <h2>Contact Us</h2>
 
-  <form id="contactForm">
-    <input type="text" name="name" placeholder="Your Name" required />
-    <input type="email" name="email" placeholder="Your Email" required />
-    <textarea name="message" placeholder="Your Message" required></textarea>
-    <button type="submit">Send Message</button>
-  </form>
+  <div class="contact-wrapper">
+    <div class="contact-box">
+
+      <form id="contactForm">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+
+      <p id="status" style="margin-top:10px;"></p>
+
+    </div>
+  </div>
 </section>
 
-<!-- WHATSAPP WIDGET -->
+<!-- WHATSAPP -->
 <div id="wa-widget">
   <div id="wa-button" onclick="toggleWA()">💬</div>
 
@@ -329,7 +394,7 @@ button {
       <p>Hi 👋 Need help?</p>
       <a target="_blank"
          href="https://wa.me/6288211592253?text=Hi%20Acquirely%20I%20want%20to%20get%20started">
-        Start WhatsApp Chat
+        Start Chat
       </a>
     </div>
   </div>
@@ -337,7 +402,7 @@ button {
 
 <script>
 
-/* SCROLL */
+/* SCROLL ANIMATION */
 const sections = document.querySelectorAll("section");
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => e.isIntersecting && e.target.classList.add("show"));
@@ -345,7 +410,7 @@ const observer = new IntersectionObserver(entries => {
 
 sections.forEach(s => observer.observe(s));
 
-/* COUNTERS FIXED */
+/* COUNTERS */
 let started = false;
 function runCounters(){
   if(started) return;
@@ -372,19 +437,26 @@ function toggleWA(){
   box.style.display = box.style.display === "block" ? "none" : "block";
 }
 
-/* FORM */
+/* FORM FIX */
 document.getElementById("contactForm").addEventListener("submit", async e => {
   e.preventDefault();
 
-  await fetch("https://script.google.com/macros/s/AKfycbzbqrQ_ntu7r3ekn0dYNFzRZOeCFh_l0ps6B8fb1eQY5XANgE60_JLr7dKZhRulGqrv/exec", {
-    method:"POST",
-    body:new FormData(e.target)
-  });
+  const status = document.getElementById("status");
+  status.innerText = "Sending...";
 
-  alert("Sent!");
-  e.target.reset();
+  try {
+    let res = await fetch("https://script.google.com/macros/s/AKfycbzbqrQ_ntu7r3ekn0dYNFzRZOeCFh_l0ps6B8fb1eQY5XANgE60_JLr7dKZhRulGqrv/exec", {
+      method: "POST",
+      body: new FormData(e.target)
+    });
+
+    status.innerText = "Message sent successfully!";
+    e.target.reset();
+
+  } catch (err) {
+    status.innerText = "Error sending message. Check script deployment.";
+  }
 });
-
 </script>
 
 </body>
