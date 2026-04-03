@@ -219,7 +219,17 @@ backdrop-filter:blur(12px);
 border:1px solid #00e5ff22;
 
 /* 🔥 FIXED HEIGHT SYSTEM */
-height:70px; /* only show title */
+.service{
+padding:20px;
+border-radius:14px;
+cursor:pointer;
+transition:max-height 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+background:rgba(255,255,255,0.03);
+backdrop-filter:blur(12px);
+border:1px solid #00e5ff22;
+
+/* NEW SYSTEM */
+max-height:70px;
 overflow:hidden;
 
 box-shadow:0 0 15px transparent;
@@ -231,9 +241,18 @@ margin:0;
 }
 
 /* hide paragraph properly */
-.service p{
-margin-top:15px;
-opacity:0.85;
+.service p {
+margin-top: 15px;
+opacity: 0;
+max-height: 0;
+overflow: hidden;
+transition: all 0.3s ease;
+}
+
+/* open state */
+.service.active p {
+opacity: 0.85;
+max-height: 200px;
 }
 
 /* hover effect */
@@ -244,7 +263,7 @@ transform:translateY(-3px);
 
 /* 🔥 OPEN STATE */
 .service.active{
-height:220px; /* expands fully */
+height:auto; /* expands fully */
 box-shadow:0 0 30px #00e5ff66;
 }
 
@@ -571,7 +590,14 @@ e.preventDefault();
 fetch("YOUR_GOOGLE_SHEET_SCRIPT_URL",{
 method:"POST",
 body:new FormData(this)
-}).then(()=>alert("Message sent!"));
+})
+.then(res=>{
+if(!res.ok) throw new Error("Network error");
+alert("Message sent!");
+this.reset();
+})
+.catch(()=>{
+alert("Something went wrong. Try again.");
 });
 
 </script>
