@@ -6,14 +6,12 @@
 <title>Acquirely - SaaS Lead Generation System</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-
-<!-- REAL ICONS (FIX FOR LOGOS) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 
 /* =========================
-GLOBAL RESET
+GLOBAL
 ========================= */
 *{
 margin:0;
@@ -25,30 +23,43 @@ font-family:Inter,sans-serif;
 html{scroll-behavior:smooth;}
 
 body{
-background:#05070a;
+background: radial-gradient(circle at top, #050816 0%, #05070a 55%, #000 100%);
 color:#fff;
 overflow-x:hidden;
--webkit-font-smoothing:antialiased;
 }
 
-/* =========================
-CURSOR
-========================= */
+/* BACKGROUND GLOW */
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at 20% 20%, rgba(0,245,255,0.12), transparent 40%),
+radial-gradient(circle at 80% 60%, rgba(212,175,55,0.10), transparent 45%),
+radial-gradient(circle at 50% 90%, rgba(0,120,255,0.08), transparent 50%);
+animation:glowMove 10s infinite alternate ease-in-out;
+pointer-events:none;
+}
+
+@keyframes glowMove{
+from{transform:scale(1);}
+to{transform:scale(1.1);}
+}
+
+/* CUSTOM CURSOR */
 .cursor-dot{
 position:fixed;
-width:10px;
-height:10px;
-background:rgba(0,245,255,0.9);
+width:18px;
+height:18px;
+border:2px solid #00f5ff;
 border-radius:50%;
 pointer-events:none;
 z-index:99999;
 transform:translate(-50%,-50%);
-box-shadow:0 0 20px rgba(0,245,255,0.8);
+box-shadow:0 0 25px rgba(0,245,255,0.9);
 }
 
-/* =========================
-NAV
-========================= */
+/* NAV */
 nav{
 position:fixed;
 top:0;
@@ -63,30 +74,27 @@ backdrop-filter:blur(30px);
 border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
+/* LOGO */
 .logo{
 display:flex;
 align-items:center;
 gap:12px;
 font-weight:800;
 color:#00f5ff;
-font-size:18px;
+font-size:20px;
+text-shadow:0 0 15px #00f5ff;
 }
 
 .logo-a{
-width:48px;
-height:48px;
+width:50px;
+height:50px;
 display:flex;
 align-items:center;
 justify-content:center;
 border-radius:12px;
 border:2px solid #00f5ff;
-font-size:22px;
+font-size:24px;
 box-shadow:0 0 25px #00f5ff;
-}
-
-@media(min-width:900px){
-.logo-a{width:60px;height:60px;font-size:26px;}
-.logo{font-size:22px;}
 }
 
 /* NAV LINKS */
@@ -116,9 +124,7 @@ gap:5px;
 cursor:pointer;
 }
 .burger span{
-width:26px;
-height:2px;
-background:#00f5ff;
+width:26px;height:2px;background:#00f5ff;
 }
 
 /* MOBILE MENU */
@@ -136,18 +142,14 @@ flex-direction:column;
 align-items:center;
 gap:20px;
 transition:0.4s;
-z-index:9998;
 }
 
 .mobile-menu.active{
 height:100vh;
-overflow-y:auto;
 padding-top:40px;
 }
 
-/* =========================
-HERO
-========================= */
+/* HERO */
 .hero{
 text-align:center;
 padding:220px 20px 120px;
@@ -161,10 +163,14 @@ color:transparent;
 }
 
 .hero p{
-opacity:0.8;
-margin:20px 0 35px;
+opacity:0.9;
+margin:20px auto;
+max-width:750px;
+font-size:18px;
+line-height:1.6;
 }
 
+/* BUTTON */
 .btn{
 padding:12px 26px;
 border:1px solid #00f5ff;
@@ -178,11 +184,10 @@ transition:0.3s;
 .btn:hover{
 background:#00f5ff;
 color:#000;
+box-shadow:0 0 20px #00f5ff;
 }
 
-/* =========================
-LAYOUT
-========================= */
+/* SECTIONS */
 section{padding:80px 20px;}
 
 .grid{
@@ -193,9 +198,7 @@ max-width:1100px;
 margin:auto;
 }
 
-/* =========================
-CARDS
-========================= */
+/* CARDS */
 .card,.price-card,.testimonial,.about-box{
 background:rgba(255,255,255,0.05);
 backdrop-filter:blur(30px);
@@ -204,73 +207,91 @@ padding:22px;
 cursor:pointer;
 transition:0.3s;
 border:1px solid rgba(255,255,255,0.1);
+position:relative;
 overflow:hidden;
-will-change:transform;
+}
+
+/* NEON GLOW */
+.card::before,.price-card::before,.testimonial::before,.about-box::before{
+content:"";
+position:absolute;
+inset:0;
+background:radial-gradient(circle, rgba(0,245,255,0.25), transparent 70%);
+opacity:0;
+transition:0.4s;
+}
+
+.card:hover::before,
+.price-card:hover::before,
+.testimonial:hover::before,
+.about-box:hover::before{
+opacity:1;
 }
 
 .card:hover,.price-card:hover,.testimonial:hover,.about-box:hover{
 transform:translateY(-6px);
-border:1px solid rgba(0,245,255,0.8);
+border:1px solid #00f5ff;
+box-shadow:0 0 25px rgba(0,245,255,0.25);
 }
 
-/* EXPAND FIX (ONE AT A TIME) */
-.active .extra{
-max-height:900px;
-opacity:1;
-margin-top:12px;
-}
-
+/* EXPAND */
 .extra{
 max-height:0;
 opacity:0;
 overflow:hidden;
-transition:0.5s;
+transition:0.4s ease;
 }
 
-/* =========================
-PRICING NEON UPGRADE
-========================= */
-.price-card:nth-child(1){
-border:1px solid rgba(255,255,255,0.25);
-box-shadow:0 0 15px rgba(255,255,255,0.08);
+.active .extra{
+max-height:500px;
+opacity:1;
+margin-top:10px;
 }
 
+/* PRICING */
 .price-card:nth-child(2){
 border:1px solid #00c8ff;
-box-shadow:0 0 25px rgba(0,200,255,0.35);
+box-shadow:0 0 25px rgba(0,200,255,0.25);
+}
+
+.price-card:nth-child(2)::after{
+content:"MOST POPULAR";
+position:absolute;
+top:12px;
+right:12px;
+font-size:11px;
+padding:4px 8px;
+background:#00f5ff;
+color:#000;
+border-radius:6px;
+font-weight:700;
 }
 
 .price-card:nth-child(3){
 border:1px solid #d4af37;
-box-shadow:0 0 30px rgba(212,175,55,0.35);
+box-shadow:0 0 30px rgba(212,175,55,0.25);
 }
 
-.price-card:hover{
-transform:translateY(-8px) scale(1.01);
+/* CONTACT */
+form{
+display:flex;
+flex-direction:column;
+gap:12px;
+margin-top:10px;
 }
 
-/* MOBILE */
-@media(max-width:900px){
-.nav-links{display:none;}
-.burger{display:flex;}
-.hero{padding:160px 20px 80px;}
+input,textarea{
+background:rgba(255,255,255,0.03);
+border:1px solid rgba(0,245,255,0.25);
+color:#fff;
+padding:12px;
+border-radius:10px;
+outline:none;
 }
 
-/* LOCK SCROLL */
-body.menu-open{
-overflow:hidden;
-position:fixed;
-width:100%;
-}
+textarea{min-height:120px;}
 
-/* FOOTER */
-footer{
-padding:40px;
-text-align:center;
-border-top:1px solid rgba(255,255,255,0.08);
-}
-
-/* SOCIAL ICONS */
+/* SOCIALS */
 .socials{
 display:flex;
 justify-content:center;
@@ -282,12 +303,25 @@ margin-top:20px;
 color:#00f5ff;
 font-size:22px;
 transition:0.3s;
-text-decoration:none;
 }
 
 .socials a:hover{
 transform:scale(1.2);
 color:#fff;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+.nav-links{display:none;}
+.burger{display:flex;}
+.hero h1{font-size:38px;}
+}
+
+/* FOOTER */
+footer{
+padding:40px;
+text-align:center;
+border-top:1px solid rgba(255,255,255,0.08);
 }
 
 </style>
@@ -324,8 +358,8 @@ Acquirely
 
 <!-- HERO -->
 <section class="hero">
-<h1>SaaS Lead Generation System</h1>
-<p>Fully automated outbound infrastructure that generates leads, books calls, and scales revenue predictably.</p>
+<h1>Automated SaaS Lead Generation</h1>
+<p>We build high-performance outbound systems that turn cold prospects into booked calls using AI-driven outreach, automation, and conversion-focused funnels.</p>
 <a href="#contact"><button class="btn">Get Started</button></a>
 </section>
 
@@ -334,13 +368,8 @@ Acquirely
 <div class="about-box">
 <h3>About Acquirely</h3>
 <p class="extra">
-Acquirely is a high-performance SaaS lead generation infrastructure built for agencies, consultants, and B2B companies.
-
-We specialize in automated outbound systems combining cold email, LinkedIn automation, AI appointment setting, and conversion funnels.
-
-Our systems replace manual outreach with structured scalable pipelines that consistently generate qualified leads and booked calls.
-
-We don’t sell marketing services — we build full revenue engines engineered for predictable growth and data-driven scaling.
+Acquirely is a performance-driven outbound systems agency helping SaaS founders, agencies, and consultants scale predictably.
+We replace manual outreach with automated acquisition engines that generate consistent qualified leads and booked appointments.
 </p>
 </div>
 </section>
@@ -350,30 +379,22 @@ We don’t sell marketing services — we build full revenue engines engineered 
 
 <div class="card">
 <h3>Cold Email Systems</h3>
-<p class="extra">
-We build full cold email infrastructure including domain setup, inbox warmup, deliverability optimization, copywriting, segmentation, and automation sequences that scale outreach safely and consistently.
-</p>
+<p class="extra">Full infrastructure including domains, inbox warmup, sequencing, personalization, and deliverability optimization for scalable outreach.</p>
 </div>
 
 <div class="card">
 <h3>AI Appointment Setting</h3>
-<p class="extra">
-AI-powered systems that qualify leads, respond instantly, book meetings automatically, and manage pipeline conversations 24/7 without human intervention.
-</p>
+<p class="extra">AI qualification + instant response systems that filter leads and book high-intent calls automatically.</p>
 </div>
 
 <div class="card">
 <h3>LinkedIn Automation</h3>
-<p class="extra">
-Automated connection campaigns, DM flows, profile optimization, and engagement systems designed to convert LinkedIn traffic into booked calls.
-</p>
+<p class="extra">Automated connection flows, DM funnels, and profile optimization systems that convert outreach into conversations.</p>
 </div>
 
 <div class="card">
 <h3>Conversion Funnels</h3>
-<p class="extra">
-High-converting landing pages, CRO testing, A/B experiments, tracking dashboards, and funnel optimization designed to maximize booked call rates.
-</p>
+<p class="extra">Landing pages, tracking systems, A/B testing, and CRO optimization to increase booked call conversion rates.</p>
 </div>
 
 </section>
@@ -383,23 +404,17 @@ High-converting landing pages, CRO testing, A/B experiments, tracking dashboards
 
 <div class="price-card">
 <h3>Starter - $399 p/m</h3>
-<p class="extra">
-Cold email setup with 1 domain, inbox warmup, outreach templates, basic automation system, and monthly reporting dashboard.
-</p>
+<p class="extra">Setup of cold email system + basic outreach automation for small businesses starting outbound.</p>
 </div>
 
 <div class="price-card">
 <h3>Pro - $799 p/m</h3>
-<p class="extra">
-Multi-domain infrastructure, AI appointment setter, LinkedIn automation system, CRM tracking, and full pipeline analytics.
-</p>
+<p class="extra">Full outbound system with CRM integration, automation flows, and optimized lead pipelines. Best for scaling agencies.</p>
 </div>
 
 <div class="price-card">
 <h3>Elite - $1599 p/m</h3>
-<p class="extra">
-Full outbound engine including advanced CRM integration, scaling systems, funnel optimization, consulting, and done-for-you growth infrastructure.
-</p>
+<p class="extra">Complete AI outbound engine with multi-channel outreach, analytics, and dedicated scaling support.</p>
 </div>
 
 </section>
@@ -409,17 +424,17 @@ Full outbound engine including advanced CRM integration, scaling systems, funnel
 
 <div class="testimonial">
 <h3>Agency Owner</h3>
-<p class="extra">“Within 3 weeks we had a predictable pipeline.”</p>
+<p class="extra">“We went from inconsistent leads to a predictable pipeline within weeks.”</p>
 </div>
 
 <div class="testimonial">
 <h3>SaaS Founder</h3>
-<p class="extra">“Trial signups doubled after automation.”</p>
+<p class="extra">“Our trial conversions doubled after implementing Acquirely’s system.”</p>
 </div>
 
 <div class="testimonial">
 <h3>Consultant</h3>
-<p class="extra">“Booked calls daily without outreach.”</p>
+<p class="extra">“I now get daily booked calls without doing manual outreach.”</p>
 </div>
 
 </section>
@@ -428,13 +443,13 @@ Full outbound engine including advanced CRM integration, scaling systems, funnel
 <section class="grid" id="contact">
 
 <div class="card">
-<h3>Contact</h3>
+<h3>Contact Us</h3>
 
 <form id="contactForm">
 <input name="name" placeholder="Name" required>
 <input name="email" placeholder="Email" required>
-<textarea name="message" placeholder="Message" required></textarea>
-<button class="btn" type="submit">Send</button>
+<textarea name="message" placeholder="Tell us about your business..." required></textarea>
+<button class="btn" type="submit">Send Message</button>
 </form>
 
 <div class="socials">
@@ -448,11 +463,11 @@ Full outbound engine including advanced CRM integration, scaling systems, funnel
 
 </section>
 
-<footer>© 2024 Acquirely</footer>
+<footer>© 2024 Acquirely. All rights reserved.</footer>
 
 <script>
 
-/* SMOOTH CURSOR FIX */
+/* CURSOR */
 let cursor=document.getElementById("cursor");
 let x=0,y=0,tx=0,ty=0;
 
@@ -462,15 +477,20 @@ y=e.clientY;
 });
 
 function animate(){
-tx += (x-tx)/8;
-ty += (y-ty)/8;
+tx += (x-tx)*0.2;
+ty += (y-ty)*0.2;
 cursor.style.left=tx+"px";
 cursor.style.top=ty+"px";
 requestAnimationFrame(animate);
 }
 animate();
 
-/* EXPAND FIX */
+/* MENU */
+function toggleMenu(){
+document.getElementById("mobileMenu").classList.toggle("active");
+}
+
+/* SINGLE EXPAND SYSTEM */
 document.querySelectorAll(".card,.price-card,.testimonial,.about-box")
 .forEach(el=>{
 el.addEventListener("click",()=>{
@@ -480,21 +500,18 @@ el.classList.toggle("active");
 });
 });
 
-/* MENU FIX */
-function toggleMenu(){
-document.getElementById("mobileMenu").classList.toggle("active");
-document.body.classList.toggle("menu-open");
-}
-
-/* GOOGLE SHEETS */
-document.getElementById("contactForm").addEventListener("submit",function(e){
+/* FORM */
+document.getElementById("contactForm").addEventListener("submit", async function(e){
 e.preventDefault();
-fetch("YOUR_GOOGLE_APPS_SCRIPT_URL_HERE",{
+const formData=new FormData(this);
+
+await fetch("YOUR_GOOGLE_SCRIPT_URL",{
 method:"POST",
-body:new FormData(this)
-})
-.then(()=>alert("Sent"))
-.catch(()=>alert("Error"));
+body:formData
+});
+
+alert("Message sent successfully!");
+this.reset();
 });
 
 </script>
