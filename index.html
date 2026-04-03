@@ -112,6 +112,7 @@ cursor:pointer;
 }
 
 @media(max-width:768px){
+
 .nav-links{
 position:fixed;
 top:0;
@@ -122,10 +123,19 @@ background:#0a0d14;
 flex-direction:column;
 padding:80px 30px;
 transition:0.4s;
+z-index:9999; /* ✅ ADD THIS */
 }
 
-.nav-links.active{right:0;}
-.burger{display:block;}
+.nav-links.active{
+right:0;
+}
+
+.burger{
+display:block;
+z-index:10000; /* ✅ ADD THIS */
+position:relative;
+}
+
 }
 
 /* =========================
@@ -536,13 +546,29 @@ animate("rate",72);
 /* menu */
 function toggleMenu(){
 const menu = document.getElementById("menu");
+
 menu.classList.toggle("active");
+
+/* LOCK BACKGROUND SCROLL WHEN MENU OPEN */
+if(menu.classList.contains("active")){
+document.body.style.overflow = "hidden";
+}else{
+document.body.style.overflow = "auto";
 }
+}
+
+window.addEventListener("scroll", () => {
+document.getElementById("menu").classList.remove("active");
+document.body.style.overflow = "auto";
+});
 
 /* MENU LINK CLOSE */
 document.querySelectorAll(".nav-links a").forEach(link=>{
 link.addEventListener("click",()=>{
-document.getElementById("menu").classList.remove("active");
+const menu = document.getElementById("menu");
+
+menu.classList.remove("active");
+document.body.style.overflow = "auto";
 });
 });
 
@@ -557,11 +583,9 @@ document.addEventListener("click", function(e){
 const menu = document.getElementById("menu");
 const burger = document.querySelector(".burger");
 
-const clickedInsideMenu = menu.contains(e.target);
-const clickedBurger = burger.contains(e.target);
-
-if(!clickedInsideMenu && !clickedBurger){
+if(!menu.contains(e.target) && !burger.contains(e.target)){
 menu.classList.remove("active");
+document.body.style.overflow = "auto";
 }
 });
 
