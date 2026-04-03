@@ -9,7 +9,9 @@
 
 <style>
 
-/* GLOBAL */
+/* =========================
+GLOBAL
+========================= */
 *{
 margin:0;
 padding:0;
@@ -29,7 +31,9 @@ html{
 scroll-behavior:smooth;
 }
 
-/* 🍎 APPLE LIQUID BACKGROUND */
+/* =========================
+BACKGROUND
+========================= */
 .bg{
 position:fixed;
 inset:0;
@@ -40,20 +44,36 @@ radial-gradient(circle at 80% 30%, rgba(120,0,255,0.10), transparent 45%),
 radial-gradient(circle at 40% 80%, rgba(0,120,255,0.10), transparent 50%),
 radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05), transparent 60%),
 #000;
-overflow:hidden;
+animation:floatBG 18s ease-in-out infinite alternate;
 }
 
-/* 🍎 GLASS SYSTEM */
+@keyframes floatBG{
+0%{transform:scale(1) translateY(0px);}
+100%{transform:scale(1.1) translateY(-20px);}
+}
+
+/* =========================
+APPLE GLASS
+========================= */
 .glass{
-background:rgba(10,10,10,0.55);
-backdrop-filter:blur(22px);
--webkit-backdrop-filter:blur(22px);
-border:1px solid rgba(255,255,255,0.08);
-border-radius:16px;
-box-shadow:0 8px 32px rgba(0,0,0,0.6);
+background:linear-gradient(135deg,
+rgba(255,255,255,0.10),
+rgba(10,10,10,0.55),
+rgba(255,255,255,0.04)
+);
+backdrop-filter:blur(38px);
+-webkit-backdrop-filter:blur(38px);
+border:1px solid rgba(255,255,255,0.12);
+border-radius:20px;
+box-shadow:
+0 20px 60px rgba(0,0,0,0.75),
+inset 0 1px 0 rgba(255,255,255,0.15),
+inset 0 -1px 0 rgba(0,245,255,0.08);
 }
 
-/* NAV */
+/* =========================
+NAV
+========================= */
 nav{
 position:fixed;
 top:0;
@@ -64,7 +84,7 @@ align-items:center;
 padding:16px 24px;
 z-index:9999;
 background:rgba(0,0,0,0.25);
-backdrop-filter:blur(20px);
+backdrop-filter:blur(22px);
 border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
@@ -74,6 +94,7 @@ align-items:center;
 gap:10px;
 font-weight:800;
 color:#00f5ff;
+text-shadow:0 0 12px rgba(0,245,255,0.6);
 }
 
 .logo-a{
@@ -84,20 +105,19 @@ display:flex;
 align-items:center;
 justify-content:center;
 box-shadow:0 0 18px #00f5ff;
+border-radius:10px;
 }
 
 /* BURGER */
 .burger{
-width:30px;
-height:22px;
 display:flex;
 flex-direction:column;
-justify-content:space-between;
+gap:5px;
 cursor:pointer;
-z-index:10000;
 }
 
 .burger span{
+width:26px;
 height:2px;
 background:#00f5ff;
 box-shadow:0 0 10px #00f5ff;
@@ -114,7 +134,7 @@ padding:70px 20px;
 transition:0.4s;
 z-index:9998;
 background:rgba(10,10,10,0.65);
-backdrop-filter:blur(22px);
+backdrop-filter:blur(28px);
 border-left:1px solid rgba(255,255,255,0.08);
 }
 
@@ -127,7 +147,9 @@ margin:18px 0;
 text-decoration:none;
 }
 
-/* HERO */
+/* =========================
+HERO
+========================= */
 .hero{
 text-align:center;
 padding:180px 20px 60px;
@@ -140,13 +162,9 @@ background:linear-gradient(90deg,#00f5ff,#fff,#00f5ff);
 color:transparent;
 }
 
-.hero p{
-max-width:900px;
-margin:20px auto;
-opacity:0.85;
-}
-
-/* BUTTON */
+/* =========================
+BUTTON
+========================= */
 .btn{
 padding:12px 26px;
 border:1px solid #00f5ff;
@@ -160,9 +178,12 @@ transition:0.3s;
 .btn:hover{
 background:#00f5ff;
 color:#000;
+transform:translateY(-2px);
 }
 
-/* GRID */
+/* =========================
+GRID
+========================= */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -172,48 +193,57 @@ max-width:1200px;
 margin:auto;
 }
 
-/* CARDS (NO CONTENT REMOVED) */
+/* =========================
+CARDS
+========================= */
 .card,.price-card,.testimonial,.about-box{
-background:rgba(10,10,10,0.55);
-backdrop-filter:blur(22px);
-border:1px solid rgba(255,255,255,0.08);
-border-radius:16px;
+background:rgba(10,10,10,0.45);
+backdrop-filter:blur(30px);
+border:1px solid rgba(255,255,255,0.10);
+border-radius:18px;
 padding:22px;
 cursor:pointer;
-overflow:hidden;
-transition:0.3s;
+transition:0.35s ease;
 }
 
-/* EXPAND SYSTEM (UNCHANGED CONTENT SUPPORT) */
+.card:hover,.price-card:hover,.testimonial:hover,.about-box:hover{
+transform:scale(1.05);
+border:1px solid rgba(0,245,255,0.45);
+box-shadow:0 0 25px rgba(0,245,255,0.25);
+}
+
+.active{
+transform:scale(1.08);
+border:1px solid rgba(0,245,255,0.55);
+box-shadow:0 0 35px rgba(0,245,255,0.35);
+}
+
+/* =========================
+EXPAND TEXT
+========================= */
 .extra{
 max-height:0;
 opacity:0;
 overflow:hidden;
-transition:0.5s ease;
+transition:0.6s ease;
 }
 
 .active .extra{
-max-height:1200px;
+max-height:2000px;
 opacity:1;
 margin-top:12px;
 }
 
-/* PRICING (FIXED COLORS ONLY) */
-.price-card:nth-child(1){
-border:1px solid rgba(255,255,255,0.15);
-}
+/* =========================
+PRICING COLORS
+========================= */
+.price-card:nth-child(1){border:1px solid rgba(0,180,255,0.25);}
+.price-card:nth-child(2){border:1px solid rgba(0,245,255,0.45);}
+.price-card:nth-child(3){border:1px solid rgba(180,0,255,0.45);}
 
-.price-card:nth-child(2){
-border:1px solid #00f5ff;
-box-shadow:0 0 25px rgba(0,245,255,0.25);
-}
-
-.price-card:nth-child(3){
-border:1px solid gold;
-box-shadow:0 0 25px rgba(255,215,0,0.18);
-}
-
-/* STATS */
+/* =========================
+STATS
+========================= */
 .stats{
 display:flex;
 justify-content:center;
@@ -230,19 +260,18 @@ min-width:160px;
 text-align:center;
 }
 
-.stat h2{
-color:#00f5ff;
-font-size:34px;
-}
+.stat h2{color:#00f5ff;font-size:34px;}
 
-/* FOOTER */
+/* =========================
+FOOTER
+========================= */
 footer{
 padding:40px;
 text-align:center;
 border-top:1px solid rgba(255,255,255,0.08);
 margin-top:40px;
 background:rgba(10,10,10,0.5);
-backdrop-filter:blur(20px);
+backdrop-filter:blur(28px);
 }
 
 footer a{
@@ -251,11 +280,9 @@ margin:0 10px;
 text-decoration:none;
 }
 
-footer a:hover{
-text-shadow:0 0 10px #00f5ff;
-}
-
-/* FORM */
+/* =========================
+FORM
+========================= */
 form input,form textarea{
 width:100%;
 padding:10px;
@@ -266,22 +293,12 @@ color:#fff;
 border-radius:8px;
 }
 
-/* CLICK EFFECT */
-.click-glow{
-position:fixed;
-width:12px;
-height:12px;
-border-radius:50%;
-background:#00f5ff;
-box-shadow:0 0 25px #00f5ff;
-transform:translate(-50%,-50%);
-pointer-events:none;
-animation:clickAnim 0.5s ease-out forwards;
-}
-
-@keyframes clickAnim{
-0%{transform:translate(-50%,-50%) scale(0.5);opacity:1;}
-100%{transform:translate(-50%,-50%) scale(3);opacity:0;}
+/* DISCLAIMER */
+.disclaimer{
+text-align:center;
+padding:20px;
+font-size:12px;
+opacity:0.6;
 }
 
 /* CANVAS */
@@ -290,7 +307,7 @@ position:absolute;
 inset:0;
 width:100%;
 height:100%;
-opacity:0.75;
+opacity:0.7;
 }
 
 </style>
@@ -322,97 +339,105 @@ opacity:0.75;
 </section>
 
 <!-- ABOUT -->
+<div class="section-title">ABOUT</div>
 <section id="about" class="grid">
 <div class="about-box">
 <h3>About Acquirely</h3>
 <p class="extra">
-Acquirely is a SaaS-level lead generation system designed to replace manual outreach completely.
+Acquirely is a fully automated SaaS-level lead generation and outbound infrastructure system designed to replace manual sales outreach entirely.
 
-We combine cold email infrastructure, AI follow-ups, LinkedIn automation, CRM pipelines, and conversion funnels into one unified system that runs 24/7.
+Instead of relying on sales reps spending hours sending emails, messages, and follow-ups manually, Acquirely builds a complete automated ecosystem that runs 24/7 in the background.
 
-The goal is predictable revenue without manual prospecting.
+It combines cold email systems, AI follow-ups, LinkedIn automation, CRM pipelines, and conversion funnels into one unified system designed for predictable revenue generation.
 </p>
 </div>
 </section>
 
-<!-- SERVICES (UNCHANGED CONTENT) -->
+<!-- SERVICES -->
 <div class="section-title">SERVICES</div>
 <section id="services" class="grid">
 
-<div class="card"><h3>Cold Email Systems</h3><p class="extra">
-We build a fully automated cold email system that generates consistent outbound leads without manual work. This includes domain setup, inbox creation, authentication (SPF/DKIM/DMARC), and deliverability optimisation to ensure inbox placement.
+<div class="card">
+<h3>Cold Email Systems</h3>
+<p class="extra">
+Fully automated cold email infrastructure including domain setup, warmup systems, deliverability optimization, AI personalization, and multi-step sequencing that runs continuously without manual effort.
+</p>
+</div>
 
-We also handle lead scraping, prospect list building, and niche targeting so outreach is highly relevant. Once live, your system runs automated sequences, follow-ups, and re-engagement campaigns daily.
-</p></div>
+<div class="card">
+<h3>AI Appointment Setting</h3>
+<p class="extra">
+AI-driven lead qualification and booking system that handles conversations, filters leads, and automatically schedules calls 24/7 without human intervention.
+</p>
+</div>
 
-<div class="card"><h3>AI Appointment Setting</h3><p class="extra">
-Our AI appointment system works 24/7 to handle conversations, qualify leads, respond to objections, and book calls directly into your calendar.
+<div class="card">
+<h3>LinkedIn Automation</h3>
+<p class="extra">
+B2B outreach system that automates connection requests, messaging sequences, profile engagement, targeting, and lead scraping for scalable prospecting.
+</p>
+</div>
 
-It follows structured AI flows designed to replicate high-performing sales reps across email, chat, or CRM systems.
-
-You only receive qualified, sales-ready calls.
-</p></div>
-
-<div class="card"><h3>LinkedIn Automation</h3><p class="extra">
-We create a LinkedIn outreach system that generates consistent B2B conversations at scale through automated connection requests, messaging, and targeted audience building.
-
-It also tracks engagement so messaging can be improved over time for higher conversions.
-
-Your LinkedIn becomes a fully automated lead source running daily.
-</p></div>
-
-<div class="card"><h3>Conversion Funnels</h3><p class="extra">
-We build conversion-focused funnels that turn traffic into booked calls and clients. This includes landing pages, copywriting, A/B testing, and tracking.
-
-Each funnel follows a clear flow: awareness → interest → trust → conversion.
-
-Designed to improve conversions continuously over time.
-</p></div>
+<div class="card">
+<h3>Conversion Funnels</h3>
+<p class="extra">
+High-conversion landing pages, optimized copywriting, CTA systems, A/B testing frameworks, and analytics tracking designed to maximize booked calls.
+</p>
+</div>
 
 </section>
 
-<!-- PRICING (UNCHANGED FULL CONTENT) -->
+<!-- PRICING -->
 <div class="section-title">PRICING</div>
 <section id="pricing" class="grid">
 
 <div class="price-card">
 <h3>Starter - $399 p/m</h3>
 <p class="extra">
-Basic outbound setup including cold email infrastructure, lead sourcing, and campaign setup. Good for testing and generating early leads.
+Basic outbound setup including cold email system, templates, and foundational automation designed for early-stage validation.
 </p>
 </div>
 
 <div class="price-card">
 <h3>Pro - $799 p/m</h3>
 <p class="extra">
-Fully automated system with AI follow-ups, response handling, and deliverability optimisation.
+Advanced automation system including AI follow-ups, CRM integration, multi-sequence outreach, and performance tracking.
 </p>
 </div>
 
 <div class="price-card">
 <h3>Elite - $1599 p/m</h3>
 <p class="extra">
-Full multi-channel system with email + LinkedIn, CRM integration, and AI pipeline management.
+Full multi-channel system including email, LinkedIn automation, AI appointment setting, funnel optimization, and scaling infrastructure.
 </p>
 </div>
 
 </section>
 
-<!-- TESTIMONIALS (UNCHANGED FULL CONTENT) -->
+<!-- TESTIMONIALS -->
 <div class="section-title">TESTIMONIALS</div>
 <section id="testimonials" class="grid">
 
-<div class="testimonial"><h3>Agency Owner</h3><p class="extra">
-We replaced manual outreach completely.
-</p></div>
+<div class="testimonial">
+<h3>Agency Owner</h3>
+<p class="extra">
+We completely replaced manual outreach with Acquirely. Our pipeline is now fully automated and generates consistent leads daily without active effort.
+</p>
+</div>
 
-<div class="testimonial"><h3>SaaS Founder</h3><p class="extra">
-Predictable pipeline, predictable revenue.
-</p></div>
+<div class="testimonial">
+<h3>SaaS Founder</h3>
+<p class="extra">
+Our lead flow became predictable for the first time. We can now scale without worrying about outreach bottlenecks.
+</p>
+</div>
 
-<div class="testimonial"><h3>Consultant</h3><p class="extra">
-Highest ROI system we have had in a long time.
-</p></div>
+<div class="testimonial">
+<h3>Consultant</h3>
+<p class="extra">
+Highest ROI system we’ve used for client acquisition. Everything runs automatically and consistently produces booked calls.
+</p>
+</div>
 
 </section>
 
@@ -420,7 +445,7 @@ Highest ROI system we have had in a long time.
 <section id="contact" class="grid">
 <div class="card">
 <h3>Contact</h3>
-<form>
+<form onsubmit="event.preventDefault(); alert('Sent!');">
 <input type="text" placeholder="Name" required>
 <input type="email" placeholder="Email" required>
 <textarea placeholder="Message" required></textarea>
@@ -436,19 +461,18 @@ Highest ROI system we have had in a long time.
 <div class="stat"><h2>97%</h2><p>Success Rate</p></div>
 </div>
 
-<footer>
-<p>© 2026 Acquirely. All rights reserved.</p>
-
-<div>
-<a href="https://wa.me/">WhatsApp</a>
-<a href="https://t.me/">Telegram</a>
-<a href="https://linkedin.com">LinkedIn</a>
-<a href="mailto:contact@acquirely.com">Email</a>
+<div class="disclaimer">
+Disclaimer: Results vary depending on niche, execution, and market conditions.
 </div>
 
-<p style="font-size:12px;opacity:0.6;margin-top:10px;">
-Results vary. Systems require proper setup and execution.
-</p>
+<footer>
+<p>© 2026 Acquirely. All rights reserved.</p>
+<div>
+<a href="#">WhatsApp</a>
+<a href="#">Telegram</a>
+<a href="#">LinkedIn</a>
+<a href="mailto:contact@acquirely.com">Email</a>
+</div>
 </footer>
 
 <script>
@@ -458,7 +482,9 @@ const burger=document.getElementById("burger");
 burger.onclick=()=>menu.classList.toggle("active");
 
 document.querySelectorAll(".card,.price-card,.testimonial,.about-box")
-.forEach(el=>el.onclick=()=>el.classList.toggle("active"));
+.forEach(el=>{
+el.onclick=()=>el.classList.toggle("active");
+});
 
 const c=document.getElementById("c");
 const ctx=c.getContext("2d");
@@ -468,10 +494,11 @@ function resize(){
 w=c.width=window.innerWidth;
 h=c.height=window.innerHeight;
 }
+window.addEventListener("resize",resize);
 resize();
 
 const particles=[];
-for(let i=0;i<80;i++){
+for(let i=0;i<90;i++){
 particles.push({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-0.5)*0.3,vy:(Math.random()-0.5)*0.3,r:Math.random()*1.5});
 }
 
@@ -493,4 +520,4 @@ draw();
 </script>
 
 </body>
-</html>
+  </html>
