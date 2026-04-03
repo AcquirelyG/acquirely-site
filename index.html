@@ -18,7 +18,6 @@ margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:Inter,sans-serif;
-cursor:none;
 }
 
 html{scroll-behavior:smooth;}
@@ -29,60 +28,51 @@ color:#fff;
 overflow-x:hidden;
 }
 
-/* BACKGROUND GLOW */
-body::before{
-content:"";
+/* =========================
+NEON ORBS BACKGROUND
+========================= */
+.bg-orbs{
 position:fixed;
 inset:0;
-background:
-radial-gradient(circle at 20% 20%, rgba(0,245,255,0.22), transparent 45%),
-radial-gradient(circle at 80% 40%, rgba(212,175,255,0.18), transparent 50%),
-radial-gradient(circle at 50% 90%, rgba(0,120,255,0.18), transparent 55%);
-animation:glowMove 6s infinite alternate ease-in-out;
-pointer-events:none;
 z-index:-1;
-}
-
-@keyframes glowMove{
-0%{transform:scale(1);}
-100%{transform:scale(1.15);}
-}
-
-/* =========================
-CURSOR FIX
-========================= */
-.cursor-dot{
-position:fixed;
-width:18px;
-height:18px;
-border-radius:50%;
-border:2px solid #00f5ff;
-box-shadow:0 0 25px #00f5ff;
-transform:translate(-50%,-50%);
 pointer-events:none;
-z-index:99999;
+overflow:hidden;
 }
 
-@media(max-width:900px){
-.cursor-dot{display:none;}
-body{cursor:auto;}
+.bg-orbs span{
+position:absolute;
+width:380px;
+height:380px;
+border-radius:50%;
+filter:blur(100px);
+opacity:0.35;
+animation:float 18s infinite ease-in-out;
 }
 
-/* =========================
-PERFORMANCE
-========================= */
-.performance-counter{
-position:fixed;
-bottom:18px;
-left:18px;
-padding:10px 14px;
-border-radius:14px;
-background:rgba(0,0,0,0.4);
-backdrop-filter:blur(20px);
-border:1px solid rgba(0,245,255,0.25);
-color:#00f5ff;
-font-size:12px;
-z-index:99999;
+.bg-orbs span:nth-child(1){
+background:#00f5ff;
+top:10%;
+left:10%;
+}
+
+.bg-orbs span:nth-child(2){
+background:#d4af37;
+top:65%;
+left:70%;
+animation-delay:2s;
+}
+
+.bg-orbs span:nth-child(3){
+background:#7aa7ff;
+top:40%;
+left:35%;
+animation-delay:4s;
+}
+
+@keyframes float{
+0%{transform:translate(0,0) scale(1);}
+50%{transform:translate(80px,-60px) scale(1.25);}
+100%{transform:translate(0,0) scale(1);}
 }
 
 /* =========================
@@ -95,18 +85,17 @@ width:100%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:18px 22px;
-z-index:9999;
+padding:18px 24px;
+z-index:999;
 background:rgba(10,10,15,0.4);
-backdrop-filter:blur(35px);
+backdrop-filter:blur(30px);
 border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
-/* LOGO CLICKABLE */
 .logo{
 display:flex;
 align-items:center;
-gap:12px;
+gap:10px;
 font-weight:800;
 color:#00f5ff;
 font-size:20px;
@@ -114,87 +103,55 @@ text-decoration:none;
 }
 
 .logo-a{
-width:52px;
-height:52px;
+width:46px;
+height:46px;
 display:flex;
 align-items:center;
 justify-content:center;
-border-radius:14px;
+border-radius:12px;
 border:2px solid #00f5ff;
 }
 
-/* NAV */
-.nav-links{
-display:flex;
-gap:18px;
-}
-
-.nav-links a{
-color:#fff;
-text-decoration:none;
-opacity:0.7;
-transition:0.3s;
-}
-
-.nav-links a:hover{
-opacity:1;
-color:#00f5ff;
-}
-
-/* BURGER */
-.burger{
-display:none;
-flex-direction:column;
-gap:5px;
-cursor:pointer;
-}
-.burger span{
-width:26px;height:2px;background:#00f5ff;
-}
-
-@media(max-width:900px){
-.nav-links{display:none;}
-.burger{display:flex;}
-}
-
-/* MOBILE MENU */
-.mobile-menu{
-position:fixed;
-top:70px;
-right:0;
-width:100%;
-height:0;
-overflow:hidden;
-background:rgba(0,0,0,0.95);
+/* =========================
+LAYOUT FIX (CENTERED)
+========================= */
+section{
+padding:110px 20px;
 display:flex;
 flex-direction:column;
 align-items:center;
-gap:20px;
-transition:0.4s;
-z-index:9998;
+text-align:center;
 }
 
-.mobile-menu.active{
-height:100vh;
-padding-top:60px;
+.container{
+width:100%;
+max-width:1000px;
 }
 
 /* =========================
-LAYOUT FIX (STACKED)
+HEADINGS
 ========================= */
-section{
-padding:90px 20px;
-display:flex;
-flex-direction:column;
-align-items:center;
+h1,h2,h3{
+margin-bottom:12px;
 }
 
+h1{
+font-size:38px;
+}
+
+h2{
+font-size:28px;
+margin-bottom:30px;
+color:#00f5ff;
+}
+
+/* =========================
+GRID
+========================= */
 .grid{
 display:flex;
 flex-direction:column;
-gap:20px;
-width:100%;
-max-width:900px;
+gap:18px;
 }
 
 /* =========================
@@ -203,89 +160,106 @@ CARDS
 .card,.price-card,.testimonial,.about-box{
 background:rgba(255,255,255,0.06);
 backdrop-filter:blur(30px);
-border-radius:20px;
-padding:24px;
+border-radius:18px;
+padding:26px;
 border:1px solid rgba(255,255,255,0.1);
 cursor:pointer;
 transition:0.3s;
-overflow:hidden;
-position:relative;
+text-align:left;
 }
 
+.card:hover,
+.price-card:hover,
+.testimonial:hover,
+.about-box:hover{
+transform:translateY(-3px);
+border-color:#00f5ff;
+}
+
+/* EXPAND SYSTEM */
 .extra{
 max-height:0;
+overflow:hidden;
 opacity:0;
-transition:0.4s;
+transition:0.5s ease;
+margin-top:0;
 }
 
 .card.active .extra,
 .price-card.active .extra,
 .testimonial.active .extra,
 .about-box.active .extra{
-max-height:500px;
+max-height:800px;
 opacity:1;
-margin-top:10px;
+margin-top:12px;
 }
 
 /* =========================
-PRICING NEON UPGRADE
+PRICING HIGHLIGHT
 ========================= */
 .price-card:nth-child(2){
-border:1px solid #00c8ff;
-box-shadow:0 0 25px rgba(0,200,255,0.35);
+border:1px solid #00f5ff;
+box-shadow:0 0 20px rgba(0,245,255,0.25);
 }
 
 .price-card:nth-child(3){
 border:1px solid #d4af37;
-box-shadow:0 0 30px rgba(212,175,55,0.35);
+box-shadow:0 0 25px rgba(212,175,55,0.25);
 }
 
-/* MOST POPULAR BADGE */
 .price-card:nth-child(2)::before{
 content:"MOST POPULAR";
 position:absolute;
-top:12px;
-right:12px;
+top:10px;
+right:10px;
 background:#00f5ff;
 color:#000;
-padding:5px 10px;
+padding:4px 8px;
 font-size:10px;
-border-radius:8px;
+border-radius:6px;
 font-weight:800;
 }
 
 /* =========================
-CONTACT
+FORMS
 ========================= */
 form{
 display:flex;
 flex-direction:column;
 gap:12px;
-width:100%;
+margin-top:10px;
 }
 
 input,textarea{
-background:rgba(255,255,255,0.04);
-border:1px solid rgba(0,245,255,0.3);
-color:#fff;
 padding:12px;
-border-radius:12px;
+border-radius:10px;
+border:1px solid rgba(255,255,255,0.2);
+background:rgba(255,255,255,0.04);
+color:#fff;
 }
 
 button{
 padding:12px;
-border-radius:12px;
+border-radius:10px;
 border:1px solid #00f5ff;
 background:transparent;
 color:#fff;
 cursor:pointer;
+transition:0.3s;
 }
 
-/* SOCIALS */
+button:hover{
+background:#00f5ff;
+color:#000;
+}
+
+/* =========================
+SOCIALS
+========================= */
 .socials{
 display:flex;
 justify-content:center;
-gap:20px;
+gap:18px;
 margin-top:20px;
 }
 
@@ -293,6 +267,7 @@ margin-top:20px;
 color:#00f5ff;
 font-size:22px;
 transition:0.3s;
+cursor:pointer;
 }
 
 .socials a:hover{
@@ -300,10 +275,21 @@ transform:scale(1.2);
 color:#fff;
 }
 
+/* =========================
+CURSOR FIX (HAND POINTER ONLY)
+========================= */
+body, button, a, .card, .price-card, .testimonial, .about-box{
+cursor:pointer;
+}
+
+/* =========================
+FOOTER
+========================= */
 footer{
 padding:40px;
 text-align:center;
 border-top:1px solid rgba(255,255,255,0.08);
+margin-top:60px;
 }
 
 </style>
@@ -311,232 +297,191 @@ border-top:1px solid rgba(255,255,255,0.08);
 
 <body>
 
-<!-- CURSOR -->
-<div class="cursor-dot" id="cursor"></div>
-
-<!-- PERF -->
-<div class="performance-counter" id="perf">FPS: -- | Load: --</div>
+<!-- ORBS -->
+<div class="bg-orbs">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
 
 <!-- NAV -->
 <nav>
-<a href="#" class="logo">
+<a class="logo" href="#">
 <div class="logo-a">A</div>
 Acquirely
 </a>
-
-<div class="nav-links">
-<a href="#about">About</a>
-<a href="#services">Services</a>
-<a href="#pricing">Pricing</a>
-<a href="#contact">Contact</a>
-</div>
-
-<div class="burger" onclick="toggleMenu()">
-<span></span><span></span><span></span>
-</div>
 </nav>
-
-<div class="mobile-menu" id="mobileMenu">
-<a href="#about" onclick="toggleMenu()">About</a>
-<a href="#services" onclick="toggleMenu()">Services</a>
-<a href="#pricing" onclick="toggleMenu()">Pricing</a>
-<a href="#contact" onclick="toggleMenu()">Contact</a>
-</div>
 
 <!-- HERO -->
 <section>
-<h1>Automated SaaS Lead Generation</h1>
-<p>High-performance outbound systems that turn cold prospects into booked calls using AI-driven outreach, automation, and conversion funnels.</p>
+<div class="container">
+<h1>Automated SaaS Lead Generation System</h1>
+<p>High-performance outbound acquisition systems powered by AI, automation, and conversion engineering.</p>
+</div>
 </section>
 
 <!-- ABOUT -->
-<section id="about" class="grid">
+<section id="about">
+<div class="container">
+<h2>About Us</h2>
+
 <div class="about-box">
-<h3>About Us</h3>
+<h3>Who We Are</h3>
 <p class="extra">
-Acquirely is a performance-driven growth agency focused on building automated acquisition systems for SaaS companies, agencies, and consultants.  
-We replace manual outreach with scalable AI-powered engines that generate predictable pipelines and booked calls.
+Acquirely is a performance-driven lead generation agency building automated outbound systems for SaaS companies, agencies, and consultants.
+<br><br>
+We design full acquisition pipelines including cold email infrastructure, AI appointment setting systems, CRM automation, and conversion funnels.
+<br><br>
+Our mission is to replace inconsistent lead flow with predictable, scalable, automated client acquisition systems that run 24/7.
 </p>
+</div>
+
 </div>
 </section>
 
 <!-- SERVICES -->
-<section id="services" class="grid">
+<section id="services">
+<div class="container">
+<h2>Services</h2>
+
+<div class="grid">
 
 <div class="card">
-<h3>Cold Email Systems</h3>
+<h3>Cold Email Infrastructure</h3>
 <p class="extra">
-We build full outbound infrastructure: domains, inbox warmup, deliverability protection, sequencing, personalization, and scaling systems designed to generate consistent replies and booked meetings.
+Full domain setup, inbox warming, deliverability engineering, SPF/DKIM/DMARC setup, scraping systems, and automated outreach sequences designed for maximum inbox placement.
 </p>
 </div>
 
 <div class="card">
 <h3>AI Appointment Setting</h3>
 <p class="extra">
-Automated qualification + AI-driven response systems that instantly engage leads, filter prospects, and book high-intent calls without manual effort.
+Automated lead qualification systems that engage, filter, and book calls directly into your calendar without human input.
 </p>
 </div>
 
 <div class="card">
 <h3>LinkedIn Automation</h3>
 <p class="extra">
-Profile optimization, connection automation, and DM funnels that convert cold LinkedIn traffic into qualified sales conversations.
+Full LinkedIn outreach funnels including connection automation, messaging sequences, and profile optimization.
 </p>
 </div>
 
 <div class="card">
 <h3>Conversion Funnels</h3>
 <p class="extra">
-High-converting landing pages, CRO testing, analytics tracking, and funnel optimization to maximize booked call rates.
+High converting landing pages designed to turn cold traffic into booked sales calls.
 </p>
 </div>
 
+</div>
+</div>
 </section>
 
 <!-- PRICING -->
-<section id="pricing" class="grid">
+<section id="pricing">
+<div class="container">
+<h2>Pricing</h2>
+
+<div class="grid">
 
 <div class="price-card">
 <h3>Starter - $399</h3>
-<p class="extra">Setup of cold email system + basic outreach infrastructure for small businesses starting outbound.</p>
+<p class="extra">
+Basic outbound setup, email system, templates, and CRM integration.
+</p>
 </div>
 
 <div class="price-card">
 <h3>Pro - $799</h3>
-<p class="extra">Full outbound system with automation, CRM integration, and optimized lead pipelines. Best for scaling agencies.</p>
+<p class="extra">
+Full automation system with email + LinkedIn + AI appointment setting.
+</p>
 </div>
 
 <div class="price-card">
-<h3>Elite - $1599</h3>
-<p class="extra">Complete AI outbound engine with multi-channel outreach, analytics, and dedicated scaling support.</p>
+<h3>Elite - $1399</h3>
+<p class="extra">
+Full AI outbound engine with multi-channel automation and scaling systems.
+</p>
 </div>
 
+</div>
+</div>
 </section>
 
 <!-- TESTIMONIALS -->
-<section class="grid">
+<section>
+<div class="container">
+<h2>Testimonials</h2>
 
-<div class="testimonial">
-<h3>Agency Owner</h3>
-<p class="extra">
-“Within weeks we went from inconsistent leads to a predictable pipeline that scales daily.”
-</p>
-</div>
+<div class="grid">
 
 <div class="testimonial">
 <h3>SaaS Founder</h3>
 <p class="extra">
-“Our conversion rates doubled after implementing Acquirely’s outbound system.”
+Predictable weekly pipeline of booked calls without ads.
+</p>
+</div>
+
+<div class="testimonial">
+<h3>Agency Owner</h3>
+<p class="extra">
+Scaled from 10 leads/week to 50+ qualified opportunities.
 </p>
 </div>
 
 <div class="testimonial">
 <h3>Consultant</h3>
 <p class="extra">
-“I now get daily booked calls without manual outreach — fully automated.”
+Fully automated inbound call flow every day.
 </p>
 </div>
 
+</div>
+</div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="grid">
+<section id="contact">
+<div class="container">
+<h2>Contact</h2>
 
-<div class="card">
-<h3>Contact Us</h3>
-
-<form id="contactForm" action="YOUR_GOOGLE_SHEETS_SCRIPT_URL" method="POST">
-<input name="name" placeholder="Name" required>
-<input name="email" placeholder="Email" required>
-<textarea name="message" placeholder="Tell us about your business..." required></textarea>
+<form>
+<input placeholder="Name" required>
+<input placeholder="Email" required>
+<textarea placeholder="Message" required></textarea>
 <button type="submit">Send Message</button>
 </form>
 
 <div class="socials">
-<a href="https://wa.me/1234567890"><i class="fa-brands fa-whatsapp"></i></a>
-<a href="https://t.me/username"><i class="fa-brands fa-telegram"></i></a>
-<a href="https://linkedin.com"><i class="fa-brands fa-linkedin"></i></a>
-<a href="mailto:test@email.com"><i class="fa-solid fa-envelope"></i></a>
+<a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+<a href="#"><i class="fa-brands fa-telegram"></i></a>
+<a href="#"><i class="fa-solid fa-envelope"></i></a>
 </div>
 
 </div>
-
 </section>
 
-<footer>© 2024 Acquirely</footer>
+<footer>
+© 2024 Acquirely — All Rights Reserved
+</footer>
 
 <script>
 
-/* CURSOR */
-let cursor=document.getElementById("cursor");
-let x=0,y=0,tx=0,ty=0;
-
-window.addEventListener("mousemove",(e)=>{
-x=e.clientX;y=e.clientY;
-});
-
-function animate(){
-tx+=(x-tx)*0.25;
-ty+=(y-ty)*0.25;
-cursor.style.left=tx+"px";
-cursor.style.top=ty+"px";
-requestAnimationFrame(animate);
-}
-animate();
-
-/* MENU */
-function toggleMenu(){
-const m=document.getElementById("mobileMenu");
-m.classList.toggle("active");
-document.body.style.overflow=m.classList.contains("active")?"hidden":"auto";
-}
-
-/* ONE OPEN AT A TIME + HOVER */
+/* ONE-AT-A-TIME EXPAND FIX */
 document.querySelectorAll(".card,.price-card,.testimonial,.about-box")
 .forEach(el=>{
-
-el.addEventListener("mouseenter",()=>{
-if(window.innerWidth>900){
-document.querySelectorAll(".card,.price-card,.testimonial,.about-box")
-.forEach(c=>c.classList.remove("active"));
-el.classList.add("active");
-}
-});
-
 el.addEventListener("click",()=>{
 document.querySelectorAll(".card,.price-card,.testimonial,.about-box")
-.forEach(c=>c!==el && c.classList.remove("active"));
+.forEach(item=>{
+if(item!==el) item.classList.remove("active");
+});
 el.classList.toggle("active");
 });
-
-});
-
-/* PERF */
-const perf=document.getElementById("perf");
-let frames=0,last=performance.now();
-
-function loop(){
-frames++;
-const now=performance.now();
-if(now-last>=1000){
-perf.innerText=`FPS: ${frames} | Load: ${(performance.now()/1000).toFixed(1)}s`;
-frames=0;
-last=now;
-}
-requestAnimationFrame(loop);
-}
-loop();
-
-/* FORM */
-document.getElementById("contactForm").addEventListener("submit",e=>{
-e.preventDefault();
-fetch(e.target.action,{
-method:"POST",
-body:new FormData(e.target)
-}).then(()=>alert("Message sent successfully"));
 });
 
 </script>
 
 </body>
-  </html>
+</html>
