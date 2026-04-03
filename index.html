@@ -171,7 +171,7 @@ pointer-events:auto;
 /* HERO */
 .hero{
 text-align:center;
-padding:300px 20px 120px;
+padding:300px 20px 80px;
 }
 
 .hero h1{
@@ -184,7 +184,7 @@ margin-bottom:18px;
 
 .hero p{
 opacity:0.8;
-margin-bottom:28px;
+margin-bottom:40px;
 }
 
 /* BUTTON */
@@ -216,7 +216,7 @@ margin:auto;
 }
 
 /* CARDS */
-.card,.price-card,.testimonial,.about-box{
+.card,.price-card,.testimonial,.about-box,.stat{
 background:rgba(10,10,10,0.35);
 backdrop-filter:blur(35px);
 border:1px solid rgba(255,255,255,0.10);
@@ -227,25 +227,14 @@ transition:0.3s ease;
 overflow:hidden;
 }
 
-/* 🔥 STRONG NEON HOVER EFFECT (NEW) */
 .card:hover,
 .price-card:hover,
 .testimonial:hover,
-.about-box:hover{
+.about-box:hover,
+.stat:hover{
 transform:scale(1.04);
 border:1px solid rgba(0,245,255,0.6);
-box-shadow:
-0 0 20px rgba(0,245,255,0.25),
-0 0 45px rgba(0,245,255,0.12);
-}
-
-/* CLICK GLOW */
-.card:active,
-.price-card:active,
-.testimonial:active,
-.about-box:active{
-transform:scale(0.98);
-box-shadow:0 0 35px rgba(0,245,255,0.35);
+box-shadow:0 0 20px rgba(0,245,255,0.25),0 0 45px rgba(0,245,255,0.12);
 }
 
 /* EXPAND */
@@ -288,7 +277,28 @@ border:1px solid rgba(0,150,255,0.35);
 border:1px solid rgba(255,215,0,0.8);
 }
 
-/* CONTACT (FIXED NO WHITE BOX) */
+/* STATS */
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:22px;
+padding:20px 25px;
+max-width:1000px;
+margin:auto;
+text-align:center;
+}
+
+.stat h2{
+font-size:38px;
+color:#00f5ff;
+}
+
+.stat p{
+opacity:0.7;
+margin-top:8px;
+}
+
+/* CONTACT */
 form{
 display:flex;
 flex-direction:column;
@@ -303,11 +313,9 @@ border-radius:12px;
 color:#fff;
 outline:none;
 backdrop-filter:blur(25px);
-transition:0.25s;
 }
 
-input:focus,
-textarea:focus{
+input:focus,textarea:focus{
 border:1px solid rgba(0,245,255,0.7);
 box-shadow:0 0 18px rgba(0,245,255,0.25);
 }
@@ -355,6 +363,22 @@ text-decoration:none;
 <h1>SaaS Lead Generation System</h1>
 <p>Fully automated outbound infrastructure that generates leads, books calls, and scales revenue predictably.</p>
 <a href="#contact"><button class="btn">Get Started</button></a>
+</section>
+
+<!-- PERFORMANCE COUNTER -->
+<section class="stats">
+<div class="stat">
+<h2 class="count" data-target="120">0</h2>
+<p>Clients</p>
+</div>
+<div class="stat">
+<h2 class="count" data-target="4500">0</h2>
+<p>Leads Generated</p>
+</div>
+<div class="stat">
+<h2 class="count" data-target="87">0</h2>
+<p>Success Rate %</p>
+</div>
 </section>
 
 <div class="section-title">ABOUT</div>
@@ -408,7 +432,7 @@ We do not offer generic marketing services — we build end-to-end revenue syste
 </section>
 
 <footer>
-<p>© 2026 Acquirely</p>
+<p>© 2024 Acquirely. All rights reserved.</p>
 <div>
 <a href="#">WhatsApp</a>
 <a href="#">Telegram</a>
@@ -465,6 +489,26 @@ alert("Message sent!");
 this.reset();
 });
 
+/* COUNTER ANIMATION */
+const counters=document.querySelectorAll(".count");
+
+counters.forEach(counter=>{
+counter.innerText="0";
+const update=()=>{
+const target=+counter.getAttribute("data-target");
+const current=+counter.innerText;
+const increment=target/120;
+
+if(current<target){
+counter.innerText=Math.ceil(current+increment);
+setTimeout(update,20);
+}else{
+counter.innerText=target;
+}
+};
+update();
+});
+
 /* PARTICLES */
 const c=document.getElementById("c");
 const ctx=c.getContext("2d");
@@ -496,4 +540,4 @@ draw();
 </script>
 
 </body>
-                                                    </html>
+</html>
