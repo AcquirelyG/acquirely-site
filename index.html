@@ -27,7 +27,7 @@ overflow-x:hidden;
 }
 
 /* =========================
-FLOATING LIGHT FIELD (NEW SYSTEM)
+FLOATING LIGHT FIELD (UPGRADED)
 ========================= */
 .light-field{
 position:fixed;
@@ -39,26 +39,20 @@ overflow:hidden;
 
 .particle{
 position:absolute;
-width:2px;
-height:2px;
-border-radius:30%;
-
-/* 🔥 metallic blue */
+width:3px;
+height:3px;
+border-radius:50%;
 background:linear-gradient(145deg,#00e5ff,#007a99);
-
-box-shadow:
-0 0 4px #00e5ff88,
-0 0 8px #00e5ff44;
-
-opacity:0.7;
-
+box-shadow:0 0 6px #00e5ff88,0 0 12px #00e5ff44;
+opacity:0.8;
 animation:floatUp linear infinite;
+filter:blur(0.3px);
 }
 
 @keyframes floatUp{
 0%{transform:translateY(110vh) scale(0.5); opacity:0;}
 20%{opacity:0.9;}
-100%{transform:translateY(-10vh) scale(1.2); opacity:0;}
+100%{transform:translateY(-10vh) scale(1.3); opacity:0;}
 }
 
 /* =========================
@@ -69,34 +63,29 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:20px 50px;
-position:relative;
-z-index:10;
 }
 
 .logo{
 font-size:32px;
 font-weight:800;
 color:#3aaec4;
-letter-spacing:1px;
-opacity:0.95;
-line-height:1;
+text-shadow:0 0 15px #00e5ff55;
+animation:pulseLogo 3s infinite;
+}
+
+@keyframes pulseLogo{
+0%,100%{text-shadow:0 0 10px #00e5ff33;}
+50%{text-shadow:0 0 25px #00e5ff99;}
 }
 
 .logo-reflection{
 font-size:32px;
 font-weight:800;
-letter-spacing:1px;
 color:#3aaec4;
 opacity:0.08;
-
 transform:scaleY(-1);
 display:block;
-margin-top:2px;
-
 mask-image:linear-gradient(to bottom, rgba(0,0,0,0.5), transparent);
--webkit-mask-image:linear-gradient(to bottom, rgba(0,0,0,0.5), transparent);
-
-filter:blur(1.2px);
 }
 
 .nav-links{
@@ -112,6 +101,7 @@ transition:0.3s;
 
 .nav-links a:hover{
 color:#00e5ff;
+text-shadow:0 0 10px #00e5ff;
 }
 
 /* MOBILE */
@@ -132,16 +122,10 @@ background:#0a0d14;
 flex-direction:column;
 padding:80px 30px;
 transition:0.4s;
-z-index:999;
 }
 
-.nav-links.active{
-right:0;
-}
-
-.burger{
-display:block;
-}
+.nav-links.active{right:0;}
+.burger{display:block;}
 }
 
 /* =========================
@@ -150,8 +134,6 @@ HERO
 .hero{
 text-align:center;
 padding:120px 20px 60px;
-position:relative;
-z-index:2;
 }
 
 .hero h1{
@@ -179,7 +161,11 @@ border-radius:14px;
 background:rgba(255,255,255,0.03);
 backdrop-filter:blur(10px);
 box-shadow:0 0 20px #00e5ff22;
-min-width:160px;
+transition:0.3s;
+}
+
+.stat:hover{
+box-shadow:0 0 35px #00e5ff55;
 }
 
 /* =========================
@@ -187,8 +173,6 @@ SECTIONS
 ========================= */
 section{
 padding:80px 20px;
-position:relative;
-z-index:2;
 }
 
 h2{
@@ -197,14 +181,15 @@ font-size:32px;
 margin-bottom:40px;
 text-decoration:underline;
 text-decoration-color:#00e5ff;
+text-shadow:0 0 10px #00e5ff33;
 }
 
 /* =========================
-SERVICES
+SERVICES (FIXED + STRONG NEON)
 ========================= */
 .services{
 display:grid;
-grid-template-columns:repeat(auto-fit, minmax(320px, 320px)); /* wider boxes */
+grid-template-columns:repeat(auto-fit, minmax(320px, 320px));
 gap:25px;
 justify-content:center;
 }
@@ -213,62 +198,45 @@ justify-content:center;
 padding:20px;
 border-radius:14px;
 cursor:pointer;
-transition:all 0.4s ease;
+transition:0.4s ease;
 background:rgba(255,255,255,0.03);
 backdrop-filter:blur(12px);
 border:1px solid #00e5ff22;
 
-/* 🔥 FIXED HEIGHT SYSTEM */
-.service{
-padding:20px;
-border-radius:14px;
-cursor:pointer;
-transition:max-height 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
-background:rgba(255,255,255,0.03);
-backdrop-filter:blur(12px);
-border:1px solid #00e5ff22;
-
-/* NEW SYSTEM */
 max-height:70px;
 overflow:hidden;
 
-box-shadow:0 0 15px transparent;
+box-shadow:0 0 10px #00e5ff11;
 }
 
-/* remove extra spacing from text */
-.service h3{
-margin:0;
+.service h3{margin:0;}
+
+.service p{
+margin-top:15px;
+opacity:0;
+max-height:0;
+overflow:hidden;
+transition:0.3s ease;
 }
 
-/* hide paragraph properly */
-.service p {
-margin-top: 15px;
-opacity: 0;
-max-height: 0;
-overflow: hidden;
-transition: all 0.3s ease;
-}
-
-/* open state */
-.service.active p {
-opacity: 0.85;
-max-height: 200px;
-}
-
-/* hover effect */
-.service:hover{
-box-shadow:0 0 25px #00e5ff55;
-transform:translateY(-3px);
-}
-
-/* 🔥 OPEN STATE */
 .service.active{
-height:auto; /* expands fully */
-box-shadow:0 0 30px #00e5ff66;
+max-height:250px;
+box-shadow:0 0 35px #00e5ff66;
+border-color:#00e5ff;
+}
+
+.service.active p{
+opacity:0.9;
+max-height:200px;
+}
+
+.service:hover{
+box-shadow:0 0 30px #00e5ff55;
+transform:translateY(-4px);
 }
 
 /* =========================
-PRICING (BLACK GLASS + NEON)
+PRICING (UPGRADED NEON)
 ========================= */
 .pricing{
 display:flex;
@@ -281,27 +249,24 @@ flex-wrap:wrap;
 width:270px;
 padding:25px;
 border-radius:16px;
-cursor:pointer;
-transition:0.3s;
 background:rgba(0,0,0,0.4);
 backdrop-filter:blur(14px);
 border:1px solid #00e5ff22;
-box-shadow:0 0 20px transparent;
+transition:0.3s;
+box-shadow:0 0 15px #00e5ff11;
 }
 
 .price-card:hover{
-transform:scale(1.06);
-box-shadow:0 0 30px #00e5ff55;
+transform:scale(1.07);
+box-shadow:0 0 40px #00e5ff66;
 border-color:#00e5ff;
 }
 
-.price-card h3{
-color:#00e5ff;
-}
+.price-card h3{color:#00e5ff;}
 
 .price-card.popular{
-border:1px solid #ffd700;
-box-shadow:0 0 35px #ffd70033;
+border:1px solid gold;
+box-shadow:0 0 30px #ffd70022;
 }
 
 /* =========================
@@ -318,11 +283,16 @@ padding:20px;
 border-radius:14px;
 background:rgba(255,255,255,0.03);
 border:1px solid #00e5ff22;
-backdrop-filter:blur(10px);
+box-shadow:0 0 15px #00e5ff11;
+transition:0.3s;
+}
+
+.testimonial:hover{
+box-shadow:0 0 30px #00e5ff44;
 }
 
 /* =========================
-CONTACT
+CONTACT (UPGRADED NEON INTERACTION)
 ========================= */
 form{
 display:flex;
@@ -338,13 +308,12 @@ border-radius:16px;
 padding:25px;
 background:rgba(0,0,0,0.45);
 backdrop-filter:blur(16px);
-box-shadow:0 0 25px #00e5ff33, inset 0 0 10px #00e5ff11;
+box-shadow:0 0 25px #00e5ff22;
 transition:0.3s;
 }
 
 .contact-box:hover{
-box-shadow:0 0 45px #00e5ff88, inset 0 0 15px #00e5ff22;
-border-color:#00e5ff;
+box-shadow:0 0 50px #00e5ff66;
 }
 
 input,textarea{
@@ -353,7 +322,14 @@ border-radius:10px;
 border:1px solid #00e5ff33;
 background:transparent;
 color:#fff;
+transition:0.3s;
+}
+
+input:focus,textarea:focus{
 outline:none;
+border-color:#00e5ff;
+box-shadow:0 0 15px #00e5ff88;
+transform:scale(1.02);
 }
 
 button{
@@ -361,13 +337,18 @@ padding:12px;
 background:#00e5ff;
 border:none;
 border-radius:10px;
-cursor:pointer;
 font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+box-shadow:0 0 15px #00e5ff44;
 }
 
-/* =========================
-SOCIALS
-========================= */
+button:hover{
+box-shadow:0 0 30px #00e5ff99;
+transform:translateY(-2px);
+}
+
+/* SOCIALS */
 .socials{
 display:flex;
 justify-content:center;
@@ -383,6 +364,7 @@ transition:0.3s;
 
 .socials a:hover{
 color:#00e5ff;
+text-shadow:0 0 10px #00e5ff;
 }
 
 </style>
@@ -390,15 +372,10 @@ color:#00e5ff;
 
 <body>
 
-<!-- FLOATING LIGHT FIELD -->
 <div class="light-field" id="field"></div>
 
-<!-- NAV -->
 <nav>
-<div class="logo">
-  Acquirely
-  <span class="logo-reflection">Acquirely</span>
-</div>
+<div class="logo">Acquirely<span class="logo-reflection">Acquirely</span></div>
 <div class="burger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
 <div class="nav-links" id="menu">
 <a href="#about">About</a>
@@ -409,7 +386,6 @@ color:#00e5ff;
 </div>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
 <h1>High Performance Lead Generation</h1>
 <p>Automated outreach systems that generate predictable clients. Predictable clients means predictable Revenue!</p>
@@ -421,7 +397,6 @@ color:#00e5ff;
 </div>
 </div>
 
-<!-- ABOUT -->
 <section id="about">
 <h2>About Us</h2>
 <p style="max-width:750px;margin:auto;line-height:1.6;opacity:0.85;">
@@ -429,7 +404,6 @@ Acquirely builds automated outreach systems that help businesses generate consis
 </p>
 </section>
 
-<!-- SERVICES -->
 <section id="services">
 <h2>Services</h2>
 
@@ -453,7 +427,6 @@ Acquirely builds automated outreach systems that help businesses generate consis
 </div>
 </section>
 
-<!-- PRICING -->
 <section id="pricing">
 <h2>Pricing</h2>
 
@@ -480,7 +453,6 @@ Acquirely builds automated outreach systems that help businesses generate consis
 </div>
 </section>
 
-<!-- TESTIMONIALS -->
 <section id="testimonials">
 <h2>Testimonials</h2>
 
@@ -491,7 +463,6 @@ Acquirely builds automated outreach systems that help businesses generate consis
 </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
 <h2>Contact</h2>
 
@@ -512,27 +483,26 @@ Acquirely builds automated outreach systems that help businesses generate consis
 
 <script>
 
-/* FLOATING LIGHTS */
-const field = document.getElementById("field");
-
+/* particles */
+const field=document.getElementById("field");
 for(let i=0;i<35;i++){
-const p=document.createElement("div");
-p.classList.add("particle");
+let p=document.createElement("div");
+p.className="particle";
 p.style.left=Math.random()*100+"vw";
 p.style.animationDuration=(5+Math.random()*10)+"s";
-p.style.animationDelay=Math.random()*5+"s";
 field.appendChild(p);
 }
 
-/* COUNTERS */
+/* counters */
 function animate(id,target){
+let el=document.getElementById(id);
 let start=0;
 let step=target/120;
-let el=document.getElementById(id);
 let t=setInterval(()=>{
 start+=step;
-if(start>=target){start=target;clearInterval(t);}
+if(start>=target) start=target;
 el.innerText=Math.floor(start);
+if(start===target) clearInterval(t);
 },18);
 }
 
@@ -540,50 +510,25 @@ animate("leads",29471);
 animate("clients",97);
 animate("rate",72);
 
-/* MENU */
+/* menu */
 function toggleMenu(){
 document.getElementById("menu").classList.toggle("active");
 }
 
-document.addEventListener("click",function(e){
-const menu=document.getElementById("menu");
-const burger=document.querySelector(".burger");
-
-if(!menu.contains(e.target) && !burger.contains(e.target)){
-menu.classList.remove("active");
-}
-});
-
-/* =========================
-SERVICES (OPEN / CLOSE + OUTSIDE CLICK CLOSE)
-========================= */
-
+/* services */
 function expand(el){
-const all=document.querySelectorAll(".service");
-
-// toggle same box
-if(el.classList.contains("active")){
-el.classList.remove("active");
-return;
-}
-
-// close others + open clicked
-all.forEach(s=>s.classList.remove("active"));
+document.querySelectorAll(".service").forEach(s=>s.classList.remove("active"));
 el.classList.add("active");
 }
 
-// click outside closes all services
+/* click outside close */
 document.addEventListener("click",function(e){
-const servicesWrap=document.querySelector(".services");
-
-if(servicesWrap && !servicesWrap.contains(e.target)){
-document.querySelectorAll(".service").forEach(s=>{
-s.classList.remove("active");
-});
+if(!document.querySelector(".services").contains(e.target)){
+document.querySelectorAll(".service").forEach(s=>s.classList.remove("active"));
 }
 });
 
-/* FORM */
+/* CONTACT FORM → GOOGLE SHEETS READY */
 document.getElementById("contactForm").addEventListener("submit",function(e){
 e.preventDefault();
 
@@ -592,15 +537,16 @@ method:"POST",
 body:new FormData(this)
 })
 .then(res=>{
-if(!res.ok) throw new Error("Network error");
-alert("Message sent!");
+alert("Message sent successfully!");
 this.reset();
 })
 .catch(()=>{
-alert("Something went wrong. Try again.");
+alert("Error sending message.");
+});
+
 });
 
 </script>
 
 </body>
-</html>
+  </html>
